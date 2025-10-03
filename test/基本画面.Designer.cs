@@ -28,27 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Button button2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(起動画面));
             M = new Button();
             One = new Button();
             C = new Button();
-            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
-            // 
-            // button2
-            // 
-            resources.ApplyResources(button2, "button2");
-            button2.BackColor = Color.White;
-            button2.ForeColor = Color.Black;
-            button2.Name = "button2";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // M
             // 
             resources.ApplyResources(M, "M");
-            M.BackColor = Color.FromArgb(255, 255, 128);
+            M.BackColor = Color.Cyan;
             M.FlatAppearance.BorderColor = Color.Black;
             M.Name = "M";
             M.UseVisualStyleBackColor = false;
@@ -66,20 +56,28 @@
             // C
             // 
             resources.ApplyResources(C, "C");
-            C.BackColor = Color.FromArgb(255, 255, 128);
+            C.BackColor = Color.FromArgb(0, 192, 192);
             C.FlatAppearance.BorderColor = Color.Black;
             C.Name = "C";
             C.UseVisualStyleBackColor = false;
-            C.Click += this.C_Click;
+            C.Click += C_Click;
+            // 
+            // button3
+            // 
+            resources.ApplyResources(button3, "button3");
+            button3.BackColor = Color.White;
+            button3.Name = "button3";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // 起動画面
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(128, 255, 255);
+            BackColor = Color.FromArgb(255, 192, 192);
+            Controls.Add(button3);
             Controls.Add(C);
             Controls.Add(One);
-            Controls.Add(button2);
             Controls.Add(M);
             MaximizeBox = false;
             Name = "起動画面";
@@ -89,8 +87,8 @@
         #endregion
 
         private Button M;
-        private Button button2;
         private Button One;
         private Button C;
+        private Button button3;
     }
 }

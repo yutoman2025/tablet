@@ -9,33 +9,38 @@ namespace test
 
         private void M_Click(object sender, EventArgs e)
         {
-            M â^ì]ém = new M();
-            â^ì]ém.Show();
-            this.WindowState = FormWindowState.Minimized;
+            this.Hide();
+            var M = new M();
+            M.ShowDialog();
+            this.Show();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (this.TopMost == false)
             {
                 this.TopMost = true;
-                button2.BackColor = Color.Yellow;
+                button3.BackColor = Color.Yellow;
             }
             else
             {
                 this.TopMost = false;
-                button2.BackColor = Color.White;
+                button3.BackColor = Color.White;
             }
         }
 
         private void One_Click(object sender, EventArgs e)
         {
-            One ÉèÉìÉ}Éì = new One();
-            ÉèÉìÉ}Éì.Show();
+            this.Hide();
+            var One = new One();
+            One.ShowDialog();
+            this.Show();
         }
         private void C_Click(object sender, EventArgs e)
         {
-            C é‘è∂ = new C();
-            é‘è∂.Show();
+            this.Hide();
+            var C = new C();
+            C.ShowDialog();
+            this.Show();
         }
     }
 }
