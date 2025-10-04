@@ -70,6 +70,8 @@
             // 
             // comboBox1
             // 
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "1113", "1517", "1820", "2123" });
             comboBox1.Location = new Point(139, 77);
@@ -80,6 +82,8 @@
             // 
             // comboBox2
             // 
+            comboBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox2.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "平1", "平2", "平3", "平4", "平5", "平6", "平7", "平8", "平9", "平10", "平11", "平12", "平13", "平14", "平151", "平152", "平153", "平154", "平155", "平156", "平157", "平566", "変-平5", "変-平9", "変-平13", "変-平151", "普変-平1", "普変-平2", "普変-平7", "普変-平8", "準変-平3", "準変-平4", "準変-平5", "準変-平6", "準変-平11", "準変-平12", "特変-平551", "特変-平552", "教変-平151", "教変-平157", "教変-平551", "教変-平552", "臨-平848", "臨-平849" });
             comboBox2.Location = new Point(12, 77);
@@ -107,9 +111,12 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // comboBox3
             // 
+            comboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] { "回1005A", "回1409A", "1019A", "1021A", "1103A", "1118A", "1206A", "1212A", "1215A", "1320A", "1407A", "1419A", "1508A", "1513A", "1518A", "1603A", "1604A", "1612A", "1706A", "1709A", "1711A", "1810A", "1814A", "1817A", "1819A", "1908A", "1913A", "1918A", "2016A", "1787B", "1869B", "1882B", "1883B", "1977B", "4757B", "1182C", "1183C", "1184C", "1185C", "1198C", "1199C", "1282C", "1283C", "1284C", "1285C", "1298C", "1299C", "1582C", "1583C", "1584C", "1585C", "1598C", "1599C", "1682C", "1683C", "1684C", "1685C", "1698C", "1699C", "1791C", "1884C", "1885C", "1886C", "1887C", "1890C", "1898C", "1899C", "1984C", "1985C", "1986C", "1987C", "1990C", "1991C", "1997C", "1998C", "1999C", "2098C", "1041", "1049", "1050X", "1060", "1075", "1140", "1143", "1145", "1148", "1150", "1151", "1161", "1164", "1165", "1166", "1167", "1174", "1242", "1249", "1251", "1260", "1261", "1264", "1267", "1274", "1275", "1441", "1449", "1450", "1460", "1475", "1540", "1543", "1545", "1548", "1550", "1551", "1561", "1564", "1565", "1566", "1567", "1574", "1642", "1649", "1651", "1660", "1661", "1664", "1674", "1675", "1679", "1690", "1743", "1750", "1764", "1779", "1850", "1860", "1861", "1865", "1871", "1874", "1875", "1876", "1878", "1879", "1940", "1951", "1960", "1961", "1964", "1965", "1970", "1974", "1975", "1978", "1979", "回1666", "試9091", "試9093", "試9190", "試9191", "試9192", "試9193", "試9290", "試9292" });
             comboBox3.Location = new Point(506, 11);

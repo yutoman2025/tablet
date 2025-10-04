@@ -5,13 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Reflection;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tablet;
 using static System.Windows.Forms.DataFormats;
-
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace test
 {
     public partial class M : Form
@@ -614,330 +616,39 @@ namespace test
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (comboBox3.SelectedItem == null)
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
+            string selectedText = comboBox3.Text;
+            int last = selectedText.Length - 1;
+            if (selectedText == null)
             {
-                MessageBox.Show("列車番号を選択してください");
+                MessageBox.Show("行路を選択してください");
                 return;
             }
-            else if (comboBox3.SelectedItem == "回1005A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.X1005A;
-            }
-            else if (comboBox3.SelectedItem == "回1409A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.X1409A;
-            }
-            else if (comboBox3.SelectedItem == "1019A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1019;
-            }
-            else if (comboBox3.SelectedItem == "1021A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1021;
-            }
-            else if (comboBox3.SelectedItem == "1103A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1103;
-            }
-            else if (comboBox3.SelectedItem == "1118A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1118;
-            }
-            else if (comboBox3.SelectedItem == "1206A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1206;
-            }
-            else if (comboBox3.SelectedItem == "1212A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1212;
-            }
-            else if (comboBox3.SelectedItem == "1215A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1215;
-            }
-            else if (comboBox3.SelectedItem == "1320A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1320;
-            }
-            else if (comboBox3.SelectedItem == "1407A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1407;
-            }
-            else if (comboBox3.SelectedItem == "1419A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1419;
-            }
-            else if (comboBox3.SelectedItem == "1508A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1508;
-            }
-            else if (comboBox3.SelectedItem == "1513A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1513;
-            }
-            else if (comboBox3.SelectedItem == "1518A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1518;
-            }
-            else if (comboBox3.SelectedItem == "1603A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1603;
-            }
-            else if (comboBox3.SelectedItem == "1604A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1604;
-            }
-            else if (comboBox3.SelectedItem == "1612A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1612;
-            }
-            else if (comboBox3.SelectedItem == "1706A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1706;
-            }
-            else if (comboBox3.SelectedItem == "1810A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1810;
-            }
-            else if (comboBox3.SelectedItem == "1814A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1814;
-            }
-            else if (comboBox3.SelectedItem == "1817A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1817;
-            }
-            else if (comboBox3.SelectedItem == "1819A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1819;
-            }
-            else if (comboBox3.SelectedItem == "1908A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1908;
-            }
-            else if (comboBox3.SelectedItem == "1913A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1913;
-            }
-            else if (comboBox3.SelectedItem == "1918A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A1918;
-            }
-            else if (comboBox3.SelectedItem == "2016A")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.A2016;
-            }
-            else if (comboBox3.SelectedItem == "1787B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B1787;
-            }
-            else if (comboBox3.SelectedItem == "1869B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B1869;
-            }
-            else if (comboBox3.SelectedItem == "1882B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B1882;
-            }
-            else if (comboBox3.SelectedItem == "1883B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B1883;
-            }
-            else if (comboBox3.SelectedItem == "1977B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B1977;
-            }
-            else if (comboBox3.SelectedItem == "4757B")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.B4757;
-            }
-            else if (comboBox3.SelectedItem == "1182C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1182;
-            }
-            else if (comboBox3.SelectedItem == "1183C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1183;
-            }
-            else if (comboBox3.SelectedItem == "1184C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1184;
-            }
-            else if (comboBox3.SelectedItem == "1185C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1185;
-            }
-            else if (comboBox3.SelectedItem == "1282C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1282;
-            }
-            else if (comboBox3.SelectedItem == "1283C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1283;
-            }
-            else if (comboBox3.SelectedItem == "1284C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1284;
-            }
-            else if (comboBox3.SelectedItem == "1285C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1285;
-            }
-            else if (comboBox3.SelectedItem == "1298C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1298;
-            }
-            else if (comboBox3.SelectedItem == "1299C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1299;
-            }
-            else if (comboBox3.SelectedItem == "1582C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1582;
-            }
-            else if (comboBox3.SelectedItem == "1583C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1583;
-            }
-            else if (comboBox3.SelectedItem == "1584C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1584;
-            }
-            else if (comboBox3.SelectedItem == "1585C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1585;
-            }
-            else if (comboBox3.SelectedItem == "1598C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1598;
-            }
-            else if (comboBox3.SelectedItem == "1599C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1599;
-            }
-            else if (comboBox3.SelectedItem == "1682C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1682;
-            }
-            else if (comboBox3.SelectedItem == "1683C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1683;
-            }
-            else if (comboBox3.SelectedItem == "1684C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1684;
-            }
-            else if (comboBox3.SelectedItem == "1685C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1685;
-            }
-            else if (comboBox3.SelectedItem == "1698C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1698;
-            }
-            else if (comboBox3.SelectedItem == "1699C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1699;
-            }
-            else if (comboBox3.SelectedItem == "1791C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1791;
-            }
-            else if (comboBox3.SelectedItem == "1884C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1884;
-            }
-            else if (comboBox3.SelectedItem == "1885C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1885;
-            }
-            else if (comboBox3.SelectedItem == "1886C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1886;
-            }
-            else if (comboBox3.SelectedItem == "1887C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1887;
-            }
-            else if (comboBox3.SelectedItem == "1890C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1890;
-            }
-            else if (comboBox3.SelectedItem == "1898C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1898;
-            }
-            else if (comboBox3.SelectedItem == "1899C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1899;
-            }
-            else if (comboBox3.SelectedItem == "1984C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1984;
-            }
-            else if (comboBox3.SelectedItem == "1985C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1985;
-            }
-            else if (comboBox3.SelectedItem == "1986C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1986;
-            }
-            else if (comboBox3.SelectedItem == "1987C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1987;
-            }
-            else if (comboBox3.SelectedItem == "1990C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1990;
-            }
-            else if (comboBox3.SelectedItem == "1998C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1998;
-            }
-            else if (comboBox3.SelectedItem == "1999C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C1999;
-            }
-            else if (comboBox3.SelectedItem == "2098C")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.C2098;
-            }
-            else if (comboBox3.SelectedItem == "回1666")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.X1666;
-            }
-            else if (comboBox3.SelectedItem == "試9091")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9091;
-            }
-            else if (comboBox3.SelectedItem == "試9093")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9093;
-            }
-            else if (comboBox3.SelectedItem == "試9190")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9190;
-            }
-            else if (comboBox3.SelectedItem == "試9191")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9191;
-            }
-            else if (comboBox3.SelectedItem == "試9192")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9192;
-            }
-            else if (comboBox3.SelectedItem == "試9193")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9193;
-            }
-            else if (comboBox3.SelectedItem == "試9290")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9290;
-            }
-            else if (comboBox3.SelectedItem == "試9292")
-            {
-                pictureBox1.Image = tablet.Properties.Resources.Z9292;
+            string selectedText3 = Regex.Replace(selectedText, @"[^a-wA-W]", "");
+            selectedText = Regex.Replace(selectedText, @"[a-wA-W]", "");
+            selectedText = selectedText.Replace("回", "X");
+            selectedText = selectedText.Replace("試", "Z");
+            if (selectedText3 == "" && selectedText[0] != 'X' && selectedText[0] != 'Z')
+            {
+                selectedText3 = "L";
+            }
+            Image myImage = (Image)resourceManager.GetObject(selectedText3 + selectedText);
+            pictureBox1.Image = myImage;
+        }
+
+        private Picture form3Instance;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1 != null && (form3Instance == null || form3Instance.IsDisposed))
+            {
+                Picture pictureForm = new Picture(pictureBox1.Image);
+                form3Instance = pictureForm;
+                form3Instance.Show();
+            }
+            else
+            {
+                form3Instance.Close();
             }
         }
     }

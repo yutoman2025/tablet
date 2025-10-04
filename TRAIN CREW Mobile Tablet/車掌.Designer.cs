@@ -33,8 +33,6 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -86,22 +84,12 @@
             button4.Text = "前";
             button4.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = tablet.Properties.Resources._11_566;
-            pictureBox1.Location = new Point(29, 374);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(149, 51);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
-            // 
             // C
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
-            Controls.Add(pictureBox1);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -111,7 +99,6 @@
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "C";
             Text = "車掌";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -122,6 +109,5 @@
         private Button button2;
         private Button button3;
         private Button button4;
-        private PictureBox pictureBox1;
     }
 }

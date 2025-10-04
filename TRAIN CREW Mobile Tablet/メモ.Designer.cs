@@ -33,6 +33,8 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Font = new Font("Yu Gothic UI", 12F);
             textBox1.Location = new Point(-1, -1);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
