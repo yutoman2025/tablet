@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -43,12 +45,32 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(566, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(108, 39);
+            button2.TabIndex = 3;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(680, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(108, 39);
+            button3.TabIndex = 4;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // One
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(128, 255, 255);
+            BackColor = Color.FromArgb(128, 255, 128);
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
             Name = "One";
             Text = "ワンマン";
@@ -58,5 +80,7 @@
         #endregion
 
         private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }
