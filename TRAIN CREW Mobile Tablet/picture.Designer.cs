@@ -47,13 +47,16 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(266, 385);
+            ControlBox = false;
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Picture";
-            ShowIcon = false;
             SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "スターフ";
+            TopMost = true;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

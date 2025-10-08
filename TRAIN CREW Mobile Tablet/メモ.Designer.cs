@@ -45,6 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(334, 561);
             ControlBox = false;
             Controls.Add(textBox1);

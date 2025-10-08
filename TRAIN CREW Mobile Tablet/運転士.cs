@@ -21,6 +21,7 @@ namespace test
         public M()
         {
             InitializeComponent();
+            this.AcceptButton = button4;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -612,6 +613,16 @@ namespace test
                     MessageBox.Show("行路を選択してください");
                 }
             }
+            else if (comboBox1.SelectedItem.ToString() == "0709")
+            {
+                MessageBox.Show("0709ダイヤは現在実装されておりません");
+                return;
+            }
+            else if (comboBox1.SelectedItem.ToString() == "2123")
+            {
+                MessageBox.Show("2123ダイヤは現在実装されておりません");
+                return;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -620,9 +631,9 @@ namespace test
             ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
             string selectedText = comboBox3.Text;
             int last = selectedText.Length - 1;
-            if (selectedText == null)
+            if (comboBox3.SelectedItem == null)
             {
-                MessageBox.Show("行路を選択してください");
+                MessageBox.Show("スターフを選択してください");
                 return;
             }
             string selectedText3 = Regex.Replace(selectedText, @"[^a-wA-W]", "");
@@ -651,5 +662,18 @@ namespace test
                 form3Instance.Close();
             }
         }
+
+        private void M_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (form2Instance != null && !form2Instance.IsDisposed)
+            {
+                form2Instance.Close();
+            }
+            if (form3Instance != null && !form3Instance.IsDisposed)
+            {
+                form3Instance.Close();
+            }
+        }
+
     }
 }

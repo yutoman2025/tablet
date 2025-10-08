@@ -73,7 +73,7 @@
             comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "1113", "1517", "1820", "2123" });
+            comboBox1.Items.AddRange(new object[] { "0709", "1113", "1517", "1820", "2123" });
             comboBox1.Location = new Point(139, 77);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
@@ -163,6 +163,7 @@
             MaximizeBox = false;
             Name = "M";
             Text = "運転士";
+            FormClosing += M_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

@@ -505,17 +505,17 @@
   <data name="L1651" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\15-17\50-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="L1460" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="L1660" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\15-17\60-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="L1561" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\15-17\60-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\15-17\60-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="L1660" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="L1460" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\15-17\60-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="L1661" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\15-17\60-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\15-17\60-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="L1565" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\15-17\64-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
