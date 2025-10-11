@@ -158,8 +158,6 @@ namespace test
             }
             else if (comboBox1.SelectedItem.ToString() == "0709")
             {
-                MessageBox.Show("0709ダイヤは現在実装されておりません");
-                return;
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
                 string selectedText = comboBox2.Text;
@@ -172,6 +170,7 @@ namespace test
                 selectedText = selectedText.Replace("準2", "3");
                 selectedText = selectedText.Replace("普2", "3");
                 selectedText = selectedText.Replace("教2", "9");
+                selectedText = selectedText.Replace("地2", "4");
                 if (num >= 1 && num <= 9 && selectedText == "")
                 {
                     selectedText3 = "0" + selectedText3;
