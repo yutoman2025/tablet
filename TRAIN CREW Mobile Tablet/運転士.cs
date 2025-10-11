@@ -85,7 +85,6 @@ namespace test
                     selectedText3 = "0" + selectedText3;
                 }
                 string selectedText2 = "11-" + selectedText + selectedText3;
-                MessageBox.Show(selectedText2);
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
                     MessageBox.Show("正しい行路を選択してください");
@@ -116,7 +115,6 @@ namespace test
                     selectedText3 = "0" + selectedText3;
                 }
                 string selectedText2 = "15-" + selectedText + selectedText3;
-                MessageBox.Show(selectedText2);
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
                     MessageBox.Show("正しい行路を選択してください");
@@ -147,7 +145,6 @@ namespace test
                     selectedText3 = "0" + selectedText3;
                 }
                 string selectedText2 = "18-" + selectedText + selectedText3;
-                MessageBox.Show(selectedText2);
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
                     MessageBox.Show("正しい行路を選択してください");
