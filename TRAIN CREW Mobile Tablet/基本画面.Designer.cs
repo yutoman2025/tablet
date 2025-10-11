@@ -33,6 +33,7 @@
             One = new Button();
             C = new Button();
             button3 = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // M
@@ -70,11 +71,17 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
             // 起動画面
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 192);
+            Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(C);
             Controls.Add(One);
@@ -82,6 +89,7 @@
             MaximizeBox = false;
             Name = "起動画面";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -90,5 +98,6 @@
         private Button One;
         private Button C;
         private Button button3;
+        private Label label1;
     }
 }

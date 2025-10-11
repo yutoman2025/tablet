@@ -38,6 +38,9 @@
             comboBox3 = new ComboBox();
             button3 = new Button();
             button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -70,6 +73,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox1.FormattingEnabled = true;
@@ -82,6 +86,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             comboBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox2.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox2.FormattingEnabled = true;
@@ -104,6 +109,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox1.BackColor = Color.FromArgb(0, 192, 192);
             pictureBox1.Location = new Point(506, 40);
             pictureBox1.Name = "pictureBox1";
@@ -115,6 +121,7 @@
             // 
             // comboBox3
             // 
+            comboBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox3.FormattingEnabled = true;
@@ -127,7 +134,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(256, 10);
+            button3.Location = new Point(139, 10);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 10;
@@ -137,7 +144,8 @@
             // 
             // button4
             // 
-            button4.Location = new Point(713, 12);
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button4.Location = new Point(633, 12);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 11;
@@ -145,12 +153,46 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(713, 12);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 12;
+            button5.Text = "リセット";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.Font = new Font("Yu Gothic UI", 8F);
+            button6.Location = new Point(266, 11);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 13;
+            button6.Text = "DigitalClock";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.Font = new Font("Yu Gothic UI", 8F);
+            button7.Location = new Point(347, 12);
+            button7.Name = "button7";
+            button7.Size = new Size(75, 23);
+            button7.TabIndex = 14;
+            button7.Text = "AnalogClock";
+            button7.UseVisualStyleBackColor = true;
+            // 
             // M
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(comboBox3);
@@ -181,5 +223,8 @@
         private ComboBox comboBox3;
         private Button button3;
         private Button button4;
+        private Button button5;
+        private Button button6;
+        private Button button7;
     }
 }

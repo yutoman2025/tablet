@@ -203,9 +203,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _11_403 {
+        internal static System.Drawing.Bitmap _11_311 {
             get {
-                object obj = ResourceManager.GetObject("11-403", resourceCulture);
+                object obj = ResourceManager.GetObject("11-311", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _11_411 {
+        internal static System.Drawing.Bitmap _11_312 {
             get {
-                object obj = ResourceManager.GetObject("11-411", resourceCulture);
+                object obj = ResourceManager.GetObject("11-312", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _11_412 {
+        internal static System.Drawing.Bitmap _11_33 {
             get {
-                object obj = ResourceManager.GetObject("11-412", resourceCulture);
+                object obj = ResourceManager.GetObject("11-33", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,9 +453,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _15_413 {
+        internal static System.Drawing.Bitmap _15_213 {
             get {
-                object obj = ResourceManager.GetObject("15-413", resourceCulture);
+                object obj = ResourceManager.GetObject("15-213", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -466,6 +466,26 @@ namespace tablet.Properties {
         internal static System.Drawing.Bitmap _15_4151 {
             get {
                 object obj = ResourceManager.GetObject("15-4151", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _15_551 {
+            get {
+                object obj = ResourceManager.GetObject("15-551", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _15_552 {
+            get {
+                object obj = ResourceManager.GetObject("15-552", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -496,26 +516,6 @@ namespace tablet.Properties {
         internal static System.Drawing.Bitmap _15_9157 {
             get {
                 object obj = ResourceManager.GetObject("15-9157", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap _15_9551 {
-            get {
-                object obj = ResourceManager.GetObject("15-9551", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap _15_9552 {
-            get {
-                object obj = ResourceManager.GetObject("15-9552", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -703,9 +703,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3001 {
+        internal static System.Drawing.Bitmap _18_31 {
             get {
-                object obj = ResourceManager.GetObject("18-3001", resourceCulture);
+                object obj = ResourceManager.GetObject("18-31", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -713,9 +713,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3002 {
+        internal static System.Drawing.Bitmap _18_32 {
             get {
-                object obj = ResourceManager.GetObject("18-3002", resourceCulture);
+                object obj = ResourceManager.GetObject("18-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -723,9 +723,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3004 {
+        internal static System.Drawing.Bitmap _18_34 {
             get {
-                object obj = ResourceManager.GetObject("18-3004", resourceCulture);
+                object obj = ResourceManager.GetObject("18-34", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -733,9 +733,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3005 {
+        internal static System.Drawing.Bitmap _18_35 {
             get {
-                object obj = ResourceManager.GetObject("18-3005", resourceCulture);
+                object obj = ResourceManager.GetObject("18-35", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -743,9 +743,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3006 {
+        internal static System.Drawing.Bitmap _18_36 {
             get {
-                object obj = ResourceManager.GetObject("18-3006", resourceCulture);
+                object obj = ResourceManager.GetObject("18-36", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -753,9 +753,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3007 {
+        internal static System.Drawing.Bitmap _18_37 {
             get {
-                object obj = ResourceManager.GetObject("18-3007", resourceCulture);
+                object obj = ResourceManager.GetObject("18-37", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -763,9 +763,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3008 {
+        internal static System.Drawing.Bitmap _18_38 {
             get {
-                object obj = ResourceManager.GetObject("18-3008", resourceCulture);
+                object obj = ResourceManager.GetObject("18-38", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -773,9 +773,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3551 {
+        internal static System.Drawing.Bitmap _18_551 {
             get {
-                object obj = ResourceManager.GetObject("18-3551", resourceCulture);
+                object obj = ResourceManager.GetObject("18-551", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -783,9 +783,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap _18_3552 {
+        internal static System.Drawing.Bitmap _18_552 {
             get {
-                object obj = ResourceManager.GetObject("18-3552", resourceCulture);
+                object obj = ResourceManager.GetObject("18-552", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

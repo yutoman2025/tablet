@@ -5,6 +5,8 @@ namespace test
         public ‹N“®‰æ–Ê()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void M_Click(object sender, EventArgs e)

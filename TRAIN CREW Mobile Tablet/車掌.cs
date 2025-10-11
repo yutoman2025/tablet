@@ -15,6 +15,8 @@ namespace test
         public C()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void button1_Click(object sender, EventArgs e)

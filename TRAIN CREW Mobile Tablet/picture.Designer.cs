@@ -57,6 +57,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "スターフ";
             TopMost = true;
+            FormClosing += Picture_FormClosing;
+            Load += Picture_Load;
+            ResizeEnd += Picture_ResizeEnd;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
