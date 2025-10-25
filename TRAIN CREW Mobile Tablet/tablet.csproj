@@ -9,6 +9,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\11-13\11-13list.txt" />
+    <None Remove="Resources\15-17\15-17list.txt" />
+    <None Remove="Resources\18-20\18-20list.txt" />
+    <None Remove="Resources\21-23\21-23list.txt" />
+    <None Remove="Resources\7-9\07-09list.txt" />
+    <None Remove="Resources\ALL.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\11-13\11-13list.txt" />
+    <EmbeddedResource Include="Resources\15-17\15-17list.txt" />
+    <EmbeddedResource Include="Resources\18-20\18-20list.txt" />
+    <EmbeddedResource Include="Resources\21-23\21-23list.txt" />
+    <EmbeddedResource Include="Resources\7-9\07-09list.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ALL.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

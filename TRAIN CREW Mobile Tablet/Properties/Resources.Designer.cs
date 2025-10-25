@@ -151,6 +151,91 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   回802A
+        ///回803A
+        ///回914A
+        ///603A
+        ///607A
+        ///624A
+        ///706A
+        ///713A
+        ///715A
+        ///718A
+        ///721A
+        ///809A
+        ///812A
+        ///820A
+        ///902A
+        ///796K
+        ///3643K
+        ///3758K
+        ///681B
+        ///797B
+        ///799B
+        ///3545B
+        ///3744B
+        ///3842B
+        ///684CX
+        ///691C
+        ///782C
+        ///783C
+        ///784C
+        ///785C
+        ///786C
+        ///787C
+        ///790C
+        ///791C
+        ///880C
+        ///881C
+        ///882C
+        ///883C
+        ///884C
+        ///885C
+        ///890C
+        ///898C
+        ///899C
+        ///983C
+        ///671
+        ///672
+        ///676
+        ///693
+        ///752
+        ///760
+        ///761
+        ///762
+        ///763
+        ///766
+        ///770
+        ///773
+        ///777
+        ///786
+        ///844
+        ///848
+        ///849
+        ///850
+        ///860
+        ///861
+        ///863
+        ///864
+        ///865
+        ///866
+        ///867
+        ///872
+        ///873
+        ///876
+        ///879
+        ///3841
+        ///回771
+        ///回782
+        ///回862 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _07_09list {
+            get {
+                return ResourceManager.GetString("07-09list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap _07_10 {
@@ -511,6 +596,71 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   回1005A
+        ///回1409A
+        ///1019A
+        ///1021A
+        ///1103A
+        ///1118A
+        ///1206A
+        ///1212A
+        ///1215A
+        ///1320A
+        ///1182C
+        ///1183C
+        ///1184C
+        ///1185C
+        ///1198C
+        ///1199C
+        ///1282C
+        ///1283C
+        ///1284C
+        ///1285C
+        ///1298C
+        ///1299C
+        ///1041
+        ///1049
+        ///1050X
+        ///1060
+        ///1075
+        ///1140
+        ///1143
+        ///1145
+        ///1148
+        ///1150
+        ///1151
+        ///1161
+        ///1164
+        ///1165
+        ///1166
+        ///1167
+        ///1174
+        ///1242
+        ///1244
+        ///1249
+        ///1251
+        ///1260
+        ///1261
+        ///1264
+        ///1267
+        ///1274
+        ///1275
+        ///試9091
+        ///試9093
+        ///試9190
+        ///試9191
+        ///試9192
+        ///試9193
+        ///試9290
+        ///試9292 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _11_13list {
+            get {
+                return ResourceManager.GetString("11-13list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap _11_14 {
@@ -827,6 +977,63 @@ namespace tablet.Properties {
             get {
                 object obj = ResourceManager.GetObject("15-157", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   1407A
+        ///1419A
+        ///1508A
+        ///1513A
+        ///1518A
+        ///1603A
+        ///1604A
+        ///1612A
+        ///1706A
+        ///1582C
+        ///1583C
+        ///1584C
+        ///1585C
+        ///1598C
+        ///1599C
+        ///1682C
+        ///1683C
+        ///1684C
+        ///1685C
+        ///1698C
+        ///1699C
+        ///回1666
+        ///1441
+        ///1449
+        ///1450
+        ///1460
+        ///1475
+        ///1540
+        ///1543
+        ///1545
+        ///1548
+        ///1550
+        ///1551
+        ///1561
+        ///1564
+        ///1565
+        ///1566
+        ///1567
+        ///1574
+        ///1642
+        ///1649
+        ///1651
+        ///1660
+        ///1661
+        ///1664
+        ///1674
+        ///1675
+        ///1679
+        ///1690 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _15_17list {
+            get {
+                return ResourceManager.GetString("15-17list", resourceCulture);
             }
         }
         
@@ -1173,6 +1380,136 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap _21_01 {
+            get {
+                object obj = ResourceManager.GetObject("21-01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_03 {
+            get {
+                object obj = ResourceManager.GetObject("21-03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_04 {
+            get {
+                object obj = ResourceManager.GetObject("21-04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_05 {
+            get {
+                object obj = ResourceManager.GetObject("21-05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_06 {
+            get {
+                object obj = ResourceManager.GetObject("21-06", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_07 {
+            get {
+                object obj = ResourceManager.GetObject("21-07", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_08 {
+            get {
+                object obj = ResourceManager.GetObject("21-08", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_09 {
+            get {
+                object obj = ResourceManager.GetObject("21-09", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_151 {
+            get {
+                object obj = ResourceManager.GetObject("21-151", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_152 {
+            get {
+                object obj = ResourceManager.GetObject("21-152", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_153 {
+            get {
+                object obj = ResourceManager.GetObject("21-153", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_154 {
+            get {
+                object obj = ResourceManager.GetObject("21-154", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _21_155 {
+            get {
+                object obj = ResourceManager.GetObject("21-155", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap A1019 {
             get {
                 object obj = ResourceManager.GetObject("A1019", resourceCulture);
@@ -1483,9 +1820,89 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap A2015 {
+            get {
+                object obj = ResourceManager.GetObject("A2015", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap A2016 {
             get {
                 object obj = ResourceManager.GetObject("A2016", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2021 {
+            get {
+                object obj = ResourceManager.GetObject("A2021", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2106 {
+            get {
+                object obj = ResourceManager.GetObject("A2106", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2109 {
+            get {
+                object obj = ResourceManager.GetObject("A2109", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2119 {
+            get {
+                object obj = ResourceManager.GetObject("A2119", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2120 {
+            get {
+                object obj = ResourceManager.GetObject("A2120", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2214 {
+            get {
+                object obj = ResourceManager.GetObject("A2214", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap A2223 {
+            get {
+                object obj = ResourceManager.GetObject("A2223", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1633,6 +2050,26 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap AX2208 {
+            get {
+                object obj = ResourceManager.GetObject("AX2208", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap AX2218 {
+            get {
+                object obj = ResourceManager.GetObject("AX2218", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap AX802 {
             get {
                 object obj = ResourceManager.GetObject("AX802", resourceCulture);
@@ -1713,6 +2150,36 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap B2071 {
+            get {
+                object obj = ResourceManager.GetObject("B2071", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap B2183 {
+            get {
+                object obj = ResourceManager.GetObject("B2183", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap B2190 {
+            get {
+                object obj = ResourceManager.GetObject("B2190", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap B3545 {
             get {
                 object obj = ResourceManager.GetObject("B3545", resourceCulture);
@@ -1746,6 +2213,16 @@ namespace tablet.Properties {
         internal static System.Drawing.Bitmap B4757 {
             get {
                 object obj = ResourceManager.GetObject("B4757", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap B5140 {
+            get {
+                object obj = ResourceManager.GetObject("B5140", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2193,9 +2670,149 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap C2076 {
+            get {
+                object obj = ResourceManager.GetObject("C2076", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2087 {
+            get {
+                object obj = ResourceManager.GetObject("C2087", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2091 {
+            get {
+                object obj = ResourceManager.GetObject("C2091", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap C2098 {
             get {
                 object obj = ResourceManager.GetObject("C2098", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2165 {
+            get {
+                object obj = ResourceManager.GetObject("C2165", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2184 {
+            get {
+                object obj = ResourceManager.GetObject("C2184", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2185 {
+            get {
+                object obj = ResourceManager.GetObject("C2185", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2186 {
+            get {
+                object obj = ResourceManager.GetObject("C2186", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2187 {
+            get {
+                object obj = ResourceManager.GetObject("C2187", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2196 {
+            get {
+                object obj = ResourceManager.GetObject("C2196", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2196X {
+            get {
+                object obj = ResourceManager.GetObject("C2196X", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2197 {
+            get {
+                object obj = ResourceManager.GetObject("C2197", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2284 {
+            get {
+                object obj = ResourceManager.GetObject("C2284", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2285 {
+            get {
+                object obj = ResourceManager.GetObject("C2285", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap C2286 {
+            get {
+                object obj = ResourceManager.GetObject("C2286", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -3243,6 +3860,196 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap L2040 {
+            get {
+                object obj = ResourceManager.GetObject("L2040", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2050 {
+            get {
+                object obj = ResourceManager.GetObject("L2050", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2060 {
+            get {
+                object obj = ResourceManager.GetObject("L2060", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2075 {
+            get {
+                object obj = ResourceManager.GetObject("L2075", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2153 {
+            get {
+                object obj = ResourceManager.GetObject("L2153", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2161 {
+            get {
+                object obj = ResourceManager.GetObject("L2161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2174 {
+            get {
+                object obj = ResourceManager.GetObject("L2174", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2177 {
+            get {
+                object obj = ResourceManager.GetObject("L2177", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2178 {
+            get {
+                object obj = ResourceManager.GetObject("L2178", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2179 {
+            get {
+                object obj = ResourceManager.GetObject("L2179", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2198 {
+            get {
+                object obj = ResourceManager.GetObject("L2198", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2251 {
+            get {
+                object obj = ResourceManager.GetObject("L2251", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2252 {
+            get {
+                object obj = ResourceManager.GetObject("L2252", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2260 {
+            get {
+                object obj = ResourceManager.GetObject("L2260", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2261 {
+            get {
+                object obj = ResourceManager.GetObject("L2261", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2276 {
+            get {
+                object obj = ResourceManager.GetObject("L2276", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2279 {
+            get {
+                object obj = ResourceManager.GetObject("L2279", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2298 {
+            get {
+                object obj = ResourceManager.GetObject("L2298", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap L2299 {
+            get {
+                object obj = ResourceManager.GetObject("L2299", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap L3841 {
             get {
                 object obj = ResourceManager.GetObject("L3841", resourceCulture);
@@ -3556,6 +4363,36 @@ namespace tablet.Properties {
         internal static System.Drawing.Bitmap X1666 {
             get {
                 object obj = ResourceManager.GetObject("X1666", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap X2170 {
+            get {
+                object obj = ResourceManager.GetObject("X2170", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap X2287 {
+            get {
+                object obj = ResourceManager.GetObject("X2287", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap X2297 {
+            get {
+                object obj = ResourceManager.GetObject("X2297", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

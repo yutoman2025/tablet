@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tablet;
+using System.IO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -19,6 +21,7 @@ namespace test
 {
     public partial class M : Form
     {
+
         int time = 0;
         public M()
         {
@@ -62,10 +65,21 @@ namespace test
         private void button2_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
-            {
-                MessageBox.Show("ダイヤまたは行路を選択してください");
-                return;
-            }
+    {
+        bool originalTopMost = this.TopMost;
+        this.TopMost = true;
+        MessageBox.Show(this, "ダイヤまたは行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.TopMost = originalTopMost;
+        return;
+    }
+    else if (comboBox1.SelectedItem.ToString() == "ダイヤ不定")
+    {
+        bool originalTopMost = this.TopMost;
+        this.TopMost = true;
+        MessageBox.Show(this, "ダイヤを設定してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.TopMost = originalTopMost;
+        return;
+    }
             else if (comboBox1.SelectedItem.ToString() == "1113")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
@@ -87,7 +101,10 @@ namespace test
                 string selectedText2 = "11-" + selectedText + selectedText3;
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
-                    MessageBox.Show("正しい行路を選択してください");
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
                     return;
                 }
                 else
@@ -117,7 +134,10 @@ namespace test
                 string selectedText2 = "15-" + selectedText + selectedText3;
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
-                    MessageBox.Show("正しい行路を選択してください");
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
                     return;
                 }
                 else
@@ -147,7 +167,10 @@ namespace test
                 string selectedText2 = "18-" + selectedText + selectedText3;
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
-                    MessageBox.Show("正しい行路を選択してください");
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
                     return;
                 }
                 else
@@ -179,7 +202,10 @@ namespace test
                 MessageBox.Show(selectedText2);
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
-                    MessageBox.Show("正しい行路を選択してください");
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
                     return;
                 }
                 else
@@ -190,8 +216,6 @@ namespace test
             }
             else if (comboBox1.SelectedItem.ToString() == "2123")
             {
-                MessageBox.Show("2123ダイヤは現在実装されておりません");
-                return;
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
                 string selectedText = comboBox2.Text;
@@ -212,7 +236,10 @@ namespace test
                 MessageBox.Show(selectedText2);
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
-                    MessageBox.Show("正しい行路を選択してください");
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
                     return;
                 }
                 else
@@ -231,7 +258,10 @@ namespace test
             int last = selectedText.Length - 1;
             if (comboBox3.SelectedItem == null)
             {
-                MessageBox.Show("スターフを選択してください");
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show(this, "スターフを選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.TopMost = originalTopMost;
                 return;
             }
             string selectedText3 = Regex.Replace(selectedText, @"[^a-wA-W]", "");
@@ -322,6 +352,51 @@ namespace test
             if (form4Instance != null && !form4Instance.IsDisposed)
             {
                 form4Instance.Close();
+            }
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox3.Items.Clear();
+
+            // ComboBox の選択に対応する埋め込みテキストファイル名
+            string fileName = comboBox1.SelectedItem?.ToString() switch
+            {
+                "0709" => "07-09list.txt",
+                "1113" => "11-13list.txt",
+                "1517" => "15-17list.txt",
+                "1820" => "18-20list.txt",
+                "2123" => "21-23list.txt",
+                "ダイヤ不定" => "ALL.txt",
+                _ => null
+            };
+
+            if (string.IsNullOrEmpty(fileName))
+                return;
+
+            // 実行アセンブリと登録済みリソースを列挙して、ファイル名で末尾一致検索する（拡張子含む）
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames()
+                                       .FirstOrDefault(n => n.EndsWith(fileName, StringComparison.OrdinalIgnoreCase));
+
+            if (resourceName == null)
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show(this,
+                                $"埋め込みリソース '{fileName}' が見つかりません。...",
+                                "リソース エラー",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                this.TopMost = originalTopMost;
+                return;
+            }
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream, Encoding.UTF8))
+            {
+                var content = reader.ReadToEnd();
+                var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                comboBox3.Items.AddRange(lines);
             }
         }
     }

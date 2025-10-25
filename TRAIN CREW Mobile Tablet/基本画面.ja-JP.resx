@@ -181,7 +181,7 @@
     <value>202, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>TRAIN CREW Mobile Tablet v.0.3-beta</value>
+    <value>TRAIN CREW Mobile Tablet v.0.4-beta</value>
   </data>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
