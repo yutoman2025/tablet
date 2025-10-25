@@ -23,7 +23,7 @@
     <EmbeddedResource Include="Resources\18-20\18-20list.txt" />
     <EmbeddedResource Include="Resources\21-23\21-23list.txt" />
     <EmbeddedResource Include="Resources\7-9\07-09list.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ALL.txt" />
   </ItemGroup>
