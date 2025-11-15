@@ -41,6 +41,7 @@
             button5 = new Button();
             button6 = new Button();
             button7 = new Button();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -185,12 +186,24 @@
             button7.Text = "AnalogClock";
             button7.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            button8.Font = new Font("Yu Gothic UI", 8F);
+            button8.Location = new Point(425, 12);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 15;
+            button8.Text = "デジタルスタフ";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
             // M
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
+            Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -227,5 +240,6 @@
         private Button button5;
         private Button button6;
         private Button button7;
+        private Button button8;
     }
 }

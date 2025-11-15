@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -12,7 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tablet;
-using System.IO;
+using tc_staff_draw;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -65,21 +66,21 @@ namespace test
         private void button2_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
-    {
-        bool originalTopMost = this.TopMost;
-        this.TopMost = true;
-        MessageBox.Show(this, "ダイヤまたは行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.TopMost = originalTopMost;
-        return;
-    }
-    else if (comboBox1.SelectedItem.ToString() == "ダイヤ不定")
-    {
-        bool originalTopMost = this.TopMost;
-        this.TopMost = true;
-        MessageBox.Show(this, "ダイヤを設定してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.TopMost = originalTopMost;
-        return;
-    }
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show(this, "ダイヤまたは行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.TopMost = originalTopMost;
+                return;
+            }
+            else if (comboBox1.SelectedItem.ToString() == "ダイヤ不定")
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show(this, "ダイヤを設定してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.TopMost = originalTopMost;
+                return;
+            }
             else if (comboBox1.SelectedItem.ToString() == "1113")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
@@ -338,22 +339,6 @@ namespace test
             }
 
         }
-
-        private void M_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (form2Instance != null && !form2Instance.IsDisposed)
-            {
-                form2Instance.Close();
-            }
-            if (form3Instance != null && !form3Instance.IsDisposed)
-            {
-                form3Instance.Close();
-            }
-            if (form4Instance != null && !form4Instance.IsDisposed)
-            {
-                form4Instance.Close();
-            }
-        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox3.Items.Clear();
@@ -397,6 +382,43 @@ namespace test
                 var content = reader.ReadToEnd();
                 var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 comboBox3.Items.AddRange(lines);
+            }
+        }
+
+        private DigitalStaff form5Instance;
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (form5Instance == null || form5Instance.IsDisposed)
+            {
+                DigitalStaff form = new DigitalStaff();
+                form.LoadStaff(comboBox3.SelectedItem.ToString());
+                form.Show();
+               // form5Instance.Show();
+                button8.BackColor = Color.LightGreen;
+                return;
+            }
+            else
+            {
+                DigitalStaff form = new DigitalStaff();
+                form.Close();
+                button8.BackColor = Color.White;
+                return;
+            }
+        }
+
+        private void M_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (form2Instance != null && !form2Instance.IsDisposed)
+            {
+                form2Instance.Close();
+            }
+            if (form3Instance != null && !form3Instance.IsDisposed)
+            {
+                form3Instance.Close();
+            }
+            if (form4Instance != null && !form4Instance.IsDisposed)
+            {
+                form4Instance.Close();
             }
         }
     }

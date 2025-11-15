@@ -3860,9 +3860,9 @@ namespace tablet.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap L2040 {
+        internal static System.Drawing.Bitmap L2041 {
             get {
-                object obj = ResourceManager.GetObject("L2040", resourceCulture);
+                object obj = ResourceManager.GetObject("L2041", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

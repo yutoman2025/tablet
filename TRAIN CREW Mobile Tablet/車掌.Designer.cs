@@ -77,7 +77,7 @@
             // button4
             // 
             button4.Font = new Font("Yu Gothic UI", 40F);
-            button4.Location = new Point(58, 172);
+            button4.Location = new Point(63, 172);
             button4.Name = "button4";
             button4.Size = new Size(193, 183);
             button4.TabIndex = 5;

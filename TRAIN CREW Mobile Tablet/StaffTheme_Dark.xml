@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StaffTheme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GlobalColors>
+    <BackColor R="0" G="0" B="0" />
+    <LineColor R="192" G="192" B="32" />
+    <FontColor R="255" G="255" B="255" />
+  </GlobalColors>
+  <TypeNColors>
+    <BackColorTrainType_____ R="255" G="255" B="255" />
+    <FontColorTrainType_____ R="0" G="0" B="0" />
+    <BackColorStopStation___ R="255" G="255" B="255" />
+    <FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeNColors>
+  <TypeAColors>
+    <BackColorTrainType_____ R="255" G="0" B="0" />
+    <FontColorTrainType_____ R="255" G="255" B="255" />
+    <BackColorStopStation___ R="255" G="0" B="0" />
+    <FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeAColors>
+  <TypeBColors>
+    <BackColorTrainType_____ R="255" G="128" B="0" />
+    <FontColorTrainType_____ R="255" G="255" B="255" />
+    <BackColorStopStation___ R="255" G="128" B="0" />
+    <FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeBColors>
+  <TypeCColors>
+    <BackColorTrainType_____ R="0" G="128" B="255" />
+    <FontColorTrainType_____ R="255" G="255" B="255" />
+    <BackColorStopStation___ R="0" G="128" B="255" />
+    <FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeCColors>
+  <TypeKColors>
+    <BackColorTrainType_____ R="207" G="49" B="255" />
+    <FontColorTrainType_____ R="255" G="255" B="255" />
+    <BackColorStopStation___ R="207" G="49" B="255" />
+    <FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeKColors>
+  <TypeZColors>
+    <BackColorTrainType_____ R="255" G="255" B="255" />
+    <FontColorTrainType_____ R="255" G="0" B="0" />
+    <BackColorStopStation___ R="255" G="255" B="255" />
+	<FontColorStopStation___ R="0" G="0" B="0" />
+    <BackColorTransitStation R="0" G="0" B="0" />
+    <FontColorTransitStation R="255" G="255" B="255" />
+  </TypeZColors>
+</StaffTheme>
