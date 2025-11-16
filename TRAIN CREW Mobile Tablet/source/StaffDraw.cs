@@ -87,9 +87,8 @@ namespace tc_staff_draw
                     Design.TrainTypes.Size.Width,
                     Design.TrainTypes.Size.Height);
 
+            buffer.Graphics.FillRectangle(new SolidBrush(Design.TrainTypes.BackColor), rect);
             buffer.Graphics.DrawRectangle(new Pen(Design.Globals.LineColor,2), rect);
-
-            buffer.Graphics.FillRectangle(new SolidBrush(Design.TrainTypes.BackColor), InnerRectangle(rect,2));
 
             DrawString(buffer, Data.TrainType, Design.TrainTypes.Font, new SolidBrush(Design.TrainTypes.FontColor), InnerRectangle(rect,2));
         }
@@ -120,7 +119,6 @@ namespace tc_staff_draw
 
                 // 駅名（左から1番目）
                 rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthStation, height);
-                buffer.Graphics.DrawRectangle(pen_line, rect);
                 if (Data.TimeTables[i].Stop)
                 {
                     brush_fill = new SolidBrush(Design.TimeTables.BackColorStopStation);
@@ -133,7 +131,8 @@ namespace tc_staff_draw
                     brush_text = new SolidBrush(Design.TimeTables.FontColorTransitStation);
                     font = Design.TimeTables.FontTransitStation;
                 }
-                buffer.Graphics.FillRectangle(brush_fill, InnerRectangleF(rect,1));
+                buffer.Graphics.FillRectangle(brush_fill, rect);
+                buffer.Graphics.DrawRectangle(pen_line, rect);
                 DrawString(buffer, Data.TimeTables[i].Station, font, brush_text, InnerRectangleF(rect,1));
                 pos_x += rect.Width;
 
