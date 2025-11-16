@@ -32,13 +32,14 @@
             // 
             // DigitalStaff
             // 
-            AutoScaleDimensions = new SizeF(6F, 12F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(424, 621);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(420, 620);
             Font = new Font("MS UI Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            MinimumSize = new Size(200, 300);
             Name = "DigitalStaff";
-            Text = "Form1";
+            Text = "デジタルスタフ";
             Paint += Form1_Paint;
+            Resize += DigitalStaff_Resize;
             ResumeLayout(false);
 
         }

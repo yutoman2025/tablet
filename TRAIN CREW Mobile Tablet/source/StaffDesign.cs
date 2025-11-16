@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Xml.Serialization;
 
 namespace tc_staff_draw
@@ -14,34 +15,76 @@ namespace tc_staff_draw
         public class Global
         {
             /// <summary>
+            /// 背景色(初期値)
+            /// </summary>
+            public static readonly Color BackColor_Def = Color.FromArgb(255, 255, 255);
+
+            /// <summary>
+            /// 線の色(初期値)
+            /// </summary>
+            public static readonly Color LineColor_Def = Color.FromArgb(0, 0, 0);
+
+            /// <summary>
+            /// 文字色(初期値)
+            /// </summary>
+            public static readonly Color FontColor_Def = Color.FromArgb(0, 0, 0);
+
+            /// <summary>
+            /// フォント(初期値)
+            /// </summary>
+            public static readonly Font Font_Def = new Font("MS Gothic", 11);
+
+            /// <summary>
+            /// 描画領域のサイズ(初期値)
+            /// </summary>
+            public static readonly Size DisplayRectangle_Def = new Size(420, 620);
+
+            /// <summary>
+            /// 外枠のサイズ(初期値)
+            /// </summary>
+            public static readonly Size Size_Def = new Size(400, 600);
+
+            /// <summary>
+            /// 外枠の余白(初期値)
+            /// </summary>
+            public static readonly Size Margin_Def = new Size(10, 10);
+
+
+
+            /// <summary>
             /// 背景色
             /// </summary>
-            public Color BackColor { get; set; } = Color.FromArgb(255, 255, 255);
+            public Color BackColor { get; set; } = BackColor_Def;
 
             /// <summary>
             /// 線の色
             /// </summary>
-            public Color LineColor { get; set; } = Color.FromArgb(0 ,0 ,0);
+            public Color LineColor { get; set; } = LineColor_Def;
 
             /// <summary>
             /// 文字色
             /// </summary>
-            public Color FontColor { get; set; } = Color.FromArgb(0, 0, 0);
+            public Color FontColor { get; set; } = FontColor_Def;
 
             /// <summary>
             /// フォント
             /// </summary>
-            public Font Font { get; set; } = new Font("MS Gothic", 11);
+            public Font Font { get; set; } = Font_Def;
+
+            /// <summary>
+            /// 描画領域のサイズ
+            /// </summary>
+            public Size DisplayRectangle { get; set; } = DisplayRectangle_Def;
 
             /// <summary>
             /// 外枠のサイズ
             /// </summary>
-            public Size Size { get; set; } = new Size(400, 600);
+            public Size Size { get; set; } = Size_Def;
 
             /// <summary>
             /// 外枠の余白
             /// </summary>
-            public Size Margin { get; set; } = new Size(10, 10);
+            public Size Margin { get; set; } = Margin_Def;
 
         }
 
@@ -51,9 +94,17 @@ namespace tc_staff_draw
         public class Title
         {
             /// <summary>
+            /// 枠のサイズ(初期値)
+            /// </summary>
+            public static readonly Size Size_Def = new Size(200, 125);
+
+
+
+            /// <summary>
             /// 枠のサイズ
             /// </summary>
-            public Size Size { get; set; } = new Size(200, 125);
+            public Size Size { get; set; } = Size_Def;
+
         }
 
         /// <summary>
@@ -62,24 +113,47 @@ namespace tc_staff_draw
         public class TrainType
         {
             /// <summary>
+            /// 背景色(初期値)
+            /// </summary>
+            public static readonly Color BackColor_Def = Color.FromArgb(255, 255, 255);
+
+            /// <summary>
+            /// 文字色(初期値)
+            /// </summary>
+            public static readonly Color FontColor_Def = Color.FromArgb(0, 0, 0);
+
+            /// <summary>
+            /// フォント(初期値)
+            /// </summary>
+            public static readonly Font Font_Def = new Font("HG丸ｺﾞｼｯｸM-PRO", 62);
+
+            /// <summary>
+            /// 枠のサイズ(初期値)
+            /// </summary>
+            public static readonly Size Size_Def = new Size(200, 125);
+
+
+
+            /// <summary>
             /// 背景色
             /// </summary>
-            public Color BackColor { get; set; } = Color.FromArgb(255, 255, 255);
+            public Color BackColor { get; set; } = BackColor_Def;
 
             /// <summary>
             /// 文字色
             /// </summary>
-            public Color FontColor { get; set; } = Color.FromArgb(0, 0, 0);
+            public Color FontColor { get; set; } = FontColor_Def;
 
             /// <summary>
             /// フォント
             /// </summary>
-            public Font Font { get; set; } = new Font("HG丸ｺﾞｼｯｸM-PRO", 62);
+            public Font Font { get; set; } = Font_Def;
 
             /// <summary>
             /// 枠のサイズ
             /// </summary>
-            public Size Size { get; set; } = new Size(200, 125);
+            public Size Size { get; set; } = Size_Def;
+
         }
 
         /// <summary>
@@ -88,59 +162,117 @@ namespace tc_staff_draw
         public class Timetable
         {
             /// <summary>
+            /// 停車駅の背景色(初期値)
+            /// </summary>
+            public static readonly Color BackColorStopStation_Def = Color.FromArgb(255, 255, 255);
+
+            /// <summary>
+            /// 停車駅の文字色(初期値)
+            /// </summary>
+            public static readonly Color FontColorStopStation_Def = Color.FromArgb(0, 0, 0);
+
+            /// <summary>
+            /// 停車駅のフォント(初期値)
+            /// </summary>
+            public static readonly Font FontStopStation_Def = new Font("EPSON 太丸ゴシック体Ｂ", 11);
+
+            /// <summary>
+            /// 通過駅の背景色(初期値)
+            /// </summary>
+            public static readonly Color BackColorTransitStation_Def = Color.FromArgb(255, 255, 255);
+
+            /// <summary>
+            /// 通過駅の文字色(初期値)
+            /// </summary>
+            public static readonly Color FontColorTransitStation_Def = Color.FromArgb(0, 0, 0);
+
+            /// <summary>
+            /// 通過駅のフォント(初期値)
+            /// </summary>
+            public static readonly Font FontTransitStation_Def = new Font("EPSON 太丸ゴシック体Ｂ", 11);
+
+            /// <summary>
+            /// 1行あたりの高さ(初期値)
+            /// </summary>
+            public static readonly int Height_Def = 20;
+
+            /// <summary>
+            /// （左から1番目）駅名欄の横幅(初期値)
+            /// </summary>
+            public static readonly int WidthStation_Def = 80;
+
+            /// <summary>
+            /// （左から2,3,4番目）時分秒欄のそれぞれの横幅(初期値)
+            /// </summary>
+            public static readonly int WidthTime_Def = 25;
+
+            /// <summary>
+            /// （左から5番目）番線等を書く欄の横幅(初期値)
+            /// </summary>
+            public static readonly int WidthSup1_Def = 80;
+
+            /// <summary>
+            /// （一番右）入替時間等を書く欄の横幅(初期値)
+            /// </summary>
+            public static readonly int WidthSup2_Def = 200;
+
+
+
+            /// <summary>
             /// 停車駅の背景色
             /// </summary>
-            public Color BackColorStopStation { get; set; } = Color.FromArgb(255, 255, 255);
+            public Color BackColorStopStation { get; set; } = BackColorStopStation_Def;
 
             /// <summary>
             /// 停車駅の文字色
             /// </summary>
-            public Color FontColorStopStation { get; set; } = Color.FromArgb(0, 0, 0);
+            public Color FontColorStopStation { get; set; } = FontColorStopStation_Def;
 
             /// <summary>
             /// 停車駅のフォント
             /// </summary>
-            public Font FontStopStation { get; set; } = new Font("EPSON 太丸ゴシック体Ｂ", 11);
+            public Font FontStopStation { get; set; } = FontStopStation_Def;
 
             /// <summary>
             /// 通過駅の背景色
             /// </summary>
-            public Color BackColorTransitStation { get; set; } = Color.FromArgb(255, 255, 255);
+            public Color BackColorTransitStation { get; set; } = BackColorTransitStation_Def;
 
             /// <summary>
             /// 通過駅の文字色
             /// </summary>
-            public Color FontColorTransitStation { get; set; } = Color.FromArgb(0, 0, 0);
+            public Color FontColorTransitStation { get; set; } = FontColorTransitStation_Def;
 
             /// <summary>
             /// 通過駅のフォント
             /// </summary>
-            public Font FontTransitStation { get; set; } = new Font("EPSON 太丸ゴシック体Ｂ", 11);
+            public Font FontTransitStation { get; set; } = FontTransitStation_Def;
 
             /// <summary>
             /// 1行あたりの高さ
             /// </summary>
-            public int Height { get; set; } = 20;
+            public int Height { get; set; } = Height_Def;
 
             /// <summary>
             /// （左から1番目）駅名欄の横幅
             /// </summary>
-            public int WidthStation { get; set; } = 80;
+            public int WidthStation { get; set; } = WidthStation_Def;
 
             /// <summary>
             /// （左から2,3,4番目）時分秒欄のそれぞれの横幅
             /// </summary>
-            public int WidthTime { get; set; } = 25;
+            public int WidthTime { get; set; } = WidthTime_Def;
 
             /// <summary>
             /// （左から5番目）番線等を書く欄の横幅
             /// </summary>
-            public int WidthSup1 { get; set; } = 80;
+            public int WidthSup1 { get; set; } = WidthSup1_Def;
 
             /// <summary>
             /// （一番右）入替時間等を書く欄の横幅
             /// </summary>
-            public int WidthSup2 { get; set; } = 200;
+            public int WidthSup2 { get; set; } = WidthSup2_Def;
+
         }
 
         /// <summary>
@@ -164,6 +296,29 @@ namespace tc_staff_draw
         public Timetable TimeTables { get; set; } = new Timetable();
 
 
+
+        /// <summary>
+        /// 描画領域を元に、位置とサイズを再計算する
+        /// </summary>
+        public void Resize(SizeF display_rectangle) 
+        {
+            float mx = (display_rectangle.Width - 2 * Global.Margin_Def.Height)
+                / (Global.DisplayRectangle_Def.Width - 2 * Global.Margin_Def.Height);
+            float my = (display_rectangle.Height - 2 * Global.Margin_Def.Height)
+                / (Global.DisplayRectangle_Def.Height - 2 * Global.Margin_Def.Height);
+            float m = (mx < my) ? mx : my;
+
+            Globals.Size = (Global.Size_Def * m).ToSize();
+            Globals.Margin = ((display_rectangle - Globals.Size) / 2).ToSize();
+            Titles.Size = (Title.Size_Def * m).ToSize();
+            TrainTypes.Size = (TrainType.Size_Def * m).ToSize();
+            TimeTables.Height = (int)(Timetable.Height_Def * m);
+            TimeTables.WidthStation = (int)(Timetable.WidthStation_Def * m);
+            TimeTables.WidthTime = (int)(Timetable.WidthTime_Def * m);
+            TimeTables.WidthSup1 = (int)(Timetable.WidthSup1_Def * m);
+            TimeTables.WidthSup2 = (int)(Timetable.WidthSup2_Def * m);
+
+        }
     }
 
     public class StaffTheme

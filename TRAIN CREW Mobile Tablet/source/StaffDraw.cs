@@ -16,6 +16,7 @@ namespace tc_staff_draw
         /// </summary>
         public StaffData Data { get; set; }
 
+
         /// <summary>
         /// グラフィックスバッファーにスタフを描画する
         /// </summary>
@@ -23,6 +24,9 @@ namespace tc_staff_draw
         public void DrawAll(BufferedGraphics buffer)
         {
             if(Design == null) return;
+
+            Design.Resize(buffer.Graphics.VisibleClipBounds.Size);
+
             DrawBackGround(buffer);
             DrawTitle(buffer);
             DrawTrainType(buffer);

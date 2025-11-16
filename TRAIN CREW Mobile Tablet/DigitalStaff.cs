@@ -14,7 +14,7 @@ namespace tc_staff_draw
     {
 
         private StaffSetting staff_setting;
-        private StaffDesign staff_design;     
+        private StaffDesign staff_design;
 
         /// <summary>
         /// 描画バッファ
@@ -54,7 +54,7 @@ namespace tc_staff_draw
         /// </summary>
         public void LoadStaff(string train_number)
         {
-            if(staff_setting.init == false) return;
+            if (staff_setting.init == false) return;
 
             TrainNumber = train_number;
 
@@ -64,8 +64,8 @@ namespace tc_staff_draw
                 string[][] csv_data = StaffDataConv.LoadCsv(csv);
 
                 // CSVから指定した列車番号のスタフを抽出
-                if(StaffDataConv.ConvStaffData(csv_data, ref StaffData, TrainNumber) == 0)
-                {                    
+                if (StaffDataConv.ConvStaffData(csv_data, ref StaffData, TrainNumber) == 0)
+                {
                     break;
                 }
             }
@@ -79,7 +79,7 @@ namespace tc_staff_draw
                 case "急行": color = staff_setting.Theme.TypeBColors; break;
                 case "準急": color = staff_setting.Theme.TypeCColors; break;
                 case "快急": color = staff_setting.Theme.TypeKColors; break;
-                default:     color = staff_setting.Theme.TypeZColors; break;
+                default: color = staff_setting.Theme.TypeZColors; break;
             }
             staff_design = new StaffDesign();
             staff_design = staff_setting.Theme.GlobalColors.Phase(staff_design);
@@ -122,5 +122,9 @@ namespace tc_staff_draw
             DrawAll();
         }
 
+        private void DigitalStaff_Resize(object sender, EventArgs e)
+        {
+            DrawAll();
+        }
     }
 }
