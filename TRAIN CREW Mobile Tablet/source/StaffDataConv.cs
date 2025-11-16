@@ -29,7 +29,7 @@ namespace tc_staff_draw
                 csv = sr.ReadToEnd();
                 fs.Close();
             }
-            catch (FileNotFoundException ex)
+            catch (Exception ex)
             {
                 string msg = "CSVファイル \'" + filename + "\' の読み込みに失敗しました。\n\n";
                 MessageBox.Show(msg + ex.Message);
