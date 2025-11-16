@@ -99,14 +99,14 @@ namespace tc_staff_draw
         /// </summary>
         private void DrawTimeTable(BufferedGraphics buffer)
         {
-            Rectangle rect;
+            RectangleF rect;
             SolidBrush brush_fill, brush_text;
             Font font;
             Pen pen_line = new Pen(Design.Globals.LineColor);
 
-            int pos_x = Design.Globals.Margin.Width;
-            int pos_y = Design.Globals.Margin.Height + Design.Titles.Size.Height;
-            int height;
+            float pos_x = Design.Globals.Margin.Width;
+            float pos_y = Design.Globals.Margin.Height + Design.Titles.Size.Height;
+            float height;
 
             if(Data.TimeTables == null)
             {
@@ -119,7 +119,7 @@ namespace tc_staff_draw
                 height = CalcTimeTableHeight(Data.TimeTables[i], Design.TimeTables);
 
                 // 駅名（左から1番目）
-                rect = new Rectangle(pos_x, pos_y, Design.TimeTables.WidthStation, height);
+                rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthStation, height);
                 buffer.Graphics.DrawRectangle(pen_line, rect);
                 if (Data.TimeTables[i].Stop)
                 {
@@ -133,8 +133,8 @@ namespace tc_staff_draw
                     brush_text = new SolidBrush(Design.TimeTables.FontColorTransitStation);
                     font = Design.TimeTables.FontTransitStation;
                 }
-                buffer.Graphics.FillRectangle(brush_fill, InnerRectangle(rect,1));
-                DrawString(buffer, Data.TimeTables[i].Station, font, brush_text, InnerRectangle(rect,1));
+                buffer.Graphics.FillRectangle(brush_fill, InnerRectangleF(rect,1));
+                DrawString(buffer, Data.TimeTables[i].Station, font, brush_text, InnerRectangleF(rect,1));
                 pos_x += rect.Width;
 
                 font = Design.Globals.Font;
@@ -143,10 +143,10 @@ namespace tc_staff_draw
                 // 時間（左から2,3,4番目）
                 for (int j = 0; j < 3; j++)
                 {
-                    rect = new Rectangle(pos_x, pos_y, Design.TimeTables.WidthTime, height);
+                    rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthTime, height);
                     buffer.Graphics.DrawRectangle(pen_line, rect);
 
-                    int ofs_y = 0;
+                    float ofs_y = 0;
                     for (int k = 0; k < 2; k++)
                     {
                         string[] hms;
@@ -162,8 +162,8 @@ namespace tc_staff_draw
 
                         if (hms[0] != "" || hms[1] != "" || hms[2] != "")
                         {
-                            rect = new Rectangle(pos_x, pos_y + ofs_y, Design.TimeTables.WidthTime, Design.TimeTables.Height);
-                            DrawString(buffer, hms[j], font, brush_text, InnerRectangle(rect,1));
+                            rect = new RectangleF(pos_x, pos_y + ofs_y, Design.TimeTables.WidthTime, Design.TimeTables.Height);
+                            DrawString(buffer, hms[j], font, brush_text, InnerRectangleF(rect,1));
                             ofs_y += Design.TimeTables.Height;
                         }
                     }
@@ -171,18 +171,18 @@ namespace tc_staff_draw
                 }
 
                 // 着発番線等（左から5番目）
-                rect = new Rectangle(pos_x, pos_y, Design.TimeTables.WidthSup1, height);
+                rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthSup1, height);
                 buffer.Graphics.DrawRectangle(pen_line, rect);
 
-                rect = new Rectangle(pos_x, pos_y, Design.TimeTables.WidthSup1, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement1, font, brush_text, InnerRectangle(rect,1));
+                rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthSup1, Design.TimeTables.Height);
+                DrawString(buffer, Data.TimeTables[i].Supplement1, font, brush_text, InnerRectangleF(rect,1));
                 pos_x += rect.Width;
 
                 // 入替時刻等（左から6番目）
-                rect = new Rectangle(pos_x, pos_y, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement2, font, brush_text, InnerRectangle(rect,1));
-                rect = new Rectangle(pos_x, pos_y + Design.TimeTables.Height, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement2_2, font, brush_text, InnerRectangle(rect, 1));
+                rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
+                DrawString(buffer, Data.TimeTables[i].Supplement2, font, brush_text, InnerRectangleF(rect,1));
+                rect = new RectangleF(pos_x, pos_y + Design.TimeTables.Height, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
+                DrawString(buffer, Data.TimeTables[i].Supplement2_2, font, brush_text, InnerRectangleF(rect, 1));
                 pos_x += rect.Width;
 
                 pos_y += height;
@@ -199,11 +199,19 @@ namespace tc_staff_draw
         }
 
         /// <summary>
+        /// 枠の内側の領域を返す
+        /// </summary>
+        private RectangleF InnerRectangleF(RectangleF rect, float space)
+        {
+            return new RectangleF(rect.X + 1, rect.Y + 1, rect.Width - space, rect.Height - space);
+        }
+
+        /// <summary>
         /// タイムテーブルの各要素の高さを決定する
         /// </summary>
-        private int CalcTimeTableHeight(StaffData.TimeTable table, StaffDesign.Timetable rule)
+        private float CalcTimeTableHeight(StaffData.TimeTable table, StaffDesign.Timetable rule)
         {
-            int height = rule.Height;
+            float height = rule.Height;
 
             if (table.Station == "")
             {
@@ -218,12 +226,12 @@ namespace tc_staff_draw
             return height;
         }
 
-        private void DrawString(BufferedGraphics bg, string s, Font font, Brush brush, Rectangle rect)
+        private void DrawString(BufferedGraphics bg, string s, Font font, Brush brush, RectangleF rect)
         {
-            int y = rect.Y + (rect.Height - font.Height) / 2;
-            int x = rect.X;
-            int w = rect.Width;
-            int h = rect.Height;
+            float y = rect.Y + (rect.Height - font.Height) / 2;
+            float x = rect.X;
+            float w = rect.Width;
+            float h = rect.Height;
             
             int len = TextRenderer.MeasureText(s, font).Width;
             if (w < len)
@@ -231,7 +239,7 @@ namespace tc_staff_draw
                font = new Font(font.FontFamily, font.Size * w / len) ;
             }
 
-            bg.Graphics.DrawString(s, font, brush, new Rectangle(x,y,w,h));
+            bg.Graphics.DrawString(s, font, brush, new RectangleF(x,y,w,h));
         }
     }
 }

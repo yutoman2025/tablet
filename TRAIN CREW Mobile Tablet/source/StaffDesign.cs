@@ -194,27 +194,27 @@ namespace tc_staff_draw
             /// <summary>
             /// 1行あたりの高さ(初期値)
             /// </summary>
-            public static readonly int Height_Def = 20;
+            public static readonly float Height_Def = 20;
 
             /// <summary>
             /// （左から1番目）駅名欄の横幅(初期値)
             /// </summary>
-            public static readonly int WidthStation_Def = 80;
+            public static readonly float WidthStation_Def = 80;
 
             /// <summary>
             /// （左から2,3,4番目）時分秒欄のそれぞれの横幅(初期値)
             /// </summary>
-            public static readonly int WidthTime_Def = 25;
+            public static readonly float WidthTime_Def = 25;
 
             /// <summary>
             /// （左から5番目）番線等を書く欄の横幅(初期値)
             /// </summary>
-            public static readonly int WidthSup1_Def = 80;
+            public static readonly float WidthSup1_Def = 80;
 
             /// <summary>
             /// （一番右）入替時間等を書く欄の横幅(初期値)
             /// </summary>
-            public static readonly int WidthSup2_Def = 200;
+            public static readonly float WidthSup2_Def = 200;
 
 
 
@@ -251,27 +251,27 @@ namespace tc_staff_draw
             /// <summary>
             /// 1行あたりの高さ
             /// </summary>
-            public int Height { get; set; } = Height_Def;
+            public float Height { get; set; } = Height_Def;
 
             /// <summary>
             /// （左から1番目）駅名欄の横幅
             /// </summary>
-            public int WidthStation { get; set; } = WidthStation_Def;
+            public float WidthStation { get; set; } = WidthStation_Def;
 
             /// <summary>
             /// （左から2,3,4番目）時分秒欄のそれぞれの横幅
             /// </summary>
-            public int WidthTime { get; set; } = WidthTime_Def;
+            public float WidthTime { get; set; } = WidthTime_Def;
 
             /// <summary>
             /// （左から5番目）番線等を書く欄の横幅
             /// </summary>
-            public int WidthSup1 { get; set; } = WidthSup1_Def;
+            public float WidthSup1 { get; set; } = WidthSup1_Def;
 
             /// <summary>
             /// （一番右）入替時間等を書く欄の横幅
             /// </summary>
-            public int WidthSup2 { get; set; } = WidthSup2_Def;
+            public float WidthSup2 { get; set; } = WidthSup2_Def;
 
         }
 
@@ -312,11 +312,11 @@ namespace tc_staff_draw
             Globals.Margin = ((display_rectangle - Globals.Size) / 2).ToSize();
             Titles.Size = (Title.Size_Def * m).ToSize();
             TrainTypes.Size = (TrainType.Size_Def * m).ToSize();
-            TimeTables.Height = (int)(Timetable.Height_Def * m);
-            TimeTables.WidthStation = (int)(Timetable.WidthStation_Def * m);
-            TimeTables.WidthTime = (int)(Timetable.WidthTime_Def * m);
-            TimeTables.WidthSup1 = (int)(Timetable.WidthSup1_Def * m);
-            TimeTables.WidthSup2 = (int)(Timetable.WidthSup2_Def * m);
+            TimeTables.Height = Timetable.Height_Def * m;
+            TimeTables.WidthStation = Timetable.WidthStation_Def * m;
+            TimeTables.WidthTime = Timetable.WidthTime_Def * m;
+            TimeTables.WidthSup1 = Timetable.WidthSup1_Def * m;
+            TimeTables.WidthSup2 = Timetable.WidthSup2_Def * m;
 
         }
     }
