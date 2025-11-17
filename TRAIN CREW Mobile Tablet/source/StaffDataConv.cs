@@ -244,13 +244,14 @@ namespace tc_staff_draw
             staff_data.TrainType = data[2][Array.IndexOf(data[0], "列車種別")];
 
             // ----------- タイトルの生成 -----------
-            staff_data.Titles = new string[5]
+            staff_data.Titles = new string[6]
             {
                 DecideReshaku(train_number),
                 "　　列車番号　　" + data[2][Array.IndexOf(data[0], "列車番号")],
                 "　　　　種別　　" + staff_data.TrainType,
                 "　　　　行先　　" + data[2][Array.IndexOf(data[0], "終着駅")],
                 "　　　　備考",
+                "",
             };
 
             // -------- タイムテーブルの生成 --------
