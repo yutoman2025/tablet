@@ -219,7 +219,7 @@ namespace tc_staff_draw
         /// </summary>
         private RectangleF InnerRectangleF(RectangleF rect, float space)
         {
-            return new RectangleF(rect.X + space, rect.Y + space, rect.Width - 2 * space, rect.Height - 2 * space);
+            return new RectangleF(rect.X + space + 1, rect.Y + space + 1, rect.Width - 2 * space - 1, rect.Height - 2 * space - 1);
         }
 
         /// <summary>
