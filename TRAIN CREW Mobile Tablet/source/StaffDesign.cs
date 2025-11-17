@@ -214,7 +214,7 @@ namespace tc_staff_draw
             /// <summary>
             /// （一番右）入替時間等を書く欄の横幅(初期値)
             /// </summary>
-            public static readonly float WidthSup2_Def = 200;
+            public static readonly float WidthSup2_Def = 165;
 
 
 
