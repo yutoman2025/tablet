@@ -32,7 +32,7 @@ namespace tc_staff_draw
             /// <summary>
             /// フォント(初期値)
             /// </summary>
-            public static readonly Font Font_Def = new Font("MS Gothic", 12);
+            public static readonly Font Font_Def = new Font("HGSｺﾞｼｯｸE", 12);
 
             /// <summary>
             /// 描画領域のサイズ(初期値)
