@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace tc_staff_draw
@@ -25,7 +27,8 @@ namespace tc_staff_draw
         {
             if(Design == null) return;
 
-            Design.Resize(buffer.Graphics.VisibleClipBounds.Size);
+            float dpi = (buffer.Graphics.DpiX < buffer.Graphics.DpiY)? buffer.Graphics.DpiY : buffer.Graphics.DpiX;
+            Design.Resize(buffer.Graphics.VisibleClipBounds.Size, dpi);
 
             DrawBackGround(buffer);
             DrawTitle(buffer);
@@ -55,6 +58,7 @@ namespace tc_staff_draw
         /// </summary>
         private void DrawTitle(BufferedGraphics buffer)
         {
+            // 枠線
             Rectangle rect = new Rectangle(
                     Design.Globals.Margin.Width,
                     Design.Globals.Margin.Height,
@@ -63,15 +67,29 @@ namespace tc_staff_draw
 
             buffer.Graphics.DrawRectangle(new Pen(Design.Globals.LineColor,2), rect);
 
-            rect = new Rectangle(
-                    Design.Globals.Margin.Width,
-                    Design.Globals.Margin.Height,
-                    Design.Titles.Size.Width,
-                    (int)(Design.Globals.Font.Height * 1.5));
+            // 一番小さいフォントサイズに合わせる
+            float min_font_size = CalcFitFontSize(Data.Titles[0], Design.Globals.Font, rect);
+            for (int i = 1; i < Data.Titles.Length; i++)
+            {
+                float font_size = CalcFitFontSize(Data.Titles[i], Design.Globals.Font, rect);
+                if(font_size < min_font_size)
+                {
+                    min_font_size = font_size;
+                }
+            }
+            Font font = new Font(Design.Globals.Font.FontFamily, (int)min_font_size);
 
+            // 文字列
+            float height = (float)Design.Titles.Size.Height / Data.Titles.Length;
             for (int i = 0; i < Data.Titles.Length; i++)
             {
-                DrawString(buffer, Data.Titles[i], Design.Globals.Font, new SolidBrush(Design.Globals.FontColor), rect);
+                rect = new Rectangle(
+                    Design.Globals.Margin.Width,
+                    Design.Globals.Margin.Height + (int)(i * height),
+                    Design.Titles.Size.Width,
+                    (int)height);
+
+                DrawString(buffer, Data.Titles[i], font, new SolidBrush(Design.Globals.FontColor), rect, TextFormatFlags.VerticalCenter);
                 rect.Y += rect.Height;
             }
         }
@@ -89,8 +107,8 @@ namespace tc_staff_draw
 
             buffer.Graphics.FillRectangle(new SolidBrush(Design.TrainTypes.BackColor), rect);
             buffer.Graphics.DrawRectangle(new Pen(Design.Globals.LineColor,2), rect);
-
-            DrawString(buffer, Data.TrainType, Design.TrainTypes.Font, new SolidBrush(Design.TrainTypes.FontColor), InnerRectangle(rect,2));
+            DrawString(buffer, Data.TrainType, Design.TrainTypes.Font,
+                new SolidBrush(Design.TrainTypes.FontColor), rect, TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
         }
 
         /// <summary>
@@ -133,7 +151,14 @@ namespace tc_staff_draw
                 }
                 buffer.Graphics.FillRectangle(brush_fill, rect);
                 buffer.Graphics.DrawRectangle(pen_line, rect);
-                DrawString(buffer, Data.TimeTables[i].Station, font, brush_text, InnerRectangleF(rect,1));
+
+                // 到着・出発の2行表示のときは高さ1行で中央に配置
+                RectangleF rect_text = new RectangleF(
+                    pos_x,
+                    pos_y + (height - Design.TimeTables.Height) / 2,
+                    Design.TimeTables.WidthStation,
+                    Design.TimeTables.Height);
+                DrawString(buffer, Data.TimeTables[i].Station, font, brush_text, rect_text, TextFormatFlags.VerticalCenter);
                 pos_x += rect.Width;
 
                 font = Design.Globals.Font;
@@ -162,7 +187,7 @@ namespace tc_staff_draw
                         if (hms[0] != "" || hms[1] != "" || hms[2] != "")
                         {
                             rect = new RectangleF(pos_x, pos_y + ofs_y, Design.TimeTables.WidthTime, Design.TimeTables.Height);
-                            DrawString(buffer, hms[j], font, brush_text, InnerRectangleF(rect,1));
+                            DrawString(buffer, hms[j], font, brush_text, InnerRectangleF(rect, -1), TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
                             ofs_y += Design.TimeTables.Height;
                         }
                     }
@@ -174,14 +199,14 @@ namespace tc_staff_draw
                 buffer.Graphics.DrawRectangle(pen_line, rect);
 
                 rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthSup1, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement1, font, brush_text, InnerRectangleF(rect,1));
+                DrawString(buffer, Data.TimeTables[i].Supplement1, font, brush_text, rect, TextFormatFlags.VerticalCenter);
                 pos_x += rect.Width;
 
                 // 入替時刻等（左から6番目）
                 rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement2, font, brush_text, InnerRectangleF(rect,1));
+                DrawString(buffer, Data.TimeTables[i].Supplement2, font, brush_text, rect, TextFormatFlags.VerticalCenter);
                 rect = new RectangleF(pos_x, pos_y + Design.TimeTables.Height, Design.TimeTables.WidthSup2, Design.TimeTables.Height);
-                DrawString(buffer, Data.TimeTables[i].Supplement2_2, font, brush_text, InnerRectangleF(rect, 1));
+                DrawString(buffer, Data.TimeTables[i].Supplement2_2, font, brush_text, rect, TextFormatFlags.VerticalCenter);
                 pos_x += rect.Width;
 
                 pos_y += height;
@@ -192,17 +217,9 @@ namespace tc_staff_draw
         /// <summary>
         /// 枠の内側の領域を返す
         /// </summary>
-        private Rectangle InnerRectangle(Rectangle rect, int space)
-        {
-            return new Rectangle(rect.X + 1, rect.Y + 1, rect.Width  - space, rect.Height - space);
-        }
-
-        /// <summary>
-        /// 枠の内側の領域を返す
-        /// </summary>
         private RectangleF InnerRectangleF(RectangleF rect, float space)
         {
-            return new RectangleF(rect.X + 1, rect.Y + 1, rect.Width - space, rect.Height - space);
+            return new RectangleF(rect.X + space, rect.Y + space, rect.Width - 2 * space, rect.Height - 2 * space);
         }
 
         /// <summary>
@@ -225,20 +242,51 @@ namespace tc_staff_draw
             return height;
         }
 
-        private void DrawString(BufferedGraphics bg, string s, Font font, Brush brush, RectangleF rect)
+        /// <summary>
+        /// 領域に収まるようにフォントサイズを縮小して文字を描画する
+        /// </summary>
+        private void DrawString(BufferedGraphics bg, string s, Font font, Brush brush, RectangleF rect, TextFormatFlags flags = TextFormatFlags.Default)
         {
-            float y = rect.Y + (rect.Height - font.Height) / 2;
-            float x = rect.X;
-            float w = rect.Width;
-            float h = rect.Height;
-            
-            int len = TextRenderer.MeasureText(s, font).Width;
-            if (w < len)
+
+            font = new Font(font.FontFamily, CalcFitFontSize(s, font, rect));
+
+            TextRenderer.DrawText(bg.Graphics, s, font, Rectangle.Round(rect), Color.White, flags);
+
+        }
+
+        /// <summary>
+        /// 領域に収まるフォントサイズを返す
+        /// </summary>
+        private float CalcFitFontSize(string s, Font font, RectangleF rect)
+        {
+
+            // 横幅縮小
+            for (int i = 0; i < 2; i++)
             {
-               font = new Font(font.FontFamily, font.Size * w / len) ;
+                // (1回の乗算では修正しきれない時があるので2回まわす)
+                int len = TextRenderer.MeasureText(s, font).Width;
+                if (rect.Width < len)
+                {
+                    int size = (int)(font.Size * rect.Width / len);
+                    if(size <= 0) size = 1;
+                    font = new Font(font.FontFamily, size);
+                }
             }
 
-            bg.Graphics.DrawString(s, font, brush, new RectangleF(x,y,w,h));
+            // 縦幅縮小
+            for (int i = 0; i < 2; i++)
+            {
+                // (1回の乗算では修正しきれない時があるので2回まわす)
+                if (rect.Height < font.Height)
+                {
+                    int size = (int)(font.Size * rect.Height / font.Height);
+                    if (size <= 0) size = 1;
+                    font = new Font(font.FontFamily, size);
+                }
+            }
+            
+            return font.Size;
         }
+
     }
 }

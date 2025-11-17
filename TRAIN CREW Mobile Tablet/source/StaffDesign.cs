@@ -32,7 +32,7 @@ namespace tc_staff_draw
             /// <summary>
             /// フォント(初期値)
             /// </summary>
-            public static readonly Font Font_Def = new Font("MS Gothic", 11);
+            public static readonly Font Font_Def = new Font("MS Gothic", 12);
 
             /// <summary>
             /// 描画領域のサイズ(初期値)
@@ -300,7 +300,7 @@ namespace tc_staff_draw
         /// <summary>
         /// 描画領域を元に、位置とサイズを再計算する
         /// </summary>
-        public void Resize(SizeF display_rectangle) 
+        public void Resize(SizeF display_rectangle, float dpi) 
         {
             float mx = (display_rectangle.Width - 2 * Global.Margin_Def.Height)
                 / (Global.DisplayRectangle_Def.Width - 2 * Global.Margin_Def.Height);
@@ -308,16 +308,23 @@ namespace tc_staff_draw
                 / (Global.DisplayRectangle_Def.Height - 2 * Global.Margin_Def.Height);
             float m = (mx < my) ? mx : my;
 
+            float fm = m * 96 / dpi;
+            if (fm < 0.2f) fm = 0.2f;
+            if (fm > 2.0f) fm = 2.0f;
+
             Globals.Size = (Global.Size_Def * m).ToSize();
             Globals.Margin = ((display_rectangle - Globals.Size) / 2).ToSize();
+            Globals.Font = new Font(Global.Font_Def.FontFamily, Global.Font_Def.Size * fm);
             Titles.Size = (Title.Size_Def * m).ToSize();
             TrainTypes.Size = (TrainType.Size_Def * m).ToSize();
+            TrainTypes.Font = new Font(TrainType.Font_Def.FontFamily, TrainType.Font_Def.Size * fm);
             TimeTables.Height = Timetable.Height_Def * m;
             TimeTables.WidthStation = Timetable.WidthStation_Def * m;
             TimeTables.WidthTime = Timetable.WidthTime_Def * m;
             TimeTables.WidthSup1 = Timetable.WidthSup1_Def * m;
             TimeTables.WidthSup2 = Timetable.WidthSup2_Def * m;
-
+            TimeTables.FontStopStation = new Font(Timetable.FontStopStation_Def.FontFamily, Timetable.FontStopStation_Def.Size * fm);
+            TimeTables.FontTransitStation = new Font(Timetable.FontTransitStation_Def.FontFamily, Timetable.FontTransitStation_Def.Size * fm);
         }
     }
 
