@@ -88,6 +88,7 @@
             Controls.Add(M);
             MaximizeBox = false;
             Name = "起動画面";
+            Resize += 起動画面_Resize;
             ResumeLayout(false);
             PerformLayout();
         }

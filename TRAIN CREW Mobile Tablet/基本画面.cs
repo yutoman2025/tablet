@@ -2,11 +2,14 @@ namespace test
 {
     public partial class ‹N“®‰æ–Ê : Form
     {
+        ControlScaler scaler;
         public ‹N“®‰æ–Ê()
         {
             InitializeComponent();
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            //this.MaximumSize = this.Size;
+            //this.MinimumSize = this.Size;
+            scaler = new ControlScaler();
+            scaler.CaptureInitialState(this);
         }
 
         private void M_Click(object sender, EventArgs e)
@@ -43,6 +46,11 @@ namespace test
             var C = new C();
             C.ShowDialog();
             this.Show();
+        }
+
+        private void ‹N“®‰æ–Ê_Resize(object sender, EventArgs e)
+        {
+            scaler.ScaleToCurrentSize(this);
         }
     }
 }

@@ -111,7 +111,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox1.BackColor = Color.FromArgb(0, 192, 192);
             pictureBox1.Location = new Point(506, 40);
             pictureBox1.Name = "pictureBox1";
@@ -123,7 +122,6 @@
             // 
             // comboBox3
             // 
-            comboBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox3.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox3.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox3.FormattingEnabled = true;
@@ -146,7 +144,6 @@
             // 
             // button4
             // 
-            button4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button4.Location = new Point(633, 12);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);

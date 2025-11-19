@@ -22,14 +22,16 @@ namespace test
 {
     public partial class M : Form
     {
-
+        ControlScaler scale;
         int time = 0;
         public M()
         {
             InitializeComponent();
             this.AcceptButton = button4;
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            //this.MaximumSize = this.Size;
+            //this.MinimumSize = this.Size;
+            scale = new ControlScaler();
+            scale.CaptureInitialState(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -386,24 +388,33 @@ namespace test
         }
 
         private DigitalStaff form5Instance;
+
+        int flg = 0;
         private void button8_Click(object sender, EventArgs e)
         {
+
+            // インスタンスがないか破棄済みなら新規作成して表示
             if (form5Instance == null || form5Instance.IsDisposed)
             {
-                DigitalStaff form = new DigitalStaff();
-                form.LoadStaff(comboBox3.SelectedItem.ToString());
-                form.Show();
-               // form5Instance.Show();
+                if (comboBox3.SelectedItem == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "スターフを選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+
+                form5Instance = new DigitalStaff();
+                form5Instance.LoadStaff(comboBox3.SelectedItem.ToString());
+                form5Instance.Show();
                 button8.BackColor = Color.LightGreen;
                 return;
             }
-            else
-            {
-                DigitalStaff form = new DigitalStaff();
-                form.Close();
-                button8.BackColor = Color.White;
-                return;
-            }
+
+            // 既に表示中なら閉じる
+            form5Instance.Close();
+            button8.BackColor = Color.White;
         }
 
         private void M_FormClosing(object sender, FormClosingEventArgs e)
@@ -419,6 +430,10 @@ namespace test
             if (form4Instance != null && !form4Instance.IsDisposed)
             {
                 form4Instance.Close();
+            }
+            if (form5Instance != null && !form5Instance.IsDisposed)
+            {
+                form5Instance.Close();
             }
         }
     }

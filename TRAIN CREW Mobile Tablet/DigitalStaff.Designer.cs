@@ -35,9 +35,12 @@
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(420, 620);
             Font = new Font("MS UI Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            MaximizeBox = false;
+            MinimizeBox = false;
             MinimumSize = new Size(200, 300);
             Name = "DigitalStaff";
             Text = "デジタルスタフ";
+            TopMost = true;
             Paint += Form1_Paint;
             Resize += DigitalStaff_Resize;
             ResumeLayout(false);

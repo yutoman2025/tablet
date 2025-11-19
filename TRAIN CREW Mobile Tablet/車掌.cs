@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tablet;
 
 namespace test
 {
@@ -30,6 +31,24 @@ namespace test
             {
                 this.TopMost = false;
                 button1.BackColor = Color.White;
+            }
+        }
+
+        private 放送選択 form1Instance;
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (form1Instance == null || form1Instance.IsDisposed)
+            {
+                form1Instance = new 放送選択();
+                form1Instance.Show();
+                button5.BackColor = Color.YellowGreen;
+                return;
+            }
+            else
+            {
+                form1Instance.Close();
+                button5.BackColor = Color.White;
+                return;
             }
         }
     }
