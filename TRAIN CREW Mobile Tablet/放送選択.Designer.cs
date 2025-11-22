@@ -42,8 +42,8 @@
             domainUpDown6 = new DomainUpDown();
             domainUpDown7 = new DomainUpDown();
             button7 = new Button();
-            domainUpDown8 = new DomainUpDown();
             button8 = new Button();
+            domainUpDown8 = new DomainUpDown();
             SuspendLayout();
             // 
             // button1
@@ -73,6 +73,7 @@
             button3.TabIndex = 2;
             button3.Text = "携帯電話";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // domainUpDown1
             // 
@@ -246,6 +247,7 @@
             button4.TabIndex = 12;
             button4.Text = "不審な荷物";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -255,6 +257,7 @@
             button5.TabIndex = 13;
             button5.Text = "優先座席";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -264,6 +267,7 @@
             button6.TabIndex = 14;
             button6.Text = "迷惑行為";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // domainUpDown6
             // 
@@ -309,29 +313,6 @@
             button7.Text = "決定";
             button7.UseVisualStyleBackColor = false;
             // 
-            // domainUpDown8
-            // 
-            domainUpDown8.Items.Add("純正");
-            domainUpDown8.Items.Add("音声1");
-            domainUpDown8.Items.Add("音声2");
-            domainUpDown8.Items.Add("音声3");
-            domainUpDown8.Items.Add("音声4");
-            domainUpDown8.Items.Add("音声5");
-            domainUpDown8.Items.Add("音声6");
-            domainUpDown8.Items.Add("音声7");
-            domainUpDown8.Items.Add("音声8");
-            domainUpDown8.Items.Add("音声9");
-            domainUpDown8.Items.Add("音声10");
-            domainUpDown8.Items.Add("音声11");
-            domainUpDown8.Items.Add("音声12");
-            domainUpDown8.Items.Add("音声13");
-            domainUpDown8.Items.Add("音声14");
-            domainUpDown8.Location = new Point(552, 41);
-            domainUpDown8.Name = "domainUpDown8";
-            domainUpDown8.Size = new Size(120, 23);
-            domainUpDown8.TabIndex = 18;
-            domainUpDown8.Text = "駅";
-            // 
             // button8
             // 
             button8.Location = new Point(471, 41);
@@ -341,14 +322,98 @@
             button8.Text = "臨停駅追加";
             button8.UseVisualStyleBackColor = true;
             // 
+            // domainUpDown8
+            // 
+            domainUpDown8.Items.Add("館浜");
+            domainUpDown8.Items.Add("駒野");
+            domainUpDown8.Items.Add("河原崎");
+            domainUpDown8.Items.Add("海岸公園");
+            domainUpDown8.Items.Add("虹ケ浜");
+            domainUpDown8.Items.Add("津崎");
+            domainUpDown8.Items.Add("浜園");
+            domainUpDown8.Items.Add("羽衣橋");
+            domainUpDown8.Items.Add("新井川");
+            domainUpDown8.Items.Add("新野崎");
+            domainUpDown8.Items.Add("江ノ原");
+            domainUpDown8.Items.Add("大道寺");
+            domainUpDown8.Items.Add("藤江");
+            domainUpDown8.Items.Add("水越");
+            domainUpDown8.Items.Add("高見沢");
+            domainUpDown8.Items.Add("日野森");
+            domainUpDown8.Items.Add("奥峯口");
+            domainUpDown8.Items.Add("西赤山");
+            domainUpDown8.Items.Add("赤山町");
+            domainUpDown8.Items.Add("三郷");
+            domainUpDown8.Items.Add("明神川");
+            domainUpDown8.Items.Add("珠川温泉");
+            domainUpDown8.Items.Add("上吉沢");
+            domainUpDown8.Items.Add("下吉沢");
+            domainUpDown8.Items.Add("名田");
+            domainUpDown8.Items.Add("三石");
+            domainUpDown8.Items.Add("二木戸");
+            domainUpDown8.Items.Add("白石町");
+            domainUpDown8.Items.Add("東井");
+            domainUpDown8.Items.Add("桜坂");
+            domainUpDown8.Items.Add("新大路");
+            domainUpDown8.Items.Add("大路");
+            domainUpDown8.Items.Add("常磐通");
+            domainUpDown8.Items.Add("広小路");
+            domainUpDown8.Items.Add("田村");
+            domainUpDown8.Items.Add("二ツ山");
+            domainUpDown8.Items.Add("小沼");
+            domainUpDown8.Items.Add("六日市町");
+            domainUpDown8.Items.Add("朝日ヶ丘");
+            domainUpDown8.Items.Add("大野宮");
+            domainUpDown8.Items.Add("沢井");
+            domainUpDown8.Items.Add("箕田");
+            domainUpDown8.Items.Add("江西");
+            domainUpDown8.Items.Add("大和田町");
+            domainUpDown8.Items.Add("木之本");
+            domainUpDown8.Items.Add("新長野公園");
+            domainUpDown8.Items.Add("長野本町");
+            domainUpDown8.Items.Add("高砂町");
+            domainUpDown8.Items.Add("東福");
+            domainUpDown8.Items.Add("千里が丘");
+            domainUpDown8.Items.Add("矢木");
+            domainUpDown8.Items.Add("北美");
+            domainUpDown8.Items.Add("緑ヶ丘");
+            domainUpDown8.Items.Add("町沢");
+            domainUpDown8.Items.Add("大原");
+            domainUpDown8.Items.Add("本郷");
+            domainUpDown8.Items.Add("五十川");
+            domainUpDown8.Items.Add("出屋敷前");
+            domainUpDown8.Items.Add("佐川");
+            domainUpDown8.Items.Add("夕陽が丘");
+            domainUpDown8.Items.Add("五日市");
+            domainUpDown8.Items.Add("南五日市");
+            domainUpDown8.Items.Add("高井戸八幡");
+            domainUpDown8.Items.Add("南八幡");
+            domainUpDown8.Items.Add("学院前");
+            domainUpDown8.Items.Add("中道");
+            domainUpDown8.Items.Add("佐野");
+            domainUpDown8.Items.Add("小手川");
+            domainUpDown8.Items.Add("南吉岡");
+            domainUpDown8.Items.Add("宮の前");
+            domainUpDown8.Items.Add("神宮橋");
+            domainUpDown8.Items.Add("宮松町");
+            domainUpDown8.Items.Add("青木町");
+            domainUpDown8.Items.Add("新町");
+            domainUpDown8.Items.Add("三番街");
+            domainUpDown8.Items.Add("大手橋");
+            domainUpDown8.Location = new Point(552, 41);
+            domainUpDown8.Name = "domainUpDown8";
+            domainUpDown8.Size = new Size(120, 23);
+            domainUpDown8.TabIndex = 20;
+            domainUpDown8.Text = "駅";
+            // 
             // 放送選択
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(810, 450);
-            Controls.Add(button8);
             Controls.Add(domainUpDown8);
+            Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(domainUpDown6);
             Controls.Add(domainUpDown7);
@@ -384,7 +449,7 @@
         private DomainUpDown domainUpDown6;
         private DomainUpDown domainUpDown7;
         private Button button7;
-        private DomainUpDown domainUpDown8;
         private Button button8;
+        private DomainUpDown domainUpDown8;
     }
 }

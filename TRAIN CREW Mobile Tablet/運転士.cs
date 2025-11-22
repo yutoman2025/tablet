@@ -251,6 +251,39 @@ namespace test
                     pictureBox2.Image = myImage;
                 }
             }
+            else if (comboBox1.SelectedItem.ToString() == "1824")
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
+                string selectedText = comboBox2.Text;
+                int last = selectedText.Length - 1;
+                string selectedText3 = Regex.Replace(selectedText, @"[^0-9]", "");
+                selectedText = Regex.Replace(selectedText, @"[0-9]", "");
+                int num = int.Parse(selectedText3);
+                selectedText = selectedText.Replace("平", "");
+                selectedText = selectedText.Replace("変-", "2");
+                selectedText = selectedText.Replace("準2", "3");
+                selectedText = selectedText.Replace("普2", "3");
+                selectedText = selectedText.Replace("教2", "9");
+                if (num >= 1 && num <= 9 && selectedText == "")
+                {
+                    selectedText3 = "0" + selectedText3;
+                }
+                string selectedText2 = "24-" + selectedText + selectedText3;
+                if (resourceManager.GetObject(selectedText2) == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+                else
+                {
+                    Image myImage = (Image)resourceManager.GetObject(selectedText2);
+                    pictureBox2.Image = myImage;
+                }
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -327,6 +360,10 @@ namespace test
                 {
                     time = 20;
                 }
+                else if (comboBox1.SelectedItem == "1824")
+                {
+                    time = 17;
+                }
                 DigitalClock.time = time;
                 form4Instance = new DigitalClock();
                 form4Instance.Show();
@@ -353,6 +390,7 @@ namespace test
                 "1517" => "15-17list.txt",
                 "1820" => "18-20list.txt",
                 "2123" => "21-23list.txt",
+                "1824" => "18-24list.txt",
                 "ダイヤ不定" => "ALL.txt",
                 _ => null
             };

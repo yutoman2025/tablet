@@ -12,6 +12,7 @@
     <None Remove="Resources\11-13\11-13list.txt" />
     <None Remove="Resources\15-17\15-17list.txt" />
     <None Remove="Resources\18-20\18-20list.txt" />
+    <None Remove="Resources\18-24\18-24list.txt" />
     <None Remove="Resources\21-23\21-23list.txt" />
     <None Remove="Resources\7-9\07-09list.txt" />
     <None Remove="Resources\ALL.txt" />
@@ -21,6 +22,7 @@
     <EmbeddedResource Include="Resources\11-13\11-13list.txt" />
     <EmbeddedResource Include="Resources\15-17\15-17list.txt" />
     <EmbeddedResource Include="Resources\18-20\18-20list.txt" />
+    <EmbeddedResource Include="Resources\18-24\18-24list.txt" />
     <EmbeddedResource Include="Resources\21-23\21-23list.txt" />
     <EmbeddedResource Include="Resources\7-9\07-09list.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -67,6 +69,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="StaffTheme_White.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="放送\m21.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="放送\m22.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="放送\m23.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="放送\m24.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="放送\m25.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
