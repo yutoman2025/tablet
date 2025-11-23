@@ -57,12 +57,11 @@ namespace tc_staff_draw
             if (staff_setting.init == false) return;
 
             TrainNumber = train_number;
-
-            foreach (string csv in staff_setting.OuDiaCsv)
+            string[] csvin = new string[] { "tablet.Resources.11-13-1.csv","tablet.Resources.11-13-2.csv","tablet.Resources.15-17-1.csv","tablet.Resources.15-17-2.csv","talbet.Resources.18-24-1.csv","tablet.Resources.18-24-2" };
+            foreach (string csv in csvin)
             {
                 // CSV読み込み
-                string[][] csv_data = StaffDataConv.LoadCsv(csv);
-
+                string[][] csv_data = StaffDataConv.LoadResource(csv);
                 // CSVから指定した列車番号のスタフを抽出
                 if (StaffDataConv.ConvStaffData(csv_data, ref StaffData, TrainNumber) == 0)
                 {

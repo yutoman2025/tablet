@@ -37,11 +37,11 @@ namespace test
         private 放送選択 form1Instance;
         private void button5_Click(object sender, EventArgs e)
         {
-            bool originalTopMost = this.TopMost;
+            /*bool originalTopMost = this.TopMost;
             this.TopMost = true;
             MessageBox.Show("只今対応していません。", "お知らせ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.TopMost = originalTopMost;
-            /*if (form1Instance == null || form1Instance.IsDisposed)
+            this.TopMost = originalTopMost;*/
+            if (form1Instance == null || form1Instance.IsDisposed)
             {
                 form1Instance = new 放送選択();
                 form1Instance.Show();
@@ -53,7 +53,7 @@ namespace test
                 form1Instance.Close();
                 button5.BackColor = Color.White;
                 return;
-            }*/
+            }
         }
     }
 }

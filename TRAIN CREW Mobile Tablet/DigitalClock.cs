@@ -32,9 +32,13 @@ namespace tablet
             //MessageBox.Show(H.ToString());
             DateTime now = DateTime.Now;
             DateTime adjustedTime = now;
-                //MessageBox.Show(H.ToString());
-                H = (int)adjustedTime.Hour;
-                if (time == 0)
+            //MessageBox.Show(H.ToString());
+            H = (int)adjustedTime.Hour;
+            if(HH != time)
+            {
+                HH++;
+            }
+                /*if (time == 0)
                 {
                     HH = adjustedTime.Hour - 10;
                 }
@@ -51,8 +55,8 @@ namespace tablet
                 else
                 {
                     HH = adjustedTime.Hour - 10;
-                }
-            HH = Math.Max(0, Math.Min(23, HH));
+                }*/
+                HH = Math.Max(0, Math.Min(23, HH));
             if(flg == 0)
             {
                 adjustedTime = new DateTime(now.Year, now.Month, now.Day, HH, now.Minute, now.Second);

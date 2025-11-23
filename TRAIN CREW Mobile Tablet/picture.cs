@@ -22,8 +22,8 @@ namespace tablet
         public Picture()
         {
             InitializeComponent();
-            /*this.Load += (s, e) => originalAspectRatio = (double)this.Width / this.Height;
-            this.ResizeEnd += Picture_ResizeEnd;*/
+            this.Load += (s, e) => originalAspectRatio = (double)this.Width / this.Height;
+            //this.ResizeEnd += Picture_ResizeEnd;
         }
 
         public Picture(Image image)
@@ -32,7 +32,7 @@ namespace tablet
             pictureBox1.Image = image; // 画像をPictureBoxに設定
         }
 
-        /*private void Picture_Load(object sender, EventArgs e)
+        private void Picture_Load(object sender, EventArgs e)
         {
             originalAspectRatio = (double)this.Width / this.Height;
             // 設定からウィンドウの位置とサイズを復元
@@ -45,10 +45,10 @@ namespace tablet
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = Properties.Settings.Default.WindowLocation;
             }
-            
+
         }
 
-        private void Picture_ResizeEnd(object sender, EventArgs e)
+        /*private void Picture_ResizeEnd(object sender, EventArgs e)
         {
             if (this.WindowState != FormWindowState.Minimized)
             {
@@ -69,7 +69,7 @@ namespace tablet
 
                 this.ResumeLayout();
             }
-        }
+        }*/
 
         private void Picture_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -86,6 +86,6 @@ namespace tablet
             Rectangle screenBounds = Screen.GetBounds(location);
             Rectangle windowBounds = new Rectangle(location, size);
             return screenBounds.Contains(windowBounds);
-        }*/
+        }
     }
 }

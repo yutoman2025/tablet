@@ -15,9 +15,7 @@ namespace tc_staff_draw
     /// </summary>
     public partial class StaffSetting
     {
-        public string[] OuDiaCsv;
         public string ThemeFile;
-
         [XmlIgnore]
         public StaffTheme Theme = new StaffTheme();
         [XmlIgnore]
@@ -29,7 +27,6 @@ namespace tc_staff_draw
         {
             XmlSerializer serializer;
             StreamReader reader;
-
             // StaffSetting.xml の読み取り
             try 
             {
@@ -38,17 +35,11 @@ namespace tc_staff_draw
                 StaffSetting setting = (StaffSetting)serializer.Deserialize(reader);
                 reader.Close();
 
-                if(setting.OuDiaCsv == null || setting.OuDiaCsv.Length <= 0)
-                {
-                    throw new Exception("パラメータ \'OuDiaCsv\' が null でした。");
-                }
-
                 if (setting.ThemeFile == null)
                 {
                     throw new Exception("パラメータ \'ThemeFile\' が null でした。");
                 }
 
-                OuDiaCsv = setting.OuDiaCsv;
                 ThemeFile = setting.ThemeFile;
 
             }

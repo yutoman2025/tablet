@@ -596,6 +596,16 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   型 System.Byte[] のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static byte[] _11_13_1 {
+            get {
+                object obj = ResourceManager.GetObject("11-13-1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   回1005A
         ///回1409A
         ///1019A

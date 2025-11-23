@@ -364,6 +364,10 @@ namespace test
                 {
                     time = 17;
                 }
+                else
+                {
+                    time = 0;
+                }
                 DigitalClock.time = time;
                 form4Instance = new DigitalClock();
                 form4Instance.Show();

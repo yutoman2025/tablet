@@ -9,9 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="11-13-1.csv" />
+    <None Remove="Resources\11-13-1.csv" />
+    <None Remove="Resources\11-13-2.csv" />
     <None Remove="Resources\11-13\11-13list.txt" />
+    <None Remove="Resources\15-17-1.csv" />
+    <None Remove="Resources\15-17-2.csv" />
     <None Remove="Resources\15-17\15-17list.txt" />
     <None Remove="Resources\18-20\18-20list.txt" />
+    <None Remove="Resources\18-24-1.csv" />
+    <None Remove="Resources\18-24-2.csv" />
     <None Remove="Resources\18-24\18-24list.txt" />
     <None Remove="Resources\21-23\21-23list.txt" />
     <None Remove="Resources\7-9\07-09list.txt" />
@@ -19,9 +26,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\11-13-1.csv">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\11-13-2.csv" />
     <EmbeddedResource Include="Resources\11-13\11-13list.txt" />
+    <EmbeddedResource Include="Resources\15-17-1.csv" />
+    <EmbeddedResource Include="Resources\15-17-2.csv" />
     <EmbeddedResource Include="Resources\15-17\15-17list.txt" />
     <EmbeddedResource Include="Resources\18-20\18-20list.txt" />
+    <EmbeddedResource Include="Resources\18-24-1.csv" />
+    <EmbeddedResource Include="Resources\18-24-2.csv" />
     <EmbeddedResource Include="Resources\18-24\18-24list.txt" />
     <EmbeddedResource Include="Resources\21-23\21-23list.txt" />
     <EmbeddedResource Include="Resources\7-9\07-09list.txt">
@@ -52,15 +67,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="11-13-1.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="Resources\11-13-1.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="StaffSetting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

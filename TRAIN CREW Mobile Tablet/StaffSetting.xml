@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StaffSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <OuDiaCsv>
-    <string>11-13-1.csv</string>
-  </OuDiaCsv>
-  <ThemeFile>StaffTheme_Dark.xml</ThemeFile>
+  <ThemeFile>StaffTheme_White.xml</ThemeFile>
 </StaffSetting>

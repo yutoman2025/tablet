@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Security.Permissions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -35,8 +37,23 @@ namespace tc_staff_draw
                 MessageBox.Show(msg + ex.Message);
                 return null;
             }
-
-            // OuDiaSecondで出力したcsvを行列(mtcsv[][])に変換
+            return LoadText(csv);
+        }
+        static public string[][] LoadResource(string filenmae)
+        {
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(filenmae);
+            if (stream == null)
+            {
+                MessageBox.Show("スタフの読み込みに失敗しました");
+            }
+            StreamReader sr = new StreamReader(stream);
+            string csv = sr.ReadToEnd();
+            sr.Close();
+            return LoadText(csv);
+        }
+        static public string[][] LoadText (string text)
+        {
+            string csv = text;
             csv = csv.Replace("\r\n", "\n");
             string[] temp = csv.Split('\n');
             string[][] mtcsv = new string[temp.Length][];
@@ -49,7 +66,7 @@ namespace tc_staff_draw
             const int invalid_start = 4; // 最初の4行は無視
             const int invalid_end = 1; // 最後の1行は無視
             int valid_rows = mtcsv.Length - invalid_start - invalid_end;
-            int valid_columns =  mtcsv[invalid_start + 1].Length;
+            int valid_columns = mtcsv[invalid_start + 1].Length;
             string[][] mtdata = new string[valid_rows][];
             for (int i = 0; i < valid_rows; i++)
             {
