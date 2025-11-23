@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,7 @@ namespace tablet
         int H = 0;
         int HH = 0;
         int flg = 0;
+        int f=0;
         string timeis = string.Empty;
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -34,9 +36,13 @@ namespace tablet
             DateTime adjustedTime = now;
             //MessageBox.Show(H.ToString());
             H = (int)adjustedTime.Hour;
-            if(HH != time)
+            if (HH != time && f==0)
             {
                 HH++;
+            }
+            else
+            {
+                f = 1;
             }
                 /*if (time == 0)
                 {
@@ -57,7 +63,7 @@ namespace tablet
                     HH = adjustedTime.Hour - 10;
                 }*/
                 HH = Math.Max(0, Math.Min(23, HH));
-            if(flg == 0)
+            if (flg == 0 && f==1)
             {
                 adjustedTime = new DateTime(now.Year, now.Month, now.Day, HH, now.Minute, now.Second);
             }
@@ -65,13 +71,12 @@ namespace tablet
             {
                 adjustedTime = now;
             }
-                adjustedTime = adjustedTime.AddHours(hourOffset).AddMinutes(minuteOffset);
+            adjustedTime = adjustedTime.AddHours(hourOffset).AddMinutes(minuteOffset);
             //MessageBox.Show(HH.ToString());
             // 現在の時刻を取得して、文字列として整形する
             Hlabel.Text = adjustedTime.ToString("HH");
             Mlabel.Text = adjustedTime.ToString("mm");
             Slabel.Text = adjustedTime.ToString("ss");
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
