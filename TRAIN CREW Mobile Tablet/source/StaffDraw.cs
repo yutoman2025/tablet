@@ -245,12 +245,12 @@ namespace tc_staff_draw
         /// <summary>
         /// 領域に収まるようにフォントサイズを縮小して文字を描画する
         /// </summary>
-        private void DrawString(BufferedGraphics bg, string s, Font font, Brush brush, RectangleF rect, TextFormatFlags flags = TextFormatFlags.Default)
+        private void DrawString(BufferedGraphics bg, string s, Font font, SolidBrush brush, RectangleF rect, TextFormatFlags flags = TextFormatFlags.Default)
         {
 
             font = new Font(font.FontFamily, CalcFitFontSize(s, font, rect));
 
-            TextRenderer.DrawText(bg.Graphics, s, font, Rectangle.Round(rect), Color.White, flags);
+            TextRenderer.DrawText(bg.Graphics, s, font, Rectangle.Round(rect), brush.Color, flags);
 
         }
 
