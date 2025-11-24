@@ -22,16 +22,14 @@ namespace test
 {
     public partial class M : Form
     {
-        ControlScaler scale;
+        ControlScaler scaler;
         int time = 0;
         public M()
         {
             InitializeComponent();
             this.AcceptButton = button4;
-            //this.MaximumSize = this.Size;
-            //this.MinimumSize = this.Size;
-            scale = new ControlScaler();
-            scale.CaptureInitialState(this);
+            scaler = new ControlScaler();
+            scaler.CaptureInitialState(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -334,8 +332,8 @@ namespace test
                 form3Instance.Size = new Size(282, 424);
             }
         }
-        public static int f=0;
-        public static int time2=0;
+        public static int f = 0;
+        public static int time2 = 0;
         DigitalClock form4Instance;
         private void button6_Click(object sender, EventArgs e)
         {
@@ -480,6 +478,11 @@ namespace test
             {
                 form5Instance.Close();
             }
+        }
+
+        private void M_Resize(object sender, EventArgs e)
+        {
+            scaler?.ScaleToCurrentSize(this, controlScalerProvider1);
         }
     }
 }

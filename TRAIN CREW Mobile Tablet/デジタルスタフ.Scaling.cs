@@ -59,7 +59,7 @@ namespace test
             }
 
             // 内部コントロールを同一倍率でスケール適用
-            _scaler.ScaleToCurrentSize(this);
+            //_scaler.ScaleToCurrentSize(this);
         }
     }
 }
