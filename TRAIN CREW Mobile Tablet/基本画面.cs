@@ -6,8 +6,6 @@ namespace test
         public ‹N“®‰æ–Ê()
         {
             InitializeComponent();
-            //this.MaximumSize = this.Size;
-            //this.MinimumSize = this.Size;
             scaler = new ControlScaler();
             scaler.CaptureInitialState(this);
         }
@@ -50,7 +48,7 @@ namespace test
 
         private void ‹N“®‰æ–Ê_Resize(object sender, EventArgs e)
         {
-            scaler.ScaleToCurrentSize(this);
+            scaler?.ScaleToCurrentSize(this, controlScalerProvider1);
         }
     }
 }

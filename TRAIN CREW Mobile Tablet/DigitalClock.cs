@@ -14,6 +14,7 @@ namespace tablet
 {
     public partial class DigitalClock : Form
     {
+        ControlScaler scaler;
         private int hourOffset = 0; // 時の調整値
         private int minuteOffset = 0; // 分の調整値
         public static int time;
@@ -23,8 +24,8 @@ namespace tablet
             InitializeComponent();
             timer1.Interval = 1000; // タイマーの間隔を1秒に設定
             timer1.Tick += timer1_Tick; // タイマーのTickイベントにイベントハンドラーを追加
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            scaler = new ControlScaler();
+            scaler.CaptureInitialState(this);
         }
         int H = 0;
         int HH = 0;
@@ -37,38 +38,38 @@ namespace tablet
             DateTime adjustedTime = now;
             //MessageBox.Show(H.ToString());
             H = (int)adjustedTime.Hour;
-            if (HH != time && f==0)
+            if (HH != time && f == 0)
             {
                 HH++;
             }
             else if (f == 1)
             {
-                HH = time + (H-M.time2);
+                HH = time + (H - M.time2);
             }
             else
             {
                 M.f = 1;
                 M.time2 = H;
             }
-                /*if (time == 0)
-                {
-                    HH = adjustedTime.Hour - 10;
-                }
-                else if (H >= 20 && H <= 23)
-                {
-                    HH = (H - 20) + time;
-                    //MessageBox.Show((H - 20).ToString());
-                }
-                else if (H >= 14 && H <= 17)
-                {
-                    HH = (H - 14) + time;
-                    //MessageBox.Show((H - 14).ToString());
-                }
-                else
-                {
-                    HH = adjustedTime.Hour - 10;
-                }*/
-                HH = Math.Max(0, Math.Min(23, HH));
+            /*if (time == 0)
+            {
+                HH = adjustedTime.Hour - 10;
+            }
+            else if (H >= 20 && H <= 23)
+            {
+                HH = (H - 20) + time;
+                //MessageBox.Show((H - 20).ToString());
+            }
+            else if (H >= 14 && H <= 17)
+            {
+                HH = (H - 14) + time;
+                //MessageBox.Show((H - 14).ToString());
+            }
+            else
+            {
+                HH = adjustedTime.Hour - 10;
+            }*/
+            HH = Math.Max(0, Math.Min(23, HH));
             if (flg == 0)
             {
                 adjustedTime = new DateTime(now.Year, now.Month, now.Day, HH, now.Minute, now.Second);
@@ -110,6 +111,11 @@ namespace tablet
         private void button6_Click(object sender, EventArgs e)
         {
             flg = 1;
+        }
+
+        private void DigitalClock_Resize(object sender, EventArgs e)
+        {
+            scaler?.ScaleToCurrentSize(this, controlScalerProvider1);
         }
     }
 }
