@@ -34,6 +34,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(420, 620);
+            ControlBox = false;
             Font = new Font("MS UI Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
             MaximizeBox = false;
             MinimizeBox = false;
