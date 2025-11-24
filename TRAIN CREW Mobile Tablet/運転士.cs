@@ -334,7 +334,8 @@ namespace test
                 form3Instance.Size = new Size(282, 424);
             }
         }
-
+        public static int f=0;
+        public static int time2=0;
         DigitalClock form4Instance;
         private void button6_Click(object sender, EventArgs e)
         {
@@ -369,6 +370,7 @@ namespace test
                     time = 0;
                 }
                 DigitalClock.time = time;
+                DigitalClock.f = f;
                 form4Instance = new DigitalClock();
                 form4Instance.Show();
                 button6.BackColor = Color.LightGreen;
@@ -385,7 +387,8 @@ namespace test
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox3.Items.Clear();
-
+            f = 0;
+            time2 = 0;
             // ComboBox の選択に対応する埋め込みテキストファイル名
             string fileName = comboBox1.SelectedItem?.ToString() switch
             {

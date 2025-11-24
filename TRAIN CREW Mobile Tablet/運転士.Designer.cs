@@ -42,6 +42,7 @@
             button6 = new Button();
             button7 = new Button();
             button8 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -194,12 +195,23 @@
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Yellow;
+            label1.Location = new Point(266, 37);
+            label1.Name = "label1";
+            label1.Size = new Size(139, 15);
+            label1.TabIndex = 16;
+            label1.Text = "↑必ずMT中に起動すること";
+            // 
             // M
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
@@ -220,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -238,5 +251,6 @@
         private Button button6;
         private Button button7;
         private Button button8;
+        private Label label1;
     }
 }

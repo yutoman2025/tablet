@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using test;
 
 namespace tablet
 {
@@ -16,6 +17,7 @@ namespace tablet
         private int hourOffset = 0; // 時の調整値
         private int minuteOffset = 0; // 分の調整値
         public static int time;
+        public static int f;
         public DigitalClock()
         {
             InitializeComponent();
@@ -27,7 +29,6 @@ namespace tablet
         int H = 0;
         int HH = 0;
         int flg = 0;
-        int f=0;
         string timeis = string.Empty;
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -40,9 +41,14 @@ namespace tablet
             {
                 HH++;
             }
+            else if (f == 1)
+            {
+                HH = time + (H-M.time2);
+            }
             else
             {
-                f = 1;
+                M.f = 1;
+                M.time2 = H;
             }
                 /*if (time == 0)
                 {
@@ -63,7 +69,7 @@ namespace tablet
                     HH = adjustedTime.Hour - 10;
                 }*/
                 HH = Math.Max(0, Math.Min(23, HH));
-            if (flg == 0 && f==1)
+            if (flg == 0)
             {
                 adjustedTime = new DateTime(now.Year, now.Month, now.Day, HH, now.Minute, now.Second);
             }
