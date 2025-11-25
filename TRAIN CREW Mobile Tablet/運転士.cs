@@ -182,7 +182,12 @@ namespace test
             }
             else if (comboBox1.SelectedItem.ToString() == "0709")
             {
-                Assembly assembly = Assembly.GetExecutingAssembly();
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("0709は未対応です");
+                this.TopMost = originalTopMost;
+                return;
+                /*Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
                 string selectedText = comboBox2.Text;
                 int last = selectedText.Length - 1;
@@ -213,7 +218,7 @@ namespace test
                 {
                     Image myImage = (Image)resourceManager.GetObject(selectedText2);
                     pictureBox2.Image = myImage;
-                }
+                }*/
             }
             else if (comboBox1.SelectedItem.ToString() == "2123")
             {
@@ -335,52 +340,37 @@ namespace test
         public static int f = 0;
         public static int time2 = 0;
         DigitalClock form4Instance;
+        private AnalogClock? analogFormInstance;
         private void button6_Click(object sender, EventArgs e)
         {
             if (form4Instance == null || form4Instance.IsDisposed)
             {
-                if (comboBox1.SelectedItem == "1113")
-                {
-                    time = 10;
-                }
-                else if (comboBox1.SelectedItem == "1517")
-                {
-                    time = 14;
-                }
-                else if (comboBox1.SelectedItem == "1820")
-                {
-                    time = 17;
-                }
-                else if (comboBox1.SelectedItem == "0709")
-                {
-                    time = 6;
-                }
-                else if (comboBox1.SelectedItem == "2123")
-                {
-                    time = 20;
-                }
-                else if (comboBox1.SelectedItem == "1824")
-                {
-                    time = 17;
-                }
-                else
-                {
-                    time = 0;
-                }
+                // 既存の time 計算ロジック
+                if (comboBox1.SelectedItem == "1113") time = 10;
+                else if (comboBox1.SelectedItem == "1517") time = 14;
+                else if (comboBox1.SelectedItem == "1820") time = 17;
+                else if (comboBox1.SelectedItem == "0709") time = 6;
+                else if (comboBox1.SelectedItem == "2123") time = 20;
+                else if (comboBox1.SelectedItem == "1824") time = 17;
+                else time = 0;
+
                 DigitalClock.time = time;
                 DigitalClock.f = f;
+
+                // DigitalClock のみを作成して表示（アナログは作成しない）
                 form4Instance = new DigitalClock();
                 form4Instance.Show();
+
                 button6.BackColor = Color.LightGreen;
                 return;
             }
             else
             {
+                // DigitalClock のみを閉じる（アナログは保持する）
                 form4Instance.Close();
                 button6.BackColor = Color.White;
                 return;
             }
-
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -474,6 +464,11 @@ namespace test
             {
                 form4Instance.Close();
             }
+            // 追加：アナログ時計を閉じる
+            if (analogFormInstance != null && !analogFormInstance.IsDisposed)
+            {
+                analogFormInstance.Close();
+            }
             if (form5Instance != null && !form5Instance.IsDisposed)
             {
                 form5Instance.Close();
@@ -483,6 +478,30 @@ namespace test
         private void M_Resize(object sender, EventArgs e)
         {
             scaler?.ScaleToCurrentSize(this, controlScalerProvider1);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // トグルでアナログ時計を表示／非表示する
+            if (analogFormInstance == null || analogFormInstance.IsDisposed)
+            {
+                // 可能なら DigitalClock に同期して生成
+                if (form4Instance != null && !form4Instance.IsDisposed)
+                {
+                    analogFormInstance = new AnalogClock(form4Instance);
+                }
+                else
+                {
+                    analogFormInstance = new AnalogClock();
+                }
+                analogFormInstance.Show();
+                button7.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                analogFormInstance.Close();
+                button7.BackColor = Color.White;
+            }
         }
     }
 }

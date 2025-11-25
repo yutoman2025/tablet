@@ -17,6 +17,11 @@ namespace tablet
         ControlScaler scaler;
         private int hourOffset = 0; // 時の調整値
         private int minuteOffset = 0; // 分の調整値
+
+        // 追加：他クラスから現在の補正値を参照できるようにする
+        public int HourOffset => hourOffset;
+        public int MinuteOffset => minuteOffset;
+
         public static int time;
         public static int f;
         public DigitalClock()
@@ -26,17 +31,25 @@ namespace tablet
             timer1.Tick += timer1_Tick; // タイマーのTickイベントにイベントハンドラーを追加
             scaler = new ControlScaler();
             scaler.CaptureInitialState(this);
+
+            // 重要：インスタンス生成直後に一度更新処理を呼んで CurrentAdjustedTime を初期化・通知する
+            // これにより、AnalogClock がすぐに正しい時刻を取得できます
+            timer1_Tick(this, EventArgs.Empty);
         }
         int H = 0;
         int HH = 0;
         int flg = 0;
         string timeis = string.Empty;
+        // --- 追加：現在の補正済み時刻を外部参照するためのプロパティとイベント ---
+        public DateTime CurrentAdjustedTime { get; private set; }
+        public event Action<DateTime>? TimeUpdated;
+        // --- 追加ここまで ---
+
+        // timer1_Tick を以下の実装に置き換えてください（クラス内の既存メソッドと差し替え）。
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //MessageBox.Show(H.ToString());
             DateTime now = DateTime.Now;
             DateTime adjustedTime = now;
-            //MessageBox.Show(H.ToString());
             H = (int)adjustedTime.Hour;
             if (HH != time && f == 0)
             {
@@ -51,24 +64,7 @@ namespace tablet
                 M.f = 1;
                 M.time2 = H;
             }
-            /*if (time == 0)
-            {
-                HH = adjustedTime.Hour - 10;
-            }
-            else if (H >= 20 && H <= 23)
-            {
-                HH = (H - 20) + time;
-                //MessageBox.Show((H - 20).ToString());
-            }
-            else if (H >= 14 && H <= 17)
-            {
-                HH = (H - 14) + time;
-                //MessageBox.Show((H - 14).ToString());
-            }
-            else
-            {
-                HH = adjustedTime.Hour - 10;
-            }*/
+
             HH = Math.Max(0, Math.Min(23, HH));
             if (flg == 0)
             {
@@ -79,8 +75,12 @@ namespace tablet
                 adjustedTime = now;
             }
             adjustedTime = adjustedTime.AddHours(hourOffset).AddMinutes(minuteOffset);
-            //MessageBox.Show(HH.ToString());
-            // 現在の時刻を取得して、文字列として整形する
+
+            // --- 追加：現在の補正時刻を保存し、購読者に通知 ---
+            CurrentAdjustedTime = adjustedTime;
+            TimeUpdated?.Invoke(adjustedTime);
+            // --- 追加ここまで ---
+
             Hlabel.Text = adjustedTime.ToString("HH");
             Mlabel.Text = adjustedTime.ToString("mm");
             Slabel.Text = adjustedTime.ToString("ss");

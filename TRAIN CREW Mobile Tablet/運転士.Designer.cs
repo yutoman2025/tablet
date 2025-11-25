@@ -256,6 +256,7 @@
             button7.TabIndex = 14;
             button7.Text = "AnalogClock";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
