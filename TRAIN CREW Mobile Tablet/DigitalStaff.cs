@@ -57,7 +57,7 @@ namespace tc_staff_draw
             if (staff_setting.init == false) return;
 
             TrainNumber = train_number;
-            string[] csvin = new string[] { "tablet.Resources.11-13-1.csv","tablet.Resources.11-13-2.csv","tablet.Resources.15-17-1.csv","tablet.Resources.15-17-2.csv","talbet.Resources.18-24-1.csv","tablet.Resources.18-24-2" };
+            string[] csvin = new string[] { "tablet.Resources.11-13-1.csv","tablet.Resources.11-13-2.csv","tablet.Resources.15-17-1.csv","tablet.Resources.15-17-2.csv","tablet.Resources.18-24-1.csv","tablet.Resources.18-24-2.csv" };
             foreach (string csv in csvin)
             {
                 // CSV読み込み
@@ -99,7 +99,16 @@ namespace tc_staff_draw
         public void DrawAll()
         {
             if (draw == null) return;
-            if (StaffData.IsNull()) return;
+
+            if (StaffData.IsNull())
+            {
+                Text = "デジタルスタフ (" + TrainNumber + " - リソースなし)";
+                return;
+            }
+            else
+            {
+                Text = "デジタルスタフ (" + TrainNumber + ")";
+            }
 
             // ウィンドウサイズが変わったら描画バッファを再生成する
             if (DisplayRectangle != displayRectangle_old)
