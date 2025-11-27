@@ -27,7 +27,7 @@ namespace tablet
         public DigitalClock()
         {
             InitializeComponent();
-            timer1.Interval = 1000; // タイマーの間隔を1秒に設定
+            timer1.Interval = 200; // タイマーの間隔を1秒に設定
             timer1.Tick += timer1_Tick; // タイマーのTickイベントにイベントハンドラーを追加
             scaler = new ControlScaler();
             scaler.CaptureInitialState(this);

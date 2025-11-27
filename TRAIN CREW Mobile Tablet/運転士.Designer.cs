@@ -44,6 +44,7 @@
             button8 = new Button();
             label1 = new Label();
             controlScalerProvider1 = new tablet.ControlScalerProvider();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -281,7 +282,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Yellow;
             controlScalerProvider1.SetFontResizable(label1, ControlExpantion.NotAllow);
-            label1.Location = new Point(239, 45);
+            label1.Location = new Point(128, 45);
             controlScalerProvider1.SetMovable(label1, true);
             label1.Name = "label1";
             controlScalerProvider1.SetRefLocation(label1, new Point(-450, 15));
@@ -289,7 +290,25 @@
             controlScalerProvider1.SetResizableY(label1, ControlExpantion.NotAllow);
             label1.Size = new Size(139, 15);
             label1.TabIndex = 16;
-            label1.Text = "↑必ずMT中に起動すること";
+            label1.Text = "必ずMT中に起動すること↑";
+            // 
+            // label2
+            // 
+            controlScalerProvider1.SetAnchor(label2, ControlAnchor.TopLeft);
+            label2.AutoSize = true;
+            label2.BackColor = Color.Yellow;
+            label2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold);
+            controlScalerProvider1.SetFontResizable(label2, ControlExpantion.NotAllow);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(273, 45);
+            controlScalerProvider1.SetMovable(label2, false);
+            label2.Name = "label2";
+            controlScalerProvider1.SetRefLocation(label2, new Point(0, 0));
+            controlScalerProvider1.SetResizableX(label2, ControlExpantion.NotAllow);
+            controlScalerProvider1.SetResizableY(label2, ControlExpantion.NotAllow);
+            label2.Size = new Size(130, 15);
+            label2.TabIndex = 17;
+            label2.Text = "デジタル時計起動確認↑";
             // 
             // M
             // 
@@ -298,6 +317,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -347,5 +367,6 @@
         private Button button8;
         private Label label1;
         private tablet.ControlScalerProvider controlScalerProvider1;
+        private Label label2;
     }
 }
