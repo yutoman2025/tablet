@@ -1,24 +1,28 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using tablet; // DigitalClock ����`����Ă��� namespace ���C���|�[�g
+using tablet; // DigitalClock の namespace
 
 namespace test
 {
     public class AnalogClock : Form
     {
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer? timer;
+        private DigitalClock? sourceClock;
+
+        // DigitalClock と同じロジックを再現するためのフィールド
+        int H = 0;
+        int HH = 0;
+        int flgLocal = 0;
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int HourOffset { get; set; } = 0;
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int MinuteOffset { get; set; } = 0;
-
-        // �ǉ��FDigitalClock �Q�Ƃƒ��߂̕␳����
-        private DigitalClock? sourceClock;
-        private DateTime lastSourceTime = DateTime.MinValue;
 
         public AnalogClock() : this(0, 0) { }
 
@@ -32,84 +36,150 @@ namespace test
             SetStyle(ControlStyles.ResizeRedraw | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 200; // �X�V�����グ��i200ms ���Ɓj
+            timer.Interval = 200; // 更新感を上げる（200ms ごと）
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            // 初期化を一度実行して HH 等を初期化（DigitalClock がしているのと同じ）
+            Timer_Tick(this, EventArgs.Empty);
         }
 
-        // DigitalClock ���󂯎���čw�ǂ���R���X�g���N�^
+        // DigitalClock を受け取って参照する（必要なら運転士から渡す）
         public AnalogClock(DigitalClock source) : this(0, 0)
         {
             AttachSourceClock(source);
         }
 
-        private void Timer_Tick(object? sender, EventArgs e)
-        {
-            // sourceClock ������΂�����g���ĕ`��X�V�A������΃V�X�e���������g��
-            if (sourceClock != null)
-            {
-                // DigitalClock �� CurrentAdjustedTime �𐳂������������Ă���O��
-                lastSourceTime = sourceClock.CurrentAdjustedTime;
-            }
-            else
-            {
-                lastSourceTime = DateTime.Now.AddHours(HourOffset).AddMinutes(MinuteOffset);
-            }
-            Invalidate();
-        }
-
-        // source �� Attach�^Detach ����w���p�[
         public void AttachSourceClock(DigitalClock source)
         {
-            if (sourceClock != null)
-            {
-                sourceClock.TimeUpdated -= OnSourceTimeUpdated;
-            }
             sourceClock = source ?? throw new ArgumentNullException(nameof(source));
-            sourceClock.TimeUpdated += OnSourceTimeUpdated;
-            // �����ǂݎ��
-            lastSourceTime = sourceClock.CurrentAdjustedTime;
-            Invalidate();
+
+            // DigitalClock の public プロパティがあれば同期して参照（hour/minute offset）
+            try
+            {
+                HourOffset = source.HourOffset;
+                MinuteOffset = source.MinuteOffset;
+            }
+            catch
+            {
+                // 無視
+            }
+
+            // 初期化を行う
+            Timer_Tick(this, EventArgs.Empty);
         }
 
-        private void OnSourceTimeUpdated(DateTime dt)
+        // DigitalClock と同じアルゴリズムで adjustedTime を計算して表示する
+        private void Timer_Tick(object? sender, EventArgs e)
         {
-            // UI �X���b�h�ōX�V
-            if (IsHandleCreated)
+            DateTime now = DateTime.Now;
+            DateTime adjustedTime = now;
+
+            // DigitalClock と同様のロジックを使う（static DigitalClock.time / DigitalClock.f, M.time2 / M.f を参照）
+            H = now.Hour;
+
+            // DigitalClock.time と DigitalClock.f は static なので参照可能
+            if (HH != DigitalClock.time && DigitalClock.f == 0)
             {
-                BeginInvoke((Action)(() =>
-                {
-                    lastSourceTime = dt;
-                    Invalidate();
-                }));
+                HH++;
+            }
+            else if (DigitalClock.f == 1)
+            {
+                // M.time2 は 運転士.cs の static フィールド
+                HH = DigitalClock.time + (H - M.time2);
             }
             else
             {
-                lastSourceTime = dt;
+                M.f = 1;
+                M.time2 = H;
             }
+
+            HH = Math.Max(0, Math.Min(23, HH));
+
+            if (flgLocal == 0)
+            {
+                adjustedTime = new DateTime(now.Year, now.Month, now.Day, HH, now.Minute, now.Second);
+            }
+            else
+            {
+                adjustedTime = now;
+            }
+
+            // hour/minute offset は DigitalClock インスタンスがあればそちらの値を優先して使う
+            int effectiveHourOffset = sourceClock != null ? sourceClock.HourOffset : HourOffset;
+            int effectiveMinuteOffset = sourceClock != null ? sourceClock.MinuteOffset : MinuteOffset;
+
+            adjustedTime = adjustedTime.AddHours(effectiveHourOffset).AddMinutes(effectiveMinuteOffset);
+
+            // 描画用に現在の adjustedTime を使う（OnPaint 内で計算しないように lastTime を保持）
+            lastDisplayedTime = adjustedTime;
+
+            Invalidate();
         }
+
+        private DateTime lastDisplayedTime = DateTime.MinValue;
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             var g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
 
             int w = ClientSize.Width;
             int h = ClientSize.Height;
             int size = Math.Min(w, h);
-            var center = new PointF(w / 2f, h / 2f);
-            float radius = size * 0.45f;
+            var center = new PointF(w / 2f, h / 2f + size * 0.05f); // わずかに下寄せ
+            float radius = size * 0.42f;
 
-            // �w�i
-            using (var brush = new SolidBrush(Color.White))
-                g.FillEllipse(brush, center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            // 背景（ウィンドウ全体を淡い色に）
+            using (var bg = new SolidBrush(Color.FromArgb(240, 238, 230)))
+                g.FillRectangle(bg, ClientRectangle);
 
-            // �O��
-            using (var pen = new Pen(Color.Black, Math.Max(1, size / 200f)))
-                g.DrawEllipse(pen, center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            // 金属の外縁 (PathGradientBrush で金属っぽく)
+            var rimRect = new RectangleF(center.X - radius - size * 0.06f, center.Y - radius - size * 0.06f, (radius + size * 0.06f) * 2, (radius + size * 0.06f) * 2);
+            using (var path = new GraphicsPath())
+            {
+                path.AddEllipse(rimRect);
+                using (var pgb = new PathGradientBrush(path))
+                {
+                    pgb.CenterColor = Color.FromArgb(220, 220, 220);
+                    pgb.SurroundColors = new Color[] { Color.FromArgb(120, 120, 120) };
+                    pgb.CenterPoint = new PointF(center.X - size * 0.03f, center.Y - size * 0.03f);
+                    g.FillEllipse(pgb, rimRect);
+                }
+            }
 
-            // ���^�b�ڐ���i60�{�j
+            // 光沢ハイライト（上半分）
+            using (var highlight = new LinearGradientBrush(
+                new PointF(center.X - radius, center.Y - radius),
+                new PointF(center.X + radius, center.Y - radius),
+                Color.FromArgb(180, Color.White),
+                Color.FromArgb(0, Color.White)))
+            {
+                var clip = g.Clip;
+                g.SetClip(new RectangleF(center.X - radius, center.Y - radius, radius * 2, radius));
+                g.FillEllipse(highlight, new RectangleF(center.X - radius, center.Y - radius, radius * 2, radius));
+                g.Clip = clip;
+            }
+
+            // 文字盤（クリーム色）
+            using (var faceBrush = new SolidBrush(Color.FromArgb(250, 244, 229)))
+            using (var facePen = new Pen(Color.FromArgb(180, 140, 80), Math.Max(1, size / 200f)))
+            {
+                g.FillEllipse(faceBrush, center.X - radius, center.Y - radius, radius * 2, radius * 2);
+                g.DrawEllipse(facePen, center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            }
+
+            // 上部のリング（懐中時計のループ）
+            float ringRadius = radius * 0.22f;
+            var ringCenter = new PointF(center.X, center.Y - radius - ringRadius * 0.5f);
+            using (var pen = new Pen(Color.FromArgb(120, 120, 120), Math.Max(2, size / 120f)))
+            {
+                g.DrawEllipse(pen, ringCenter.X - ringRadius, ringCenter.Y - ringRadius, ringRadius * 2, ringRadius * 2);
+                g.DrawEllipse(pen, ringCenter.X - ringRadius * 0.6f, ringCenter.Y - ringRadius * 0.6f, ringRadius * 1.2f, ringRadius * 1.2f);
+            }
+
+            // 分/秒目盛り（60本）
             for (int i = 0; i < 60; i++)
             {
                 double angle = i * Math.PI * 2.0 / 60.0 - Math.PI / 2.0;
@@ -117,71 +187,248 @@ namespace test
                 float sin = (float)Math.Sin(angle);
 
                 bool isFive = (i % 5 == 0);
-                float markOuter = radius;
-                float markInner = radius - (isFive ? radius * 0.12f : radius * 0.06f);
+                float outer = radius * 0.98f;
+                float inner = isFive ? radius * 0.82f : radius * 0.90f;
                 float thickness = isFive ? Math.Max(2, size / 120f) : Math.Max(1, size / 300f);
 
-                using (var markPen = new Pen(Color.Black, thickness))
+                using (var markPen = new Pen(Color.FromArgb(70, 50, 30), thickness)) // 茶色寄りの目盛り
                 {
                     g.DrawLine(markPen,
-                        center.X + cos * markInner, center.Y + sin * markInner,
-                        center.X + cos * markOuter, center.Y + sin * markOuter);
+                        center.X + cos * inner, center.Y + sin * inner,
+                        center.X + cos * outer, center.Y + sin * outer);
                 }
             }
 
-            // 12���Ԑ����`��i���₷���j
-            using (var font = new Font(FontFamily.GenericSansSerif, Math.Max(10, size / 15f), FontStyle.Bold))
+            // 12時間数字（Times New Roman）— 目盛り側に寄せる
+            float numberRadiusFactor = 0.77f;
+            using (var numFont = new Font("Times New Roman", Math.Max(10, size / 12f), FontStyle.Bold))
             using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
             {
-                for (int hnum = 1; hnum <= 12; hnum++)
+                for (int n = 1; n <= 12; n++)
                 {
-                    double angle = hnum * Math.PI * 2.0 / 12.0 - Math.PI / 2.0;
-                    float x = center.X + (float)(Math.Cos(angle) * radius * 0.68);
-                    float y = center.Y + (float)(Math.Sin(angle) * radius * 0.68);
-                    g.DrawString(hnum.ToString(), font, Brushes.Black, x, y, sf);
+                    double angle = n * Math.PI * 2.0 / 12.0 - Math.PI / 2.0;
+                    float x = center.X + (float)(Math.Cos(angle) * radius * numberRadiusFactor);
+                    float y = center.Y + (float)(Math.Sin(angle) * radius * numberRadiusFactor);
+                    float scale = (n % 3 == 0) ? 1.05f : 1.0f;
+                    using (var fnt = new Font(numFont.FontFamily, numFont.Size * scale, numFont.Style))
+                    {
+                        g.DrawString(n.ToString(), fnt, Brushes.Black, x, y, sf);
+                    }
                 }
             }
 
-            // �g�p���鎞���isourceClock �o�R�ōX�V����� lastSourceTime�A���ݒ莞�͌��ݎ����j
-            DateTime now = lastSourceTime == DateTime.MinValue ? DateTime.Now.AddHours(HourOffset).AddMinutes(MinuteOffset) : lastSourceTime;
-
-            // �e�j�̊p�x�i�b�E���E���j
-            float second = now.Second + now.Millisecond / 1000f;
-            float minute = now.Minute + second / 60f;
-            float hour = (now.Hour % 12) + minute / 60f;
-
-            // �j�̕`��i������F�𒲐��j
-            DrawHand(g, center, hour / 12f * 360f - 90f, radius * 0.5f, new Pen(Color.Black, Math.Max(3, size / 80f)));
-            DrawHand(g, center, minute / 60f * 360f - 90f, radius * 0.75f, new Pen(Color.Black, Math.Max(2, size / 140f)));
-            DrawHand(g, center, second / 60f * 360f - 90f, radius * 0.85f, new Pen(Color.Red, Math.Max(1, size / 300f)));
-
-            // �����̂܂�
-            float centerDot = Math.Max(4, size / 50f);
-            g.FillEllipse(Brushes.Black, center.X - centerDot / 2, center.Y - centerDot / 2, centerDot, centerDot);
-
-            // �f�W�^���\���i�b�܂ň�ڂœǂ߂�悤�ɕ�����\���j
-            string timeStr = now.ToString("HH:mm:ss");
-            using (var tf = new Font(FontFamily.GenericSansSerif, Math.Max(10, size / 12f), FontStyle.Regular))
-            using (var brush = new SolidBrush(Color.Black))
-            using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near })
+            // ここで 12 時の文字の下にリソースの TATEHAMA ロゴを描画する
             {
-                var rect = new RectangleF(center.X - radius, center.Y + radius * 0.1f, radius * 2, radius * 0.5f);
-                g.DrawString(timeStr, tf, brush, rect, sf);
+                // 12時の位置を計算（数値描画と同じ numberRadiusFactor を使う）
+                double angle12 = -Math.PI / 2.0;
+                var num12Pos = new PointF(
+                    center.X + (float)(Math.Cos(angle12) * radius * numberRadiusFactor),
+                    center.Y + (float)(Math.Sin(angle12) * radius * numberRadiusFactor)
+                );
+
+                // ロゴの表示サイズ（調整可）
+                float logoBase = radius * 0.5f; // ロゴの基準幅
+                var logoPos = new PointF(num12Pos.X, num12Pos.Y + logoBase * 0.9f); // 下方向へオフセット
+
+                DrawTatehamaLogoFromResources(g, logoPos, logoBase);
+            }
+
+            // 使用する時刻（Timer_Tick が lastDisplayedTime に格納）
+            DateTime nowDisplayed = lastDisplayedTime == DateTime.MinValue ? DateTime.Now : lastDisplayedTime;
+
+            // ここで時刻の針を指定分ずらす: 時針を+2時間、分針と秒針を+15分/+15秒分進める
+            DateTime shifted = nowDisplayed.AddHours(2).AddMinutes(15).AddSeconds(15);
+
+            float second = shifted.Second + shifted.Millisecond / 1000f;
+            float minute = shifted.Minute + second / 60f;
+            float hour = (shifted.Hour % 12) + minute / 60f;
+
+            // ブランド名テキストを先に描画（針の下に置くため）
+            using (var logoBrush = new SolidBrush(Color.FromArgb(30, 30, 30)))
+            using (var logoFont = new Font("Arial", Math.Max(10, size / 18f), FontStyle.Bold))
+            using (var sfl = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near })
+            {
+                var rect = new RectangleF(center.X - radius * 0.5f, center.Y + radius * 0.30f, radius * 1.0f, radius * 0.25f);
+                g.DrawString("館浜電鉄", logoFont, logoBrush, rect, sfl);
+            }
+
+            // 装飾的な時針/分針/秒針（秒針はテキストの前に表示される）
+            DrawDecorativeHourHand(g, center, hour / 12f * 360f - 90f, radius * 0.52f, Math.Max(4, size / 60f), Color.FromArgb(40, 30, 20));
+            DrawDecorativeMinuteHand(g, center, minute / 60f * 360f - 90f, radius * 0.75f, Math.Max(3, size / 100f), Color.FromArgb(30, 20, 15));
+            DrawSecondHand(g, center, second / 60f * 360f - 90f, radius * 0.85f, Math.Max(1, size / 200f), Color.Red);
+
+            // 中央の装飾
+            using (var centralBrush = new SolidBrush(Color.FromArgb(50, 30, 15)))
+            {
+                float dot = Math.Max(6, size / 40f);
+                g.FillEllipse(Brushes.Gold, center.X - dot, center.Y - dot, dot * 2, dot * 2);
+                g.FillEllipse(centralBrush, center.X - dot * 0.6f, center.Y - dot * 0.6f, dot * 1.2f, dot * 1.2f);
             }
         }
 
-        private void DrawHand(Graphics g, PointF center, double angleDeg, float length, Pen pen)
+        private void DrawDecorativeHourHand(Graphics g, PointF center, double angleDeg, float length, float thickness, Color color)
         {
+            using (var path = new GraphicsPath())
+            {
+                float w = thickness * 2.2f;
+                path.AddRectangle(new RectangleF(-w / 2, -length * 0.15f, w, length * 0.65f));
+                var tri = new PointF[] { new PointF(-w, -length * 0.15f + length * 0.65f), new PointF(w, -length * 0.15f + length * 0.65f), new PointF(0, -length) };
+                path.AddPolygon(tri);
+                path.AddEllipse(-thickness * 0.6f, -thickness * 0.6f, thickness * 1.2f, thickness * 1.2f);
+
+                var m = new Matrix();
+                m.Translate(center.X, center.Y);
+                m.Rotate((float)angleDeg);
+                path.Transform(m);
+
+                using (var brush = new SolidBrush(color))
+                using (var pen = new Pen(Color.FromArgb(30, 20, 10), 1))
+                {
+                    g.FillPath(brush, path);
+                    g.DrawPath(pen, path);
+                }
+            }
+        }
+
+        private void DrawDecorativeMinuteHand(Graphics g, PointF center, double angleDeg, float length, float thickness, Color color)
+        {
+            using (var path = new GraphicsPath())
+            {
+                float w = thickness * 1.6f;
+                path.AddRectangle(new RectangleF(-w / 2, -length * 0.05f, w, length * 0.85f));
+                var tri = new PointF[] { new PointF(-w * 0.9f, -length * 0.05f + length * 0.85f), new PointF(w * 0.9f, -length * 0.05f + length * 0.85f), new PointF(0, -length) };
+                path.AddPolygon(tri);
+
+                var m = new Matrix();
+                m.Translate(center.X, center.Y);
+                m.Rotate((float)angleDeg);
+                path.Transform(m);
+
+                using (var brush = new SolidBrush(color))
+                using (var pen = new Pen(Color.FromArgb(30, 20, 10), 1))
+                {
+                    g.FillPath(brush, path);
+                    g.DrawPath(pen, path);
+                }
+            }
+        }
+
+        private void DrawSecondHand(Graphics g, PointF center, double angleDeg, float length, float thickness, Color color)
+        {
+            using (var pen = new Pen(color, thickness))
+            {
+                var m = g.Transform;
+                g.TranslateTransform(center.X, center.Y);
+                g.RotateTransform((float)angleDeg);
+                using (var backPen = new Pen(Color.FromArgb(120, 120, 120), Math.Max(1, thickness / 2)))
+                {
+                    g.DrawLine(backPen, 0, thickness * 2, 0, length * -0.12f);
+                }
+                g.DrawLine(pen, 0, 0, 0, -length);
+                g.FillEllipse(Brushes.Red, -thickness * 2, -length - thickness * 2, thickness * 4, thickness * 4);
+                g.Transform = m;
+            }
+        }
+
+        /// <summary>
+        /// リソースにある TATEHAMA イメージを描画する。
+        /// pos は描画中心、baseSize はロゴ幅のベース（ピクセル相当） — 必要なら調整してください。
+        /// </summary>
+        private void DrawTatehamaLogoFromResources(Graphics g, PointF pos, float baseSize)
+        {
+            // Resources の画像を取得（Properties.Resources.TATEHAMA が存在する前提）
+            Image? logo = null;
             try
             {
-                double rad = angleDeg * Math.PI / 180.0;
-                float x = center.X + (float)(Math.Cos(rad) * length);
-                float y = center.Y + (float)(Math.Sin(rad) * length);
-                g.DrawLine(pen, center.X, center.Y, x, y);
+                logo = tablet.Properties.Resources.TATEHAMA;
             }
-            finally
+            catch
             {
-                pen.Dispose();
+                // リソースが見つからない場合は何もしない
+                return;
+            }
+
+            if (logo == null) return;
+
+            // アスペクト比を保って表示サイズを決定
+            float aspect = logo.Width > 0 && logo.Height > 0 ? (float)logo.Width / logo.Height : 1f;
+            float destW = baseSize;               // 基準幅
+            float destH = destW / aspect;         // 幅を基準に高さを算出
+            // 必要に応じて縦横を入れ替えることで高さを基準にすることも可能
+
+            var dest = new RectangleF(pos.X - destW / 2f, pos.Y - destH / 2f, destW, destH);
+
+            // 高品質に描画（元の補助状態を復元）
+            var prevMode = g.InterpolationMode;
+            var prevSmo = g.SmoothingMode;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            // リソースのイメージは共有インスタンスの可能性があるので Dispose はしない
+            g.DrawImage(logo, dest);
+
+            g.InterpolationMode = prevMode;
+            g.SmoothingMode = prevSmo;
+        }
+
+        /// <summary>
+        /// 既存の三枚羽描画は残しておく（将来の参照用）。今回は使用されない。
+        /// </summary>
+        private void DrawThreeBladeLogo(Graphics g, PointF pos, float size)
+        {
+            // ローカル座標で下方向を -Y としてブレードを作り、回転して三枚並べる。
+            // ブレード形状（スムーズな多角形）
+            PointF[] blade = new PointF[]
+            {
+                new PointF(0, -size * 0.98f),                  // tip
+                new PointF(size * 0.65f, -size * 0.15f),
+                new PointF(size * 0.30f, size * 0.70f),
+                new PointF(-size * 0.30f, size * 0.70f),
+                new PointF(-size * 0.65f, -size * 0.15f)
+            };
+
+            // 各ブレードの角度と色（イメージに合わせて配置）
+            (float angle, Color color)[] blades = new (float, Color)[]
+            {
+                (-90f, Color.FromArgb(0, 220, 60)),   // 上寄り（緑）
+                (30f, Color.FromArgb(20, 140, 240)),  // 右（青）
+                (150f, Color.FromArgb(245, 190, 30))  // 左（黄）
+            };
+
+            foreach (var (angle, color) in blades)
+            {
+                using (var path = new GraphicsPath())
+                {
+                    path.AddPolygon(blade);
+
+                    // transform: rotate then translate
+                    var m = new Matrix();
+                    m.Rotate(angle);
+                    path.Transform(m);
+                    path.Transform(new Matrix(1,0,0,1,pos.X,pos.Y)); // translate
+
+                    // グラデーションで少し立体感を出す
+                    using (var brush = new PathGradientBrush(path))
+                    {
+                        brush.CenterColor = ControlPaint.Light(color);
+                        brush.SurroundColors = new Color[] { ControlPaint.Dark(color) };
+                        // 中心点を少しずらして光の当たりを表現
+                        brush.CenterPoint = new PointF(pos.X - size * 0.15f, pos.Y - size * 0.25f);
+                        g.FillPath(brush, path);
+                    }
+
+                    using (var pen = new Pen(Color.FromArgb(40, 40, 40), Math.Max(1, size / 50f)))
+                    {
+                        g.DrawPath(pen, path);
+                    }
+                }
+            }
+
+            // 中心の小さな継ぎ目（接合点）
+            using (var centerBrush = new SolidBrush(Color.FromArgb(30, 30, 30)))
+            {
+                float r = Math.Max(1.5f, size * 0.07f);
+                g.FillEllipse(centerBrush, pos.X - r * 0.5f, pos.Y - r * 0.5f, r, r);
             }
         }
 
@@ -196,7 +443,7 @@ namespace test
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "AnalogClock";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "�A�i���O���v";
+            Text = "懐中時計";
             TopMost = true;
             ResumeLayout(false);
         }
@@ -205,10 +452,8 @@ namespace test
         {
             if (disposing)
             {
-                // �w�ǉ���
                 if (sourceClock != null)
                 {
-                    sourceClock.TimeUpdated -= OnSourceTimeUpdated;
                     sourceClock = null;
                 }
                 if (timer != null)
