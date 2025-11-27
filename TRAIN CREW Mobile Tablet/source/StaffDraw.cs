@@ -124,16 +124,32 @@ namespace tc_staff_draw
             float pos_x = Design.Globals.Margin.Width;
             float pos_y = Design.Globals.Margin.Height + Design.Titles.Size.Height;
             float height;
+            int column = 0;
 
             if(Data.TimeTables == null)
             {
                 return;
             }
 
+            // 縦線
+            buffer.Graphics.DrawLine(pen_line,
+                pos_x + Design.Globals.Size.Width / 2, pos_y,
+                pos_x + Design.Globals.Size.Width / 2, Design.Globals.Margin.Height + Design.Globals.Size.Height);
+            buffer.Graphics.DrawLine(pen_line,
+                pos_x + Design.Globals.Size.Width / 2 - 1 , pos_y,
+                pos_x + Design.Globals.Size.Width / 2 - 1, Design.Globals.Margin.Height + Design.Globals.Size.Height);
+
             for (int i = 0; i < Data.TimeTables.Count; i++)
             {
-                pos_x = Design.Globals.Margin.Width;
+                // 枠の下側からはみ出す場合は2列目へ
                 height = CalcTimeTableHeight(Data.TimeTables[i], Design.TimeTables);
+                if(pos_y + height > Design.Globals.Margin.Height + Design.Globals.Size.Height)
+                {                    
+                    column++;
+                    pos_y = Design.Globals.Margin.Height + Design.Titles.Size.Height;
+                }
+
+                pos_x = Design.Globals.Margin.Width + Design.Globals.Size.Width / 2 * column;
 
                 // 駅名（左から1番目）
                 rect = new RectangleF(pos_x, pos_y, Design.TimeTables.WidthStation, height);
