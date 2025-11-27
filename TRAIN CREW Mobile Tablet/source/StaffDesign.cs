@@ -209,12 +209,12 @@ namespace tc_staff_draw
             /// <summary>
             /// （左から5番目）番線等を書く欄の横幅(初期値)
             /// </summary>
-            public static readonly float WidthSup1_Def = 80;
+            public static readonly float WidthSup1_Def = 44;
 
             /// <summary>
             /// （一番右）入替時間等を書く欄の横幅(初期値)
             /// </summary>
-            public static readonly float WidthSup2_Def = 165;
+            public static readonly float WidthSup2_Def = 200;
 
 
 
