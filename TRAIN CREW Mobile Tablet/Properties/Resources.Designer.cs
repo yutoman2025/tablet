@@ -151,6 +151,37 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平10
+        ///平11
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156
+        ///平157
+        ///平158
+        ///平159
+        ///平160
+        ///平161
+        ///平162 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _07_09ktlist {
+            get {
+                return ResourceManager.GetString("07-09ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   回802A
         ///回803A
         ///回914A
@@ -606,6 +637,36 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平11
+        ///平12
+        ///平13
+        ///平14
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156
+        ///平566
+        ///準変-平3
+        ///準変-平11
+        ///準変-平12
+        ///特変-平551
+        ///特変-平552
+        ///臨-平848
+        ///臨-平849 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _11_13ktlist {
+            get {
+                return ResourceManager.GetString("11-13ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   回1005A
         ///回1409A
         ///1019A
@@ -991,6 +1052,36 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平11
+        ///平12
+        ///平13
+        ///平14
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156
+        ///平157
+        ///平566
+        ///変-平13
+        ///変-平151
+        ///教変-平151
+        ///教変-平157
+        ///特変-平551
+        ///特変-平552 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _15_17ktlist {
+            get {
+                return ResourceManager.GetString("15-17ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   1407A
         ///1419A
         ///1508A
@@ -1298,6 +1389,99 @@ namespace tablet.Properties {
         }
         
         /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平10
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156
+        ///変-平5
+        ///変-平9
+        ///普変-平1
+        ///普変-平2
+        ///準変-平4
+        ///準変-平5
+        ///準変-平6
+        ///普変-平7
+        ///普変-平8
+        ///特変-平551
+        ///特変-平552 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _18_20ktlist {
+            get {
+                return ResourceManager.GetString("18-20ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平10
+        ///平11
+        ///平12
+        ///平13
+        ///平14
+        ///平15
+        ///平16
+        ///平17
+        ///平18
+        ///平19
+        ///平20
+        ///平21
+        ///平22
+        ///平23
+        ///平24
+        ///平25
+        ///平26
+        ///平27
+        ///平28
+        ///平29
+        ///平30
+        ///平31
+        ///平32
+        ///平33
+        ///平34
+        ///平35
+        ///平36
+        ///平37
+        ///平38
+        ///平39
+        ///平40
+        ///平551
+        ///平552
+        ///平553
+        ///平554
+        ///平555
+        ///平556
+        ///平557
+        ///平558
+        ///平559
+        ///平560 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _18_24ktlist {
+            get {
+                return ResourceManager.GetString("18-24ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap _18_31 {
@@ -1513,6 +1697,213 @@ namespace tablet.Properties {
         internal static System.Drawing.Bitmap _21_155 {
             get {
                 object obj = ResourceManager.GetObject("21-155", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _21_23ktlist {
+            get {
+                return ResourceManager.GetString("21-23ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平131
+        ///平132
+        ///平133
+        ///平551
+        ///平552
+        ///平553
+        ///平554 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string _21_24ktlist {
+            get {
+                return ResourceManager.GetString("21-24ktlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_01 {
+            get {
+                object obj = ResourceManager.GetObject("23-01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_02 {
+            get {
+                object obj = ResourceManager.GetObject("23-02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_03 {
+            get {
+                object obj = ResourceManager.GetObject("23-03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_04 {
+            get {
+                object obj = ResourceManager.GetObject("23-04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_05 {
+            get {
+                object obj = ResourceManager.GetObject("23-05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_06 {
+            get {
+                object obj = ResourceManager.GetObject("23-06", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_07 {
+            get {
+                object obj = ResourceManager.GetObject("23-07", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_08 {
+            get {
+                object obj = ResourceManager.GetObject("23-08", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_09 {
+            get {
+                object obj = ResourceManager.GetObject("23-09", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_151 {
+            get {
+                object obj = ResourceManager.GetObject("23-151", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_152 {
+            get {
+                object obj = ResourceManager.GetObject("23-152", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_153 {
+            get {
+                object obj = ResourceManager.GetObject("23-153", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_551 {
+            get {
+                object obj = ResourceManager.GetObject("23-551", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_552 {
+            get {
+                object obj = ResourceManager.GetObject("23-552", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_553 {
+            get {
+                object obj = ResourceManager.GetObject("23-553", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap _23_554 {
+            get {
+                object obj = ResourceManager.GetObject("23-554", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2524,6 +2915,103 @@ namespace tablet.Properties {
             get {
                 object obj = ResourceManager.GetObject("A902", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   平1
+        ///平2
+        ///平3
+        ///平4
+        ///平5
+        ///平6
+        ///平7
+        ///平8
+        ///平9
+        ///平10
+        ///平11
+        ///平12
+        ///平13
+        ///平14
+        ///平15
+        ///平16
+        ///平17
+        ///平18
+        ///平19
+        ///平20
+        ///平21
+        ///平22
+        ///平23
+        ///平24
+        ///平25
+        ///平26
+        ///平27
+        ///平28
+        ///平29
+        ///平30
+        ///平31
+        ///平32
+        ///平33
+        ///平34
+        ///平35
+        ///平36
+        ///平37
+        ///平38
+        ///平39
+        ///平40
+        ///平151
+        ///平152
+        ///平153
+        ///平154
+        ///平155
+        ///平156
+        ///平157
+        ///平158
+        ///平159
+        ///平160
+        ///平161
+        ///平162
+        ///平551
+        ///平552
+        ///平553
+        ///平554
+        ///平555
+        ///平556
+        ///平557
+        ///平558
+        ///平559
+        ///平560
+        ///平566
+        ///変-平5
+        ///変-平9
+        ///変-平13
+        ///変-平151
+        ///普変-平1
+        ///普変-平2
+        ///普変-平7
+        ///普変-平8
+        ///準変-平3
+        ///準変-平4
+        ///準変-平5
+        ///準変-平6
+        ///準変-平11
+        ///準変-平12
+        ///地変-平1
+        ///地変-平2
+        ///地変-平4
+        ///地変-平5
+        ///地変-平7
+        ///地変-平8
+        ///地変-平10
+        ///地変-平21
+        ///地変-平22
+        ///地変-平23
+        ///地変-平24
+        ///地変 [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ALLkt {
+            get {
+                return ResourceManager.GetString("ALLkt", resourceCulture);
             }
         }
         

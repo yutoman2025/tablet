@@ -1612,4 +1612,76 @@
   <data name="TATEHAMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo2_e-768x768-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="23-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-151" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-151.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-152" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-152.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-153" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-153.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-551" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-551.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-552" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-552.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-553" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-553.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="23-554" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\23-554.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="11-13ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\11-13\11-13ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="15-17ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\15-17\15-17ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="18-20ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\18-20\18-20ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="18-24ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\18-24\18-24ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="21-23ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-23\21-23ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="21-24ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21-24\21-24ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="07-09ktlist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7-9\07-09ktlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ALLkt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ALLkt.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

@@ -81,7 +81,7 @@ namespace test
                 this.TopMost = originalTopMost;
                 return;
             }
-            else if (comboBox1.SelectedItem.ToString() == "1113")
+            else if (comboBox1.SelectedItem.ToString() == "11-13")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
@@ -114,7 +114,7 @@ namespace test
                     pictureBox2.Image = myImage;
                 }
             }
-            else if (comboBox1.SelectedItem.ToString() == "1517")
+            else if (comboBox1.SelectedItem.ToString() == "15-17")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
@@ -147,7 +147,7 @@ namespace test
                     pictureBox2.Image = myImage;
                 }
             }
-            else if (comboBox1.SelectedItem.ToString() == "1820")
+            else if (comboBox1.SelectedItem.ToString() == "18-20")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
@@ -180,7 +180,7 @@ namespace test
                     pictureBox2.Image = myImage;
                 }
             }
-            else if (comboBox1.SelectedItem.ToString() == "0709")
+            else if (comboBox1.SelectedItem.ToString() == "07-09")
             {
                 bool originalTopMost = this.TopMost;
                 this.TopMost = true;
@@ -220,7 +220,7 @@ namespace test
                     pictureBox2.Image = myImage;
                 }*/
             }
-            else if (comboBox1.SelectedItem.ToString() == "2123")
+            else if (comboBox1.SelectedItem.ToString() == "21-23")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
@@ -254,7 +254,7 @@ namespace test
                     pictureBox2.Image = myImage;
                 }
             }
-            else if (comboBox1.SelectedItem.ToString() == "1824")
+            else if (comboBox1.SelectedItem.ToString() == "18-24")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
@@ -273,6 +273,39 @@ namespace test
                     selectedText3 = "0" + selectedText3;
                 }
                 string selectedText2 = "24-" + selectedText + selectedText3;
+                if (resourceManager.GetObject(selectedText2) == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+                else
+                {
+                    Image myImage = (Image)resourceManager.GetObject(selectedText2);
+                    pictureBox2.Image = myImage;
+                }
+            }
+            else if (comboBox1.SelectedItem.ToString() == "21-24")
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
+                string selectedText = comboBox2.Text;
+                int last = selectedText.Length - 1;
+                string selectedText3 = Regex.Replace(selectedText, @"[^0-9]", "");
+                selectedText = Regex.Replace(selectedText, @"[0-9]", "");
+                int num = int.Parse(selectedText3);
+                selectedText = selectedText.Replace("平", "");
+                selectedText = selectedText.Replace("変-", "2");
+                selectedText = selectedText.Replace("準2", "3");
+                selectedText = selectedText.Replace("普2", "3");
+                selectedText = selectedText.Replace("教2", "9");
+                if (num >= 1 && num <= 9 && selectedText == "")
+                {
+                    selectedText3 = "0" + selectedText3;
+                }
+                string selectedText2 = "23-" + selectedText + selectedText3;
                 if (resourceManager.GetObject(selectedText2) == null)
                 {
                     bool originalTopMost = this.TopMost;
@@ -344,12 +377,13 @@ namespace test
         private void button6_Click(object sender, EventArgs e)
         {
             // 既存の time 計算ロジック
-            if (comboBox1.SelectedItem == "1113") time = 10;
-            else if (comboBox1.SelectedItem == "1517") time = 14;
-            else if (comboBox1.SelectedItem == "1820") time = 17;
-            else if (comboBox1.SelectedItem == "0709") time = 6;
-            else if (comboBox1.SelectedItem == "2123") time = 20;
-            else if (comboBox1.SelectedItem == "1824") time = 17;
+            if (comboBox1.SelectedItem == "11-13") time = 10;
+            else if (comboBox1.SelectedItem == "15-17") time = 14;
+            else if (comboBox1.SelectedItem == "18-20") time = 17;
+            else if (comboBox1.SelectedItem == "07-09") time = 6;
+            else if (comboBox1.SelectedItem == "21-23") time = 20;
+            else if (comboBox1.SelectedItem == "18-24") time = 17;
+            else if (comboBox1.SelectedItem == "21-24") time = 20;
             else time = 0;
 
             DigitalClock.time = time;
@@ -382,17 +416,25 @@ namespace test
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox3.Items.Clear();
+            comboBox2.Items.Clear();
             f = 0;
             time2 = 0;
-            // ComboBox の選択に対応する埋め込みテキストファイル名
-            string fileName = comboBox1.SelectedItem?.ToString() switch
+
+            // コンボの基準は comboBox1 の選択値（comboBox3.SelectedItem を参照してはいけない）
+            var selectedCombo1 = comboBox1.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedCombo1))
+                return;
+
+            // comboBox3 用のリソース名決定
+            string fileName = selectedCombo1 switch
             {
-                "0709" => "07-09list.txt",
-                "1113" => "11-13list.txt",
-                "1517" => "15-17list.txt",
-                "1820" => "18-20list.txt",
-                "2123" => "21-23list.txt",
-                "1824" => "18-24list.txt",
+                "07-09" => "07-09list.txt",
+                "11-13" => "11-13list.txt",
+                "15-17" => "15-17list.txt",
+                "18-20" => "18-20list.txt",
+                "21-23" => "21-23list.txt",
+                "18-24" => "18-24list.txt",
+                "21-24" => "21-24list.txt",
                 "ダイヤ不定" => "ALL.txt",
                 _ => null
             };
@@ -400,7 +442,6 @@ namespace test
             if (string.IsNullOrEmpty(fileName))
                 return;
 
-            // 実行アセンブリと登録済みリソースを列挙して、ファイル名で末尾一致検索する（拡張子含む）
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = assembly.GetManifestResourceNames()
                                        .FirstOrDefault(n => n.EndsWith(fileName, StringComparison.OrdinalIgnoreCase));
@@ -419,11 +460,86 @@ namespace test
             }
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
-            using (var reader = new StreamReader(stream, Encoding.UTF8))
             {
-                var content = reader.ReadToEnd();
-                var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                comboBox3.Items.AddRange(lines);
+                if (stream == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this,
+                                    $"リソース '{fileName}' のストリームが取得できませんでした。",
+                                    "リソース エラー",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+
+                using (var reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    var content = reader.ReadToEnd();
+                    var lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    comboBox3.Items.AddRange(lines);
+                    if (comboBox3.Items.Count > 0)
+                        comboBox3.SelectedIndex = 0; // 1つ目を選択しておく
+                }
+            }
+
+            // comboBox2 (ktlist) も comboBox1 の選択値を基に決定する
+            string fileName2 = selectedCombo1 switch
+            {
+                "07-09" => "07-09ktlist.txt",
+                "11-13" => "11-13ktlist.txt",
+                "15-17" => "15-17ktlist.txt",
+                "18-20" => "18-20ktlist.txt",
+                "21-23" => "21-23ktlist.txt",
+                "18-24" => "18-24ktlist.txt",
+                "21-24" => "21-24ktlist.txt",
+                "ダイヤ不定" => "ALLkt.txt",
+                _ => null
+            };
+
+            if (string.IsNullOrEmpty(fileName2))
+                return;
+
+            var resourceName2 = assembly.GetManifestResourceNames()
+                                        .FirstOrDefault(n => n.EndsWith(fileName2, StringComparison.OrdinalIgnoreCase));
+
+            if (resourceName2 == null)
+            {
+                bool originalTopMost2 = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show(this,
+                                $"埋め込みリソース '{fileName2}' が見つかりません。...",
+                                "リソース エラー",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                this.TopMost = originalTopMost2;
+                return;
+            }
+
+            using (var stream2 = assembly.GetManifestResourceStream(resourceName2))
+            {
+                if (stream2 == null)
+                {
+                    bool originalTopMost2 = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this,
+                                    $"リソース '{fileName2}' のストリームが取得できませんでした。",
+                                    "リソース エラー",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    this.TopMost = originalTopMost2;
+                    return;
+                }
+
+                using (var reader2 = new StreamReader(stream2, Encoding.UTF8))
+                {
+                    var content2 = reader2.ReadToEnd();
+                    var lines2 = content2.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    comboBox2.Items.AddRange(lines2);
+                    if (comboBox2.Items.Count > 0)
+                        comboBox2.SelectedIndex = 0;
+                }
             }
         }
 

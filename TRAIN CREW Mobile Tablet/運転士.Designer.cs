@@ -95,7 +95,7 @@
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             controlScalerProvider1.SetFontResizable(comboBox1, ControlExpantion.NotAllow);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "0709", "1113", "1517", "1820", "2123", "1824", "ダイヤ不定" });
+            comboBox1.Items.AddRange(new object[] { "07-09", "11-13", "15-17", "18-20", "21-23", "18-24", "21-24", "ダイヤ不定" });
             comboBox1.Location = new Point(139, 77);
             controlScalerProvider1.SetMovable(comboBox1, true);
             comboBox1.Name = "comboBox1";

@@ -43,9 +43,14 @@ namespace tablet
         // --- 追加：現在の補正済み時刻を外部参照するためのプロパティとイベント ---
         public DateTime CurrentAdjustedTime { get; private set; }
         public event Action<DateTime>? TimeUpdated;
+        // 27時間表記を使用するか（表示のみを変換するフラグ）
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DefaultValue(true)]
+        public bool Use27HourFormat { get; set; } = true;
         // --- 追加ここまで ---
         // timer1_Tick を以下の実装に置き換えてください（クラス内の既存メソッドと差し替え）。
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object? sender, EventArgs e)
         {
             f = M.f;
             int time2 = M.time2;
@@ -58,7 +63,7 @@ namespace tablet
                 M.f = 1;
                 M.time2 = (int)adjustedTime.Hour;
             }
-            if (HH == time || f == 1) 
+            if (HH == time || f == 1)
             {
                 HH = time + ((int)adjustedTime.Hour - time2);
             }
@@ -73,12 +78,19 @@ namespace tablet
             }
             adjustedTime = adjustedTime.AddHours(hourOffset).AddMinutes(minuteOffset);
 
-            // --- 追加：現在の補正時刻を保存し、購読者に通知 ---
+            // --- 保存と通知 ---
             CurrentAdjustedTime = adjustedTime;
             TimeUpdated?.Invoke(adjustedTime);
-            // --- 追加ここまで ---
+            // --- ここまで ---
 
-            Hlabel.Text = adjustedTime.ToString("HH");
+            // 表示用の時刻計算（鉄道式 27 時間表記: 午前0〜3時を 24〜27 に変換）
+            int displayHour = adjustedTime.Hour;
+            if (Use27HourFormat && adjustedTime.Hour >= 0 && adjustedTime.Hour <= 3)
+            {
+                displayHour = adjustedTime.Hour + 24;
+            }
+
+            Hlabel.Text = displayHour.ToString("00");
             Mlabel.Text = adjustedTime.ToString("mm");
             Slabel.Text = adjustedTime.ToString("ss");
         }
