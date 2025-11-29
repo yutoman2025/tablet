@@ -44,27 +44,24 @@ namespace tablet
         public DateTime CurrentAdjustedTime { get; private set; }
         public event Action<DateTime>? TimeUpdated;
         // --- 追加ここまで ---
-
         // timer1_Tick を以下の実装に置き換えてください（クラス内の既存メソッドと差し替え）。
         private void timer1_Tick(object sender, EventArgs e)
         {
+            f = M.f;
+            int time2 = M.time2;
             DateTime now = DateTime.Now;
             DateTime adjustedTime = now;
             H = (int)adjustedTime.Hour;
             if (HH != time && f == 0)
             {
                 HH++;
-            }
-            else if (f == 1)
-            {
-                HH = time + (H - M.time2);
-            }
-            else
-            {
                 M.f = 1;
-                M.time2 = H;
+                M.time2 = (int)adjustedTime.Hour;
             }
-
+            if (HH == time || f == 1) 
+            {
+                HH = time + ((int)adjustedTime.Hour - time2);
+            }
             HH = Math.Max(0, Math.Min(23, HH));
             if (flg == 0)
             {
@@ -116,6 +113,35 @@ namespace tablet
         private void DigitalClock_Resize(object sender, EventArgs e)
         {
             scaler?.ScaleToCurrentSize(this, controlScalerProvider1);
+        }
+
+        /// <summary>
+        /// ウィンドウを隠して内部処理を継続したい場合は false のままにする。
+        /// アプリ終了時など本当に閉じたいときは true にして Close() を呼ぶ。
+        /// </summary>
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool AllowRealClose { get; set; } = false;
+
+        /// <summary>
+        /// アプリ終了などで確実に時計を終了させたいときに呼ぶヘルパー。
+        /// </summary>
+        public void ShutdownClock()
+        {
+            AllowRealClose = true;
+            Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            // 通常は閉じるイベントをキャンセルして Hide() にし、内部タイマー等を続行する
+            if (!AllowRealClose)
+            {
+                e.Cancel = true;
+                this.Hide();
+                return;
+            }
+            base.OnFormClosing(e);
         }
     }
 }

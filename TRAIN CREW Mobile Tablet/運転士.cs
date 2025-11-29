@@ -343,33 +343,40 @@ namespace test
         private AnalogClock? analogFormInstance;
         private void button6_Click(object sender, EventArgs e)
         {
+            // 既存の time 計算ロジック
+            if (comboBox1.SelectedItem == "1113") time = 10;
+            else if (comboBox1.SelectedItem == "1517") time = 14;
+            else if (comboBox1.SelectedItem == "1820") time = 17;
+            else if (comboBox1.SelectedItem == "0709") time = 6;
+            else if (comboBox1.SelectedItem == "2123") time = 20;
+            else if (comboBox1.SelectedItem == "1824") time = 17;
+            else time = 0;
+
+            DigitalClock.time = time;
+            DigitalClock.f = f;
+
+            // インスタンスがないか破棄済みなら新規作成して表示
             if (form4Instance == null || form4Instance.IsDisposed)
             {
-                // 既存の time 計算ロジック
-                if (comboBox1.SelectedItem == "1113") time = 10;
-                else if (comboBox1.SelectedItem == "1517") time = 14;
-                else if (comboBox1.SelectedItem == "1820") time = 17;
-                else if (comboBox1.SelectedItem == "0709") time = 6;
-                else if (comboBox1.SelectedItem == "2123") time = 20;
-                else if (comboBox1.SelectedItem == "1824") time = 17;
-                else time = 0;
-
-                DigitalClock.time = time;
-                DigitalClock.f = f;
-
-                // DigitalClock のみを作成して表示（アナログは作成しない）
                 form4Instance = new DigitalClock();
                 form4Instance.Show();
-
                 button6.BackColor = Color.LightGreen;
                 return;
             }
+
+            // 既存インスタンスが存在する場合は表示状態をトグルする
+            if (!form4Instance.Visible)
+            {
+                // Hidden の場合は再表示
+                var _ = form4Instance.Handle; // 必要ならハンドルを確保
+                form4Instance.Show();
+                button6.BackColor = Color.LightGreen;
+            }
             else
             {
-                // DigitalClock のみを閉じる（アナログは保持する）
-                form4Instance.Close();
+                // 表示中なら隠す（内部タイマーは継続）
+                form4Instance.Hide();
                 button6.BackColor = Color.White;
-                return;
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -462,7 +469,16 @@ namespace test
             }
             if (form4Instance != null && !form4Instance.IsDisposed)
             {
-                form4Instance.Close();
+                try
+                {
+                    // アプリ終了時は明示的に実際に閉じる
+                    form4Instance.AllowRealClose = true;
+                    form4Instance.Close();
+                }
+                catch
+                {
+                    form4Instance.Dispose();
+                }
             }
             // 追加：アナログ時計を閉じる
             if (analogFormInstance != null && !analogFormInstance.IsDisposed)
@@ -485,15 +501,8 @@ namespace test
             // トグルでアナログ時計を表示／非表示する
             if (analogFormInstance == null || analogFormInstance.IsDisposed)
             {
-                // 可能なら DigitalClock に同期して生成
-                if (form4Instance != null && !form4Instance.IsDisposed)
-                {
-                    analogFormInstance = new AnalogClock(form4Instance);
-                }
-                else
-                {
-                    analogFormInstance = new AnalogClock();
-                }
+                analogFormInstance = new AnalogClock(form4Instance);
+
                 analogFormInstance.Show();
                 button7.BackColor = Color.LightGreen;
             }

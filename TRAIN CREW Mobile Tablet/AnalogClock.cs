@@ -11,6 +11,7 @@ namespace test
     {
         private System.Windows.Forms.Timer? timer;
         private DigitalClock? sourceClock;
+        private bool ownsSourceClock = false; // 内部生成した DigitalClock を所有しているか
 
         // DigitalClock と同じロジックを再現するためのフィールド
         int H = 0;
@@ -50,23 +51,85 @@ namespace test
             AttachSourceClock(source);
         }
 
-        public void AttachSourceClock(DigitalClock source)
+        /// <summary>
+        /// DigitalClock を紐付ける。渡されたインスタンスが null/破棄済みの場合は
+        /// 非表示の内部 DigitalClock を作成して購読する。
+        /// </summary>
+        public void AttachSourceClock(DigitalClock? source)
         {
-            sourceClock = source ?? throw new ArgumentNullException(nameof(source));
+            // 既存購読解除
+            if (sourceClock != null)
+            {
+                try { sourceClock.TimeUpdated -= Source_TimeUpdated; } catch { }
+                // 内部生成したものを所有しているなら不要時に破棄する
+                if (ownsSourceClock)
+                {
+                    try
+                    {
+                        // 内部のデジタルクロックは画面表示していないため ShutdownClock で確実に閉じる
+                        sourceClock.AllowRealClose = true;
+                        sourceClock.Close();
+                        sourceClock.Dispose();
+                    }
+                    catch { }
+                    ownsSourceClock = false;
+                }
+                sourceClock = null;
+            }
+
+            if (source == null || source.IsDisposed)
+            {
+                // 内部で非表示の DigitalClock を作成してタイマー等を稼働させる
+                var hidden = new DigitalClock();
+                // ハンドルを強制生成して初期化（タイマー等を確実に開始）
+                var _ = hidden.Handle;
+                // 表示は行わない（Showしない）
+                sourceClock = hidden;
+                ownsSourceClock = true;
+            }
+            else
+            {
+                sourceClock = source;
+                ownsSourceClock = false;
+            }
 
             // DigitalClock の public プロパティがあれば同期して参照（hour/minute offset）
             try
             {
-                HourOffset = source.HourOffset;
-                MinuteOffset = source.MinuteOffset;
+                HourOffset = sourceClock != null ? sourceClock.HourOffset : HourOffset;
+                MinuteOffset = sourceClock != null ? sourceClock.MinuteOffset : MinuteOffset;
             }
             catch
             {
                 // 無視
             }
 
-            // 初期化を行う
-            Timer_Tick(this, EventArgs.Empty);
+            // DigitalClock の更新イベントを購読して即時同期する
+            try
+            {
+                sourceClock!.TimeUpdated += Source_TimeUpdated;
+            }
+            catch
+            {
+                // 無視
+            }
+
+            // もし source が既に補正済み時刻を持っていれば即座に反映
+            try
+            {
+                var cur = sourceClock!.CurrentAdjustedTime;
+                if (cur != DateTime.MinValue)
+                {
+                    lastDisplayedTime = cur;
+                }
+            }
+            catch
+            {
+                // 無視
+            }
+
+            // 初期描画
+            Invalidate();
         }
 
         // DigitalClock と同じアルゴリズムで adjustedTime を計算して表示する
@@ -111,6 +174,25 @@ namespace test
 
             adjustedTime = adjustedTime.AddHours(effectiveHourOffset).AddMinutes(effectiveMinuteOffset);
 
+            // 重要: DigitalClock 側の補正済み時刻が利用可能ならそれを優先して表示する
+            if (sourceClock != null)
+            {
+                try
+                {
+                    var src = sourceClock.CurrentAdjustedTime;
+                    if (src != DateTime.MinValue)
+                    {
+                        lastDisplayedTime = src;
+                        Invalidate();
+                        return;
+                    }
+                }
+                catch
+                {
+                    // 取得できなければ上で計算した adjustedTime を使う
+                }
+            }
+
             // 描画用に現在の adjustedTime を使う（OnPaint 内で計算しないように lastTime を保持）
             lastDisplayedTime = adjustedTime;
 
@@ -118,6 +200,21 @@ namespace test
         }
 
         private DateTime lastDisplayedTime = DateTime.MinValue;
+
+        // DigitalClock の更新イベントハンドラ
+        private void Source_TimeUpdated(DateTime dt)
+        {
+            // DigitalClock は System.Windows.Forms.Timer を使っているので通常 UI スレッドだが、
+            // 念のため InvokeRequired を使って UI スレッドに戻す
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action<DateTime>(Source_TimeUpdated), dt);
+                return;
+            }
+
+            lastDisplayedTime = dt;
+            Invalidate();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -236,26 +333,15 @@ namespace test
             // 使用する時刻（Timer_Tick が lastDisplayedTime に格納）
             DateTime nowDisplayed = lastDisplayedTime == DateTime.MinValue ? DateTime.Now : lastDisplayedTime;
 
-            // ここで時刻の針を指定分ずらす: 時針を+2時間、分針と秒針を+15分/+15秒分進める
-            DateTime shifted = nowDisplayed.AddHours(2).AddMinutes(15).AddSeconds(15);
+            // ここで時刻の針を計算 — lastDisplayedTime は既に補正済み
+            float second = nowDisplayed.Second + nowDisplayed.Millisecond / 1000f;
+            float minute = nowDisplayed.Minute + second / 60f;
+            float hour = (nowDisplayed.Hour % 12) + minute / 60f;
 
-            float second = shifted.Second + shifted.Millisecond / 1000f;
-            float minute = shifted.Minute + second / 60f;
-            float hour = (shifted.Hour % 12) + minute / 60f;
-
-            // ブランド名テキストを先に描画（針の下に置くため）
-            using (var logoBrush = new SolidBrush(Color.FromArgb(30, 30, 30)))
-            using (var logoFont = new Font("Arial", Math.Max(10, size / 18f), FontStyle.Bold))
-            using (var sfl = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near })
-            {
-                var rect = new RectangleF(center.X - radius * 0.5f, center.Y + radius * 0.30f, radius * 1.0f, radius * 0.25f);
-                g.DrawString("館浜電鉄", logoFont, logoBrush, rect, sfl);
-            }
-
-            // 装飾的な時針/分針/秒針（秒針はテキストの前に表示される）
-            DrawDecorativeHourHand(g, center, hour / 12f * 360f - 90f, radius * 0.52f, Math.Max(4, size / 60f), Color.FromArgb(40, 30, 20));
-            DrawDecorativeMinuteHand(g, center, minute / 60f * 360f - 90f, radius * 0.75f, Math.Max(3, size / 100f), Color.FromArgb(30, 20, 15));
-            DrawSecondHand(g, center, second / 60f * 360f - 90f, radius * 0.85f, Math.Max(1, size / 200f), Color.Red);
+            // 針の角度から不必要な -90° を削除（パスは上向きが基準）
+            DrawDecorativeHourHand(g, center, hour / 12f * 360f, radius * 0.52f, Math.Max(4, size / 60f), Color.FromArgb(40, 30, 20));
+            DrawDecorativeMinuteHand(g, center, minute / 60f * 360f, radius * 0.75f, Math.Max(3, size / 100f), Color.FromArgb(30, 20, 15));
+            DrawSecondHand(g, center, second / 60f * 360f, radius * 0.85f, Math.Max(1, size / 200f), Color.Red);
 
             // 中央の装飾
             using (var centralBrush = new SolidBrush(Color.FromArgb(50, 30, 15)))
@@ -272,21 +358,25 @@ namespace test
             {
                 float w = thickness * 2.2f;
                 path.AddRectangle(new RectangleF(-w / 2, -length * 0.15f, w, length * 0.65f));
-                var tri = new PointF[] { new PointF(-w, -length * 0.15f + length * 0.65f), new PointF(w, -length * 0.15f + length * 0.65f), new PointF(0, -length) };
+                var tri = new PointF[] {
+                    new PointF(-w, -length * 0.15f + length * 0.65f),
+                    new PointF(w, -length * 0.15f + length * 0.65f),
+                    new PointF(0, -length)
+                };
                 path.AddPolygon(tri);
                 path.AddEllipse(-thickness * 0.6f, -thickness * 0.6f, thickness * 1.2f, thickness * 1.2f);
 
-                var m = new Matrix();
-                m.Translate(center.X, center.Y);
-                m.Rotate((float)angleDeg);
-                path.Transform(m);
-
+                // Graphics の変換を使って回転中心を正しく扱う
+                var state = g.Save();
+                g.TranslateTransform(center.X, center.Y);
+                g.RotateTransform((float)angleDeg);
                 using (var brush = new SolidBrush(color))
                 using (var pen = new Pen(Color.FromArgb(30, 20, 10), 1))
                 {
                     g.FillPath(brush, path);
                     g.DrawPath(pen, path);
                 }
+                g.Restore(state);
             }
         }
 
@@ -296,20 +386,24 @@ namespace test
             {
                 float w = thickness * 1.6f;
                 path.AddRectangle(new RectangleF(-w / 2, -length * 0.05f, w, length * 0.85f));
-                var tri = new PointF[] { new PointF(-w * 0.9f, -length * 0.05f + length * 0.85f), new PointF(w * 0.9f, -length * 0.05f + length * 0.85f), new PointF(0, -length) };
+                var tri = new PointF[] {
+                    new PointF(-w * 0.9f, -length * 0.05f + length * 0.85f),
+                    new PointF(w * 0.9f, -length * 0.05f + length * 0.85f),
+                    new PointF(0, -length)
+                };
                 path.AddPolygon(tri);
 
-                var m = new Matrix();
-                m.Translate(center.X, center.Y);
-                m.Rotate((float)angleDeg);
-                path.Transform(m);
-
+                // Graphics の変換を使って回転中心を正しく扱う
+                var state = g.Save();
+                g.TranslateTransform(center.X, center.Y);
+                g.RotateTransform((float)angleDeg);
                 using (var brush = new SolidBrush(color))
                 using (var pen = new Pen(Color.FromArgb(30, 20, 10), 1))
                 {
                     g.FillPath(brush, path);
                     g.DrawPath(pen, path);
                 }
+                g.Restore(state);
             }
         }
 
@@ -454,6 +548,19 @@ namespace test
             {
                 if (sourceClock != null)
                 {
+                    try { sourceClock.TimeUpdated -= Source_TimeUpdated; } catch { }
+                    // 内部で生成した DigitalClock を所有していれば終了・破棄する
+                    if (ownsSourceClock)
+                    {
+                        try
+                        {
+                            sourceClock.AllowRealClose = true;
+                            sourceClock.Close();
+                            sourceClock.Dispose();
+                        }
+                        catch { }
+                        ownsSourceClock = false;
+                    }
                     sourceClock = null;
                 }
                 if (timer != null)
