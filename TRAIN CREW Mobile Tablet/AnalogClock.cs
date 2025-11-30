@@ -350,6 +350,13 @@ namespace test
                 g.FillEllipse(Brushes.Gold, center.X - dot, center.Y - dot, dot * 2, dot * 2);
                 g.FillEllipse(centralBrush, center.X - dot * 0.6f, center.Y - dot * 0.6f, dot * 1.2f, dot * 1.2f);
             }
+            using (var logoBrush = new SolidBrush(Color.FromArgb(30, 30, 30)))
+            using (var logoFont = new Font("Arial", Math.Max(10, size / 18f), FontStyle.Bold))
+            using (var sfl = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near })
+            {
+                var rect = new RectangleF(center.X - radius * 0.5f, center.Y + radius * 0.30f, radius * 1.0f, radius * 0.25f);
+                g.DrawString("館浜電鉄", logoFont, logoBrush, rect, sfl);
+            }
         }
 
         private void DrawDecorativeHourHand(Graphics g, PointF center, double angleDeg, float length, float thickness, Color color)
