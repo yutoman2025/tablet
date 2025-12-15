@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +54,31 @@ namespace test
                 form1Instance.Close();
                 button5.BackColor = Color.White;
                 return;
+            }
+        }
+        int flg = 0;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string file = 放送選択.file;
+            string file2 = 放送選択.file2;
+            if (file != null)
+            {
+                using var player = new SoundPlayer(file);
+                if (flg == 0)
+                {
+                    player.Play();
+                    if (file2 != null)
+                    {
+                        using var player2 = new SoundPlayer(file2);
+                        Task.Delay(100).ContinueWith(_ => player2.Play());
+                    }
+                    flg = 1;
+                }
+                else
+                {
+                    player.Stop();
+                    flg = 0;    
+                }
             }
         }
     }

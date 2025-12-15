@@ -74,6 +74,7 @@
             button3.TabIndex = 4;
             button3.Text = "再生/停止";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
