@@ -38,13 +38,14 @@ namespace test
         private 放送選択 form1Instance;
         private void button5_Click(object sender, EventArgs e)
         {
-            /*bool originalTopMost = this.TopMost;
-            this.TopMost = true;
-            MessageBox.Show("只今対応していません。", "お知らせ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.TopMost = originalTopMost;*/
             if (form1Instance == null || form1Instance.IsDisposed)
             {
                 form1Instance = new 放送選択();
+
+                // --- ここでイベントハンドラを購読する ---
+                // フォームが「更新要求」イベントを発火したら、OnLabelUpdateRequestメソッドを呼び出す
+                form1Instance.LabelUpdateRequest += OnLabelUpdateRequest;
+
                 form1Instance.Show();
                 button5.BackColor = Color.YellowGreen;
                 return;
@@ -52,13 +53,21 @@ namespace test
             else
             {
                 form1Instance.Close();
+                // イベントハンドラの購読解除も忘れずに
+                form1Instance.LabelUpdateRequest -= OnLabelUpdateRequest;
                 button5.BackColor = Color.White;
                 return;
             }
         }
+        private void OnLabelUpdateRequest(object sender, string newText)
+        {
+            // ここで親フォームのラベルを更新する
+            this.label1.Text = newText;
+        }
         int flg = 0;
         private void button3_Click(object sender, EventArgs e)
         {
+            label1.Text = 放送選択.name;
             string file = 放送選択.file;
             string file2 = 放送選択.file2;
             if (file != null)
