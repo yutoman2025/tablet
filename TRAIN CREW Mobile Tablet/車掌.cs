@@ -45,6 +45,8 @@ namespace test
                 // --- ここでイベントハンドラを購読する ---
                 // フォームが「更新要求」イベントを発火したら、OnLabelUpdateRequestメソッドを呼び出す
                 form1Instance.LabelUpdateRequest += OnLabelUpdateRequest;
+                form1Instance.LabelUpdateRequest2+= OnLabelUpdateRequest2;
+                form1Instance.LabelUpdateRequest3 += OnLabelUpdateRequest3;
 
                 form1Instance.Show();
                 button5.BackColor = Color.YellowGreen;
@@ -55,14 +57,34 @@ namespace test
                 form1Instance.Close();
                 // イベントハンドラの購読解除も忘れずに
                 form1Instance.LabelUpdateRequest -= OnLabelUpdateRequest;
+                form1Instance.LabelUpdateRequest2 -= OnLabelUpdateRequest2;
+                form1Instance.LabelUpdateRequest3 -= OnLabelUpdateRequest3;
                 button5.BackColor = Color.White;
                 return;
             }
         }
+
+        private void Form1Instance_LabelUpdateRequest3(object sender, string newText)
+        {
+            throw new NotImplementedException();
+        }
+
         private void OnLabelUpdateRequest(object sender, string newText)
         {
             // ここで親フォームのラベルを更新する
             this.label1.Text = newText;
+        }
+        private void OnLabelUpdateRequest2(object sender, string newText)
+        {
+            // ここで親フォームのラベルを更新する
+            this.label2.Text = newText;
+        }
+        private void OnLabelUpdateRequest3(object sender, string newText)
+        {
+            // ここで親フォームのラベルを更新する
+            this.label3.Text = newText;
+            string color = 放送選択.color;
+            this.label3.ForeColor = System.Drawing.Color.FromName(color);
         }
         int flg = 0;
         private void button3_Click(object sender, EventArgs e)

@@ -35,6 +35,8 @@
             button4 = new Button();
             button5 = new Button();
             label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -107,12 +109,38 @@
             label1.TabIndex = 7;
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            label2.BackColor = Color.FromArgb(0, 0, 64);
+            label2.Font = new Font("Yu Gothic UI", 20F);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(595, 404);
+            label2.Name = "label2";
+            label2.Size = new Size(193, 37);
+            label2.TabIndex = 8;
+            label2.Text = "行き先";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            label3.BackColor = Color.FromArgb(0, 0, 64);
+            label3.Font = new Font("Yu Gothic UI", 20F);
+            label3.ForeColor = Color.MediumOrchid;
+            label3.Location = new Point(396, 404);
+            label3.Name = "label3";
+            label3.Size = new Size(193, 37);
+            label3.TabIndex = 9;
+            label3.Text = "種別";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // C
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -136,5 +164,7 @@
         private Button button4;
         private Button button5;
         public Label label1;
+        public Label label2;
+        public Label label3;
     }
 }
