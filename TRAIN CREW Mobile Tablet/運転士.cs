@@ -572,6 +572,23 @@ namespace test
             form5Instance.Close();
             button8.BackColor = Color.White;
         }
+        private 運転通達受領 form6Instance;
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if(form6Instance == null || form6Instance.IsDisposed)
+            {
+                form6Instance = new 運転通達受領();
+                form6Instance.Show();
+                button9.BackColor = Color.LightGreen;
+                return;
+            }
+            else
+            {
+                form6Instance.Close();
+                button9.BackColor = Color.White;
+                return;
+            }
+        }
 
         private void M_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -604,6 +621,10 @@ namespace test
             if (form5Instance != null && !form5Instance.IsDisposed)
             {
                 form5Instance.Close();
+            }
+            if (form6Instance != null && !form6Instance.IsDisposed)
+            {
+                form6Instance.Close();
             }
         }
 

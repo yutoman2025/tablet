@@ -33,6 +33,13 @@
             panel1 = new Panel();
             checkBox1 = new CheckBox();
             checkBox2 = new CheckBox();
+            checkBox3 = new CheckBox();
+            checkBox4 = new CheckBox();
+            checkBox5 = new CheckBox();
+            checkBox6 = new CheckBox();
+            checkBox7 = new CheckBox();
+            checkBox8 = new CheckBox();
+            checkBox9 = new CheckBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,6 +65,14 @@
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(checkBox9);
+            panel1.Controls.Add(checkBox8);
+            panel1.Controls.Add(checkBox7);
+            panel1.Controls.Add(checkBox6);
+            panel1.Controls.Add(checkBox5);
+            panel1.Controls.Add(checkBox4);
+            panel1.Controls.Add(checkBox3);
             panel1.Controls.Add(checkBox2);
             panel1.Controls.Add(checkBox1);
             panel1.Location = new Point(12, 92);
@@ -68,22 +83,101 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(3, 20);
+            checkBox1.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox1.Location = new Point(3, 19);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(83, 19);
+            checkBox1.Size = new Size(137, 34);
             checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
+            checkBox1.Text = "着発線変更";
             checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(3, 45);
+            checkBox2.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox2.Location = new Point(146, 19);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(83, 19);
+            checkBox2.Size = new Size(116, 34);
             checkBox2.TabIndex = 1;
-            checkBox2.Text = "checkBox2";
+            checkBox2.Text = "交換変更";
             checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox3.Location = new Point(268, 19);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(95, 34);
+            checkBox3.TabIndex = 4;
+            checkBox3.Text = "無待避";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox4.Location = new Point(369, 19);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(116, 34);
+            checkBox4.TabIndex = 5;
+            checkBox4.Text = "折返変更";
+            checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox5.Location = new Point(3, 59);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(116, 34);
+            checkBox5.TabIndex = 6;
+            checkBox5.Text = "行先変更";
+            checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox6.Location = new Point(125, 59);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(149, 34);
+            checkBox6.TabIndex = 4;
+            checkBox6.Text = "運転取り止め";
+            checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            checkBox7.AutoSize = true;
+            checkBox7.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox7.Location = new Point(280, 59);
+            checkBox7.Name = "checkBox7";
+            checkBox7.Size = new Size(158, 34);
+            checkBox7.TabIndex = 4;
+            checkBox7.Text = "発車時刻変更";
+            checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            checkBox8.AutoSize = true;
+            checkBox8.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox8.Location = new Point(3, 99);
+            checkBox8.Name = "checkBox8";
+            checkBox8.Size = new Size(176, 34);
+            checkBox8.TabIndex = 4;
+            checkBox8.Text = "臨時停車客扱い";
+            checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            checkBox9.AutoSize = true;
+            checkBox9.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            checkBox9.Location = new Point(185, 99);
+            checkBox9.Name = "checkBox9";
+            checkBox9.Size = new Size(158, 34);
+            checkBox9.TabIndex = 4;
+            checkBox9.Text = "臨時運転停車";
+            checkBox9.UseVisualStyleBackColor = true;
             // 
             // 運転通達受領
             // 
@@ -105,7 +199,14 @@
         private Label label1;
         private Label label2;
         private Panel panel1;
-        private CheckBox checkBox2;
         private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private CheckBox checkBox9;
+        private CheckBox checkBox8;
+        private CheckBox checkBox7;
+        private CheckBox checkBox6;
+        private CheckBox checkBox5;
+        private CheckBox checkBox4;
+        private CheckBox checkBox3;
     }
 }

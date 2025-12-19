@@ -45,6 +45,7 @@
             label1 = new Label();
             controlScalerProvider1 = new tablet.ControlScalerProvider();
             label2 = new Label();
+            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -310,6 +311,22 @@
             label2.TabIndex = 17;
             label2.Text = "デジタル時計起動確認↑";
             // 
+            // button9
+            // 
+            controlScalerProvider1.SetAnchor(button9, ControlAnchor.TopLeft);
+            controlScalerProvider1.SetFontResizable(button9, ControlExpantion.NotAllow);
+            button9.Location = new Point(408, 70);
+            controlScalerProvider1.SetMovable(button9, false);
+            button9.Name = "button9";
+            controlScalerProvider1.SetRefLocation(button9, new Point(0, 0));
+            controlScalerProvider1.SetResizableX(button9, ControlExpantion.NotAllow);
+            controlScalerProvider1.SetResizableY(button9, ControlExpantion.NotAllow);
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 18;
+            button9.Text = "運転通告";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // M
             // 
             controlScalerProvider1.SetAnchor(this, ControlAnchor.TopLeft);
@@ -317,6 +334,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(128, 255, 255);
             ClientSize = new Size(800, 450);
+            Controls.Add(button9);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button8);
@@ -368,5 +386,6 @@
         private Label label1;
         private tablet.ControlScalerProvider controlScalerProvider1;
         private Label label2;
+        private Button button9;
     }
 }
