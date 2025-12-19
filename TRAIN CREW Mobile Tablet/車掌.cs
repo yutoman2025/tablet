@@ -78,6 +78,7 @@ namespace test
         {
             // ここで親フォームのラベルを更新する
             this.label2.Text = newText;
+            string color = 放送選択.color;
         }
         private void OnLabelUpdateRequest3(object sender, string newText)
         {

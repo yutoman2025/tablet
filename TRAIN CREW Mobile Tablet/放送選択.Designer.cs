@@ -50,6 +50,10 @@
             button12 = new Button();
             domainUpDown9 = new DomainUpDown();
             domainUpDown10 = new DomainUpDown();
+            label3 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -547,12 +551,64 @@
             domainUpDown10.TabIndex = 26;
             domainUpDown10.Text = "始発駅";
             // 
+            // label3
+            // 
+            label3.BackColor = Color.FromArgb(0, 0, 64);
+            label3.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(12, 67);
+            label3.Name = "label3";
+            label3.Size = new Size(193, 37);
+            label3.TabIndex = 27;
+            label3.Text = "種別";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.FromArgb(0, 0, 64);
+            label1.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(211, 67);
+            label1.Name = "label1";
+            label1.Size = new Size(193, 37);
+            label1.TabIndex = 28;
+            label1.Text = "始発駅";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.FromArgb(0, 0, 64);
+            label2.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(410, 67);
+            label2.Name = "label2";
+            label2.Size = new Size(193, 37);
+            label2.TabIndex = 29;
+            label2.Text = "行先";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            label4.BackColor = Color.FromArgb(0, 0, 64);
+            label4.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(609, 67);
+            label4.Name = "label4";
+            label4.Size = new Size(130, 37);
+            label4.TabIndex = 30;
+            label4.Text = "到着番線";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // 放送選択
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(810, 450);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(label3);
             Controls.Add(domainUpDown10);
             Controls.Add(domainUpDown9);
             Controls.Add(button9);
@@ -604,5 +660,9 @@
         private Button button12;
         private DomainUpDown domainUpDown9;
         private DomainUpDown domainUpDown10;
+        public Label label3;
+        public Label label1;
+        public Label label2;
+        public Label label4;
     }
 }

@@ -37,7 +37,8 @@ namespace tablet
         public static string type = null;
         public static string de = null;
         public static string color = null;
-
+        public static string sta = null;
+        public static string ban = null;
         private void button3_Click(object sender, EventArgs e)
         {
             file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
@@ -119,12 +120,6 @@ namespace tablet
             if (domainUpDown1 != null)
             {
                 type = domainUpDown1.Text;
-                if (LabelUpdateRequest3 != null)
-                {
-                    // イベントを発火させる
-                    // 第一引数はsender (自分自身: this)、第二引数は渡したい新しいテキスト
-                    LabelUpdateRequest3(this, type);
-                }
                 switch (type)
                 {
                     case "各駅停車":
@@ -149,6 +144,14 @@ namespace tablet
                         color = "White";
                         break;
                 }
+                if (LabelUpdateRequest3 != null)
+                {
+                    // イベントを発火させる
+                    // 第一引数はsender (自分自身: this)、第二引数は渡したい新しいテキスト
+                    LabelUpdateRequest3(this, type);
+                }
+                label3.Text = type;
+                label3.ForeColor = Color.FromName(color);
             }
             else
             {
@@ -167,12 +170,39 @@ namespace tablet
                     // 第一引数はsender (自分自身: this)、第二引数は渡したい新しいテキスト
                     LabelUpdateRequest2(this, de);
                 }
+                label2.Text = de;
             }
             else
             {
                 bool originalTopMost = this.TopMost;
                 this.TopMost = true;
                 MessageBox.Show("行き先が選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            if (domainUpDown10 != null)
+            {
+                sta = domainUpDown10.Text;
+                label1.Text = sta;
+            }
+            else
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("始発駅が選択されていません");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            if(domainUpDown5 != null)
+            {
+                ban = domainUpDown5.Text;
+                label4.Text = ban+"番";
+            }
+            else
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("到着番線が指定されていません");
                 this.TopMost = originalTopMost;
                 return;
             }

@@ -112,7 +112,7 @@
             // label2
             // 
             label2.BackColor = Color.FromArgb(0, 0, 64);
-            label2.Font = new Font("Yu Gothic UI", 20F);
+            label2.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
             label2.ForeColor = Color.White;
             label2.Location = new Point(595, 404);
             label2.Name = "label2";
@@ -124,8 +124,8 @@
             // label3
             // 
             label3.BackColor = Color.FromArgb(0, 0, 64);
-            label3.Font = new Font("Yu Gothic UI", 20F);
-            label3.ForeColor = Color.MediumOrchid;
+            label3.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(396, 404);
             label3.Name = "label3";
             label3.Size = new Size(193, 37);
