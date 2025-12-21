@@ -57,6 +57,7 @@
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(559, 24);
             progressBar1.TabIndex = 2;
+            progressBar1.Value = 100;
             // 
             // button2
             // 

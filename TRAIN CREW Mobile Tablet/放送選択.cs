@@ -39,6 +39,7 @@ namespace tablet
         public static string color = null;
         public static string sta = null;
         public static string ban = null;
+        public static string melody = null;
         private void button3_Click(object sender, EventArgs e)
         {
             file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
@@ -161,7 +162,7 @@ namespace tablet
                 this.TopMost = originalTopMost;
                 return;
             }
-            if(domainUpDown2 != null)
+            if (domainUpDown2 != null)
             {
                 de = domainUpDown2.Text;
                 if (LabelUpdateRequest2 != null)
@@ -193,10 +194,10 @@ namespace tablet
                 this.TopMost = originalTopMost;
                 return;
             }
-            if(domainUpDown5 != null)
+            if (domainUpDown5 != null)
             {
                 ban = domainUpDown5.Text;
-                label4.Text = ban+"番";
+                label4.Text = ban + "番";
             }
             else
             {
@@ -205,6 +206,14 @@ namespace tablet
                 MessageBox.Show("到着番線が指定されていません");
                 this.TopMost = originalTopMost;
                 return;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if(domainUpDown7 != null)
+            {
+                melody = domainUpDown7.Text;
             }
         }
     }

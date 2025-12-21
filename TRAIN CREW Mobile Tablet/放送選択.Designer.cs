@@ -54,6 +54,8 @@
             label1 = new Label();
             label2 = new Label();
             label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -323,6 +325,7 @@
             button7.TabIndex = 17;
             button7.Text = "決定";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -599,12 +602,38 @@
             label4.Text = "到着番線";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label5
+            // 
+            label5.BackColor = Color.FromArgb(0, 0, 64);
+            label5.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(12, 114);
+            label5.Name = "label5";
+            label5.Size = new Size(193, 37);
+            label5.TabIndex = 31;
+            label5.Text = "種別";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.BackColor = Color.FromArgb(0, 0, 64);
+            label6.Font = new Font("Yu Gothic UI", 20F, FontStyle.Bold);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(211, 114);
+            label6.Name = "label6";
+            label6.Size = new Size(193, 37);
+            label6.TabIndex = 32;
+            label6.Text = "種別";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // 放送選択
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(810, 450);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -664,5 +693,7 @@
         public Label label1;
         public Label label2;
         public Label label4;
+        public Label label5;
+        public Label label6;
     }
 }
