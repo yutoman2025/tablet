@@ -40,6 +40,20 @@ namespace tablet
         public static string sta = null;
         public static string ban = null;
         public static string melody = null;
+        public static string media = null;
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (this.TopMost == false)
+            {
+                this.TopMost = true;
+                button13.BackColor = Color.Yellow;
+            }
+            else
+            {
+                this.TopMost = false;
+                button13.BackColor = Color.White;
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
             file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
@@ -125,21 +139,31 @@ namespace tablet
                 {
                     case "各駅停車":
                         color = "White";
+                        media = "t1.wav";
                         break;
                     case "準急行":
                         color = "Cyan";
+                        media = "t2.wav";
                         break;
                     case "区間急行":
                         color = "Green";
+                        media = "t3.wav";
                         break;
                     case "急行":
                         color = "Orange";
+                        media = "t4.wav";
                         break;
                     case "快速急行":
                         color = "MediumOrchid";
+                        media = "t5.wav";
                         break;
                     case "館浜特急":
                         color = "Red";
+                        media = "t6.wav";
+                        break;
+                    case "回送":
+                        color = "Gray";
+                        media = "t7.wav";
                         break;
                     default:
                         color = "White";
@@ -211,7 +235,7 @@ namespace tablet
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if(domainUpDown7 != null)
+            if (domainUpDown7 != null)
             {
                 melody = domainUpDown7.Text;
             }

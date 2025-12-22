@@ -200,10 +200,10 @@
     <value>560, 426</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 15</value>
+    <value>202, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>TRAIN CREW Mobile Tablet v.0.5.2-beta</value>
+    <value>TRAIN CREW Mobile Tablet v.0.6-beta</value>
   </data>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>

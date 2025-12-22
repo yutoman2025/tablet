@@ -56,6 +56,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            button13 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -96,7 +97,7 @@
             domainUpDown1.Items.Add("急行");
             domainUpDown1.Items.Add("快速急行");
             domainUpDown1.Items.Add("館浜特急");
-            domainUpDown1.Items.Add("回送電車");
+            domainUpDown1.Items.Add("回送");
             domainUpDown1.Location = new Point(93, 12);
             domainUpDown1.Name = "domainUpDown1";
             domainUpDown1.Size = new Size(120, 23);
@@ -626,12 +627,24 @@
             label6.Text = "種別";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // button13
+            // 
+            button13.Location = new Point(12, 380);
+            button13.Name = "button13";
+            button13.Size = new Size(119, 58);
+            button13.TabIndex = 33;
+            button13.Text = "最前面";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
             // 放送選択
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(810, 450);
+            ControlBox = false;
+            Controls.Add(button13);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -695,5 +708,6 @@
         public Label label4;
         public Label label5;
         public Label label6;
+        private Button button13;
     }
 }

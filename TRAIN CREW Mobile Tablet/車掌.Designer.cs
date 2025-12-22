@@ -153,6 +153,7 @@
             MdiChildrenMinimizedAnchorBottom = false;
             Name = "C";
             Text = "車掌";
+            FormClosing += C_FormClosing;
             ResumeLayout(false);
         }
 

@@ -182,12 +182,12 @@ namespace test
             }
             else if (comboBox1.SelectedItem.ToString() == "07-09")
             {
-                bool originalTopMost = this.TopMost;
+                /*bool originalTopMost = this.TopMost;
                 this.TopMost = true;
                 MessageBox.Show("0709は未対応です");
                 this.TopMost = originalTopMost;
-                return;
-                /*Assembly assembly = Assembly.GetExecutingAssembly();
+                return;*/
+                Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
                 string selectedText = comboBox2.Text;
                 int last = selectedText.Length - 1;
@@ -218,7 +218,7 @@ namespace test
                 {
                     Image myImage = (Image)resourceManager.GetObject(selectedText2);
                     pictureBox2.Image = myImage;
-                }*/
+                }
             }
             else if (comboBox1.SelectedItem.ToString() == "21-23")
             {
@@ -288,6 +288,39 @@ namespace test
                 }
             }
             else if (comboBox1.SelectedItem.ToString() == "21-24")
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);
+                string selectedText = comboBox2.Text;
+                int last = selectedText.Length - 1;
+                string selectedText3 = Regex.Replace(selectedText, @"[^0-9]", "");
+                selectedText = Regex.Replace(selectedText, @"[0-9]", "");
+                int num = int.Parse(selectedText3);
+                selectedText = selectedText.Replace("平", "");
+                selectedText = selectedText.Replace("変-", "2");
+                selectedText = selectedText.Replace("準2", "3");
+                selectedText = selectedText.Replace("普2", "3");
+                selectedText = selectedText.Replace("教2", "9");
+                if (num >= 1 && num <= 9 && selectedText == "")
+                {
+                    selectedText3 = "0" + selectedText3;
+                }
+                string selectedText2 = "23-" + selectedText + selectedText3;
+                if (resourceManager.GetObject(selectedText2) == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show(this, "正しい行路を選択してください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+                else
+                {
+                    Image myImage = (Image)resourceManager.GetObject(selectedText2);
+                    pictureBox2.Image = myImage;
+                }
+            }
+            else if(comboBox1.SelectedItem.ToString() == "9-11")
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 ResourceManager resourceManager = new ResourceManager("tablet.Properties.Resources", assembly);

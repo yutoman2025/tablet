@@ -62,7 +62,7 @@ namespace test
                 // --- ここでイベントハンドラを購読する ---
                 // フォームが「更新要求」イベントを発火したら、OnLabelUpdateRequestメソッドを呼び出す
                 form1Instance.LabelUpdateRequest += OnLabelUpdateRequest;
-                form1Instance.LabelUpdateRequest2+= OnLabelUpdateRequest2;
+                form1Instance.LabelUpdateRequest2 += OnLabelUpdateRequest2;
                 form1Instance.LabelUpdateRequest3 += OnLabelUpdateRequest3;
 
                 form1Instance.Show();
@@ -107,7 +107,7 @@ namespace test
         int flg = 0;
         private void button3_Click(object sender, EventArgs e)
         {
-            if (isPlaying)
+            if (isPlaying && audioFile != null)
             {
                 StopNAudio();
                 return;
@@ -196,15 +196,14 @@ namespace test
 
             outputDevice.PlaybackStopped += (s, e) =>
             {
-                // ユーザー操作で Stop() された場合だけ無視
-                if (isStoppingByUser && audioFile?.CurrentTime < audioFile?.TotalTime)
+                if (audioFile == null)
+                    return;
+
+                if (isStoppingByUser && audioFile.CurrentTime < audioFile.TotalTime)
                 {
                     isStoppingByUser = false;
                     return;
                 }
-
-                if (audioFile == null)
-                    return;
 
                 playedDuration += audioFile.TotalTime;
 
@@ -215,13 +214,14 @@ namespace test
 
                 if (currentIndex < playList.Count)
                 {
-                    PlayCurrent(false); // ← ★ ここで2つ目へ
+                    PlayCurrent(false);
                 }
                 else
                 {
                     StopNAudio();
                 }
             };
+
 
 
             outputDevice.Init(audioFile);
@@ -247,11 +247,12 @@ namespace test
             isStoppingByUser = true;
 
             // ★ 再生位置を保存
-            if (audioFile != null)
+            if (audioFile != null && currentIndex < playList?.Count)
             {
                 resumeIndex = currentIndex;
                 resumePosition = audioFile.CurrentTime;
             }
+
 
             timer?.Stop();
             timer?.Dispose();
@@ -267,8 +268,18 @@ namespace test
             isPlaying = false;
         }
 
-
-
-
+        private void C_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StopNAudio();
+            if (form1Instance != null && !form1Instance.IsDisposed)
+            {
+                form1Instance.Close();
+                // イベントハンドラの購読解除も忘れずに
+                form1Instance.LabelUpdateRequest -= OnLabelUpdateRequest;
+                form1Instance.LabelUpdateRequest2 -= OnLabelUpdateRequest2;
+                form1Instance.LabelUpdateRequest3 -= OnLabelUpdateRequest3;
+                button5.BackColor = Color.White;
+            }
+        }
     }
 }
