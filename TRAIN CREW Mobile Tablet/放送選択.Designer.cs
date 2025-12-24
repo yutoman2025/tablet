@@ -57,6 +57,7 @@
             label5 = new Label();
             label6 = new Label();
             button13 = new Button();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // button1
@@ -637,6 +638,14 @@
             button13.UseVisualStyleBackColor = true;
             button13.Click += button13_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(412, 114);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 34;
+            // 
             // 放送選択
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -644,6 +653,7 @@
             BackColor = Color.Black;
             ClientSize = new Size(810, 450);
             ControlBox = false;
+            Controls.Add(comboBox1);
             Controls.Add(button13);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -709,5 +719,6 @@
         public Label label5;
         public Label label6;
         private Button button13;
+        public ComboBox comboBox1;
     }
 }

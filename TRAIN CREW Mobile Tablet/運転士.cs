@@ -462,6 +462,7 @@ namespace test
             string fileName = selectedCombo1 switch
             {
                 "07-09" => "07-09list.txt",
+                "9-11" => "9-11list.txt",
                 "11-13" => "11-13list.txt",
                 "15-17" => "15-17list.txt",
                 "18-20" => "18-20list.txt",
@@ -521,6 +522,7 @@ namespace test
             string fileName2 = selectedCombo1 switch
             {
                 "07-09" => "07-09ktlist.txt",
+                "9-11" => "9-11ktlist.txt",
                 "11-13" => "11-13ktlist.txt",
                 "15-17" => "15-17ktlist.txt",
                 "18-20" => "18-20ktlist.txt",

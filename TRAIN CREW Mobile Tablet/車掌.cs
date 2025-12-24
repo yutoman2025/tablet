@@ -124,6 +124,8 @@ namespace test
             if (files.Count == 0) return;
 
             // ★ 再開 or 新規判定
+            // resumeIndex や resumePosition に値が入っている場合は、前回停止した位置から再開する。
+            // 例えば resumeIndex == 1 の場合は2つ目のファイルから再開される（0起点のため）。
             bool resume = resumeIndex > 0 || resumePosition > TimeSpan.Zero;
 
             StartPlay(files, resume);
@@ -143,15 +145,21 @@ namespace test
 
             if (resume)
             {
+                // resumeIndex によって、どのファイルから再開するかを指定する。
+                // 例: resumeIndex==1 の場合は2つ目のファイルから開始する。
                 currentIndex = resumeIndex;
                 playedDuration = TimeSpan.Zero;
 
-                // それまでの音声分を足す
+                // それまでの音声分を足す（進捗表示を正しくするため）
                 for (int i = 0; i < currentIndex; i++)
                 {
                     using var r = new AudioFileReader(playList[i]);
                     playedDuration += r.TotalTime;
                 }
+
+                // resumePosition がゼロでなければ、そのファイル内の途中位置から再生される。
+                // resumeIndex と resumePosition の組み合わせにより、「2つ目のファイルの途中から」や
+                // 「2つ目のファイルの先頭から」などの再開が可能になる。
             }
             else
             {
@@ -171,6 +179,7 @@ namespace test
 
             progressBar1.Maximum = (int)totalDuration.TotalMilliseconds;
 
+            // 再生処理を開始。resume==true の場合は resumeIndex/resumePosition に従って開始される。
             PlayCurrent(resume);
 
             timer = new System.Windows.Forms.Timer();
@@ -186,6 +195,9 @@ namespace test
             audioFile = new AudioFileReader(playList[currentIndex]);
 
             // ★ 再開位置をセット
+            // resume==true かつ resumePosition が設定されていると、そのファイル内の途中位置から再生する。
+            // 例: 前回 StopNAudio() 呼び出しで resumeIndex==1, resumePosition==00:00:12.345 の場合
+            //      -> 2つ目のファイルの 12.345 秒から再生される。
             if (resume && resumePosition > TimeSpan.Zero)
             {
                 audioFile.CurrentTime = resumePosition;
@@ -199,25 +211,31 @@ namespace test
                 if (audioFile == null)
                     return;
 
+                // ユーザーが停止ボタンを押して停止した場合、現在の再生が途中で止まったのかどうかを判定する。
                 if (isStoppingByUser && audioFile.CurrentTime < audioFile.TotalTime)
                 {
+                    // ユーザーによる停止時はフラグをクリアして何もしない（StopNAudio()側で位置は保存済み）
                     isStoppingByUser = false;
                     return;
                 }
 
+                // このファイルを最後まで再生したので、playedDuration にその全長を加える
                 playedDuration += audioFile.TotalTime;
 
                 audioFile.Dispose();
                 outputDevice.Dispose();
 
+                // 次のファイルへ進める
                 currentIndex++;
 
                 if (currentIndex < playList.Count)
                 {
+                    // 次のファイルがあれば再生を続ける（再開位置は未指定なのでファイルの先頭から）
                     PlayCurrent(false);
                 }
                 else
                 {
+                    // 全ファイル再生完了
                     StopNAudio();
                 }
             };
@@ -247,6 +265,9 @@ namespace test
             isStoppingByUser = true;
 
             // ★ 再生位置を保存
+            // 再生中のファイルがあれば、そのインデックス(currentIndex)とファイル内の位置(CurrentTime)を
+            // resumeIndex / resumePosition に保存する。これにより、次回 StartPlay 時に「2つ目のファイルから再開」
+            // のような挙動が可能になる（resumeIndex は 0 起点）。
             if (audioFile != null && currentIndex < playList?.Count)
             {
                 resumeIndex = currentIndex;
@@ -279,6 +300,64 @@ namespace test
                 form1Instance.LabelUpdateRequest2 -= OnLabelUpdateRequest2;
                 form1Instance.LabelUpdateRequest3 -= OnLabelUpdateRequest3;
                 button5.BackColor = Color.White;
+            }
+        }
+        int cnt = 0;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cnt++;
+            if(cnt == 1)
+            {
+                // ユーザーの要求: ボタンを1回クリックしたら、再生を先頭に戻す
+                if (playList == null || playList.Count == 0)
+                {
+                    // 再生リストがない場合は何もしない
+                    cnt = 0;
+                    return;
+                }
+
+                // リセットする位置
+                resumeIndex = 0;
+                resumePosition = TimeSpan.Zero;
+                currentIndex = 0;
+                playedDuration = TimeSpan.Zero;
+
+                // 再生中であれば、現在の再生を止めずに先頭のファイルの先頭から再生を開始する
+                if (isPlaying && audioFile != null)
+                {
+                    // 既存のタイマーと出力を停止して破棄
+                    timer?.Stop();
+                    timer?.Dispose();
+                    timer = null;
+
+                    outputDevice?.Stop();
+                    outputDevice?.Dispose();
+                    outputDevice = null;
+
+                    audioFile?.Dispose();
+                    audioFile = null;
+
+                    // 先頭から再生を開始
+                    PlayCurrent(false);
+
+                    // プログレス更新タイマーを再作成
+                    timer = new System.Windows.Forms.Timer();
+                    timer.Interval = 20;
+                    timer.Tick += UpdateProgress;
+                    timer.Start();
+
+                    isPlaying = true;
+                }
+                else if(resumeIndex == null && resumePosition ==null)
+                {
+                    // 再生していない場合はプログレスだけリセット
+                    if (progressBar1 != null)
+                        progressBar1.Value = 0;
+                }
+                if(cnt == 2)
+                {
+                    cnt = 0;
+                }
             }
         }
     }
