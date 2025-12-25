@@ -406,6 +406,22 @@ namespace tablet
             if (domainUpDown7 != null)
             {
                 melody = domainUpDown7.Text;
+                switch (melody)
+                {
+                    case "純正メロディ1": melody = "終点チャイム.wav"; break;
+                    case "純正メロディ２": melody = "終点チャイム２.wav"; break;
+                    case "鉄道唱歌メロディ": melody = "鉄道唱歌.wav"; break;
+                    case "特急チャイム": melody = "車内チャイム.wav"; break;
+                    case "あつひか": melody = "あつくてひからびそう.wav"; break;
+                }
+            }
+            else
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("メロディが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
             }
         }
     }

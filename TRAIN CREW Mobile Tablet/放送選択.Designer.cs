@@ -310,8 +310,10 @@
             // domainUpDown7
             // 
             domainUpDown7.Items.Add("純正");
-            domainUpDown7.Items.Add("あつくてひからびそう");
+            domainUpDown7.Items.Add("純正2");
+            domainUpDown7.Items.Add("鉄道唱歌");
             domainUpDown7.Items.Add("TCオープニングメロディー");
+            domainUpDown7.Items.Add("あつひか");
             domainUpDown7.Location = new Point(93, 41);
             domainUpDown7.Name = "domainUpDown7";
             domainUpDown7.Size = new Size(120, 23);
