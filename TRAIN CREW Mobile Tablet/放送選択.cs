@@ -44,6 +44,7 @@ namespace tablet
         public static string demedia = null;
         public static int denumber = 0;
         public static int stanumber2 = 0;
+        public static string nametype = null;
         private void button13_Click(object sender, EventArgs e)
         {
             if (this.TopMost == false)
@@ -57,11 +58,63 @@ namespace tablet
                 button13.BackColor = Color.White;
             }
         }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (domainUpDown7 != null)
+            {
+                melody = domainUpDown7.Text;
+                switch (melody)
+                {
+                    case "純正メロディ1": melody = "終点チャイム.wav"; break;
+                    case "純正メロディ２": melody = "終点チャイム２.wav"; break;
+                    case "鉄道唱歌メロディ": melody = "鉄道唱歌.wav"; break;
+                    case "特急チャイム": melody = "車内チャイム.wav"; break;
+                    case "あつひか": melody = "あつくてひからびそう.wav"; break;
+                }
+            }
+            else
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("メロディが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            if (domainUpDown6 != null)
+            {
+                nametype = domainUpDown6.Text;
+                switch (nametype)
+                {
+                    case "純正": nametype = "純正"; break;
+                    case "音声1": nametype = "音声1"; break;
+                    case "音声2": nametype = "音声2"; break;
+                }
+            }
+            else
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("放送タイプが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+        }
         private void button3_Click(object sender, EventArgs e)
         {
-            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
-            file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m22.wav");
-            name = "携帯電話";
+            if (nametype == null)
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("放送タイプが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            else
+            {
+                file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m21.wav");
+                file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m22.wav");
+            }
+                name = "携帯電話";
             if (LabelUpdateRequest != null)
             {
                 // イベントを発火させる
@@ -78,8 +131,19 @@ namespace tablet
 
         private void button4_Click(object sender, EventArgs e)
         {
-            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m23.wav");
-            file2 = null;
+            if (nametype == null)
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("放送タイプが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            else
+            {
+                file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m23.wav");
+                file2 = null;
+            }
             name = "不審な荷物";
             if (LabelUpdateRequest != null)
             {
@@ -97,8 +161,19 @@ namespace tablet
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
-            file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m24.wav");
+            if (nametype == null)
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("放送タイプが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            else
+            {
+                file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m21.wav");
+                file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m24.wav");
+            }
             name = "優先座席";
             if (LabelUpdateRequest != null)
             {
@@ -116,8 +191,19 @@ namespace tablet
 
         private void button6_Click(object sender, EventArgs e)
         {
-            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m21.wav");
-            file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", "m25.wav");
+            if (nametype == null)
+            {
+                bool originalTopMost = this.TopMost;
+                this.TopMost = true;
+                MessageBox.Show("放送タイプが選択されていません。");
+                this.TopMost = originalTopMost;
+                return;
+            }
+            else
+            {
+                file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m21.wav");
+                file2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, "m25.wav");
+            }
             name = "迷惑行為";
             if (LabelUpdateRequest != null)
             {
@@ -133,6 +219,7 @@ namespace tablet
             }
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
             if (domainUpDown2 != null)
@@ -217,7 +304,18 @@ namespace tablet
                     case "駒野": demedia = "s75.wav"; break;
                     case "館浜": demedia = "s76.wav"; break;
                 }
-
+                if (nametype == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show("放送タイプが選択されていません。");
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+                else
+                {
+                    demedia = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, demedia);
+                }
                 if (LabelUpdateRequest2 != null)
                 {
                     LabelUpdateRequest2(this, de);
@@ -242,79 +340,79 @@ namespace tablet
                     case "大手橋": stanumber2 = 1; break;
                     case "三番街": stanumber2 = 2; break;
                     case "新町": stanumber2 = 3; break;
-                        case "青木町": stanumber2 = 4; break;
-                        case "宮松町": stanumber2 = 5; break;
-                        case "神宮橋": stanumber2 = 6; break;
-                        case "宮の前": stanumber2 = 7; break;
-                        case "南吉岡": stanumber2 = 8; break;
-                        case "小手川": stanumber2 = 9; break;
-                        case "佐野": stanumber2 = 10; break;
-                        case "中道": stanumber2 = 11; break;
-                        case "学院前": stanumber2 = 12; break;
-                        case "南八幡": stanumber2 = 13; break;
-                        case "高井戸八幡": stanumber2 = 14; break;
-                        case "南五日市": stanumber2 = 15; break;
-                        case "五日市": stanumber2 = 16; break;
-                        case "夕陽が丘": stanumber2 = 17; break;
-                        case "佐川": stanumber2 = 18; break;
-                        case "出屋敷前": stanumber2 = 19; break;
-                        case "五十川": stanumber2 = 20; break;
-                        case "本郷": stanumber2 = 21; break;
-                        case "大原": stanumber2 = 22; break;
-                        case "町沢": stanumber2 = 23; break;
-                        case "緑ヶ丘": stanumber2 = 24; break;
-                        case "北美": stanumber2 = 25; break;
-                        case "矢木": stanumber2 = 26; break;
-                        case "千里が丘": stanumber2 = 27; break;
-                        case "東福": stanumber2 = 28; break;
-                        case "高砂町": stanumber2 = 29; break;
-                        case "長野本町": stanumber2 = 30; break;
-                        case "新長野公園": stanumber2 = 31; break;
-                        case "木之本": stanumber2 = 32; break;
-                        case "大和田町": stanumber2 = 33; break;
-                        case "江西": stanumber2 = 34; break;
-                        case "箕田": stanumber2 = 35; break;
-                        case "沢井": stanumber2 = 36; break;
-                        case "大野宮": stanumber2 = 37; break;
-                        case "朝日ヶ丘": stanumber2 = 38; break;
-                        case "六日市町": stanumber2 = 39; break;
-                        case "小沼": stanumber2 = 40; break;
-                        case "二ツ山": stanumber2 = 41; break;
-                        case "田村": stanumber2 = 42; break;
-                        case "広小路": stanumber2 = 43; break;
-                        case "常磐通": stanumber2 = 44; break;
-                        case "大路": stanumber2 = 45; break;
-                        case "新大路": stanumber2 = 46; break;
-                        case "桜坂": stanumber2 = 47; break;
-                        case "東井": stanumber2 = 48; break;
-                        case "白石町": stanumber2 = 49; break;
-                        case "二木戸": stanumber2 = 50; break;
-                        case "三石": stanumber2 = 51; break;
-                        case "名田": stanumber2 = 52; break;
-                        case "下吉沢": stanumber2 = 53; break;
-                        case "上吉沢": stanumber2 = 54; break;
-                        case "珠川温泉": stanumber2 = 55; break;
-                        case "明神川": stanumber2 = 56; break;
-                        case "三郷": stanumber2 = 57; break;
-                        case "赤山町": stanumber2 = 58; break;
-                        case "西赤山": stanumber2 = 59; break;
-                        case "奥峯口": stanumber2 = 60; break;
-                        case "日野森": stanumber2 = 61; break;
-                        case "高見沢": stanumber2 = 62; break;
-                        case "水越": stanumber2 = 63; break;
-                        case "藤江": stanumber2 = 64; break;
-                        case "大道寺": stanumber2 = 65; break;
-                        case "江ノ原": stanumber2 = 66; break;
-                        case "新野崎": stanumber2 = 67; break;
-                        case "新井川": stanumber2 = 68; break;
-                        case "羽衣橋": stanumber2 = 69; break;
-                        case "浜園": stanumber2 = 70; break;
-                        case "津崎": stanumber2 = 71; break;
-                        case "虹ケ浜": stanumber2 = 72; break;
-                        case "海岸公園": stanumber2 = 73; break;
-                        case "河原崎": stanumber2 = 74; break;
-                        case "駒野": stanumber2 = 75; break;
-                        case "館浜": stanumber2 = 76; break;
+                    case "青木町": stanumber2 = 4; break;
+                    case "宮松町": stanumber2 = 5; break;
+                    case "神宮橋": stanumber2 = 6; break;
+                    case "宮の前": stanumber2 = 7; break;
+                    case "南吉岡": stanumber2 = 8; break;
+                    case "小手川": stanumber2 = 9; break;
+                    case "佐野": stanumber2 = 10; break;
+                    case "中道": stanumber2 = 11; break;
+                    case "学院前": stanumber2 = 12; break;
+                    case "南八幡": stanumber2 = 13; break;
+                    case "高井戸八幡": stanumber2 = 14; break;
+                    case "南五日市": stanumber2 = 15; break;
+                    case "五日市": stanumber2 = 16; break;
+                    case "夕陽が丘": stanumber2 = 17; break;
+                    case "佐川": stanumber2 = 18; break;
+                    case "出屋敷前": stanumber2 = 19; break;
+                    case "五十川": stanumber2 = 20; break;
+                    case "本郷": stanumber2 = 21; break;
+                    case "大原": stanumber2 = 22; break;
+                    case "町沢": stanumber2 = 23; break;
+                    case "緑ヶ丘": stanumber2 = 24; break;
+                    case "北美": stanumber2 = 25; break;
+                    case "矢木": stanumber2 = 26; break;
+                    case "千里が丘": stanumber2 = 27; break;
+                    case "東福": stanumber2 = 28; break;
+                    case "高砂町": stanumber2 = 29; break;
+                    case "長野本町": stanumber2 = 30; break;
+                    case "新長野公園": stanumber2 = 31; break;
+                    case "木之本": stanumber2 = 32; break;
+                    case "大和田町": stanumber2 = 33; break;
+                    case "江西": stanumber2 = 34; break;
+                    case "箕田": stanumber2 = 35; break;
+                    case "沢井": stanumber2 = 36; break;
+                    case "大野宮": stanumber2 = 37; break;
+                    case "朝日ヶ丘": stanumber2 = 38; break;
+                    case "六日市町": stanumber2 = 39; break;
+                    case "小沼": stanumber2 = 40; break;
+                    case "二ツ山": stanumber2 = 41; break;
+                    case "田村": stanumber2 = 42; break;
+                    case "広小路": stanumber2 = 43; break;
+                    case "常磐通": stanumber2 = 44; break;
+                    case "大路": stanumber2 = 45; break;
+                    case "新大路": stanumber2 = 46; break;
+                    case "桜坂": stanumber2 = 47; break;
+                    case "東井": stanumber2 = 48; break;
+                    case "白石町": stanumber2 = 49; break;
+                    case "二木戸": stanumber2 = 50; break;
+                    case "三石": stanumber2 = 51; break;
+                    case "名田": stanumber2 = 52; break;
+                    case "下吉沢": stanumber2 = 53; break;
+                    case "上吉沢": stanumber2 = 54; break;
+                    case "珠川温泉": stanumber2 = 55; break;
+                    case "明神川": stanumber2 = 56; break;
+                    case "三郷": stanumber2 = 57; break;
+                    case "赤山町": stanumber2 = 58; break;
+                    case "西赤山": stanumber2 = 59; break;
+                    case "奥峯口": stanumber2 = 60; break;
+                    case "日野森": stanumber2 = 61; break;
+                    case "高見沢": stanumber2 = 62; break;
+                    case "水越": stanumber2 = 63; break;
+                    case "藤江": stanumber2 = 64; break;
+                    case "大道寺": stanumber2 = 65; break;
+                    case "江ノ原": stanumber2 = 66; break;
+                    case "新野崎": stanumber2 = 67; break;
+                    case "新井川": stanumber2 = 68; break;
+                    case "羽衣橋": stanumber2 = 69; break;
+                    case "浜園": stanumber2 = 70; break;
+                    case "津崎": stanumber2 = 71; break;
+                    case "虹ケ浜": stanumber2 = 72; break;
+                    case "海岸公園": stanumber2 = 73; break;
+                    case "河原崎": stanumber2 = 74; break;
+                    case "駒野": stanumber2 = 75; break;
+                    case "館浜": stanumber2 = 76; break;
                 }
             }
             else
@@ -333,11 +431,11 @@ namespace tablet
                     case "各駅停車":
                         color = "White";
                         typemedia = "t1.wav";
-                        for(int i= 0; i < 76; i++) 
-                        { 
-                            if (i == 99) 
-                            { 
-                                break; 
+                        for (int i = stanumber2; i < denumber; i++)
+                        {
+                            if (i == 76)
+                            {
+                                break;
                             }
                         }
                         break;
@@ -368,6 +466,18 @@ namespace tablet
                     default:
                         color = "White";
                         break;
+                }
+                if (nametype == null)
+                {
+                    bool originalTopMost = this.TopMost;
+                    this.TopMost = true;
+                    MessageBox.Show("放送タイプが選択されていません。");
+                    this.TopMost = originalTopMost;
+                    return;
+                }
+                else
+                {
+                    typemedia = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "放送", nametype, typemedia);
                 }
                 if (LabelUpdateRequest3 != null)
                 {
@@ -401,28 +511,6 @@ namespace tablet
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (domainUpDown7 != null)
-            {
-                melody = domainUpDown7.Text;
-                switch (melody)
-                {
-                    case "純正メロディ1": melody = "終点チャイム.wav"; break;
-                    case "純正メロディ２": melody = "終点チャイム２.wav"; break;
-                    case "鉄道唱歌メロディ": melody = "鉄道唱歌.wav"; break;
-                    case "特急チャイム": melody = "車内チャイム.wav"; break;
-                    case "あつひか": melody = "あつくてひからびそう.wav"; break;
-                }
-            }
-            else
-            {
-                bool originalTopMost = this.TopMost;
-                this.TopMost = true;
-                MessageBox.Show("メロディが選択されていません。");
-                this.TopMost = originalTopMost;
-                return;
-            }
-        }
+        
     }
-}
+    }

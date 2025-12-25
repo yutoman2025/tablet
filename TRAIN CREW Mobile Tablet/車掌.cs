@@ -137,29 +137,32 @@ namespace test
         {
             StopNAudio();
 
-            // ★ 必ずここでリセット
             isStoppingByUser = false;
+            playList = files ?? new List<string>();
 
-
-            playList = files;
-
-            if (resume)
+            if (playList.Count == 0)
             {
-                // resumeIndex によって、どのファイルから再開するかを指定する。
-                // 例: resumeIndex==1 の場合は2つ目のファイルから開始する。
-                currentIndex = resumeIndex;
+                // 再生するファイルが無ければ何もしない
+                isPlaying = false;
+                return;
+            }
+
+            // resume を使うか判定（保存された index が新しいリスト内かを確認）
+            bool hasValidResumeIndex = resumeIndex > 0 && resumeIndex < playList.Count;
+            bool hasValidResumePos = resumePosition > TimeSpan.Zero;
+            bool useResume = hasValidResumeIndex || hasValidResumePos;
+
+            if (resume && useResume)
+            {
+                // currentIndex を playList の範囲内に補正
+                currentIndex = Math.Clamp(resumeIndex, 0, playList.Count - 1);
                 playedDuration = TimeSpan.Zero;
 
-                // それまでの音声分を足す（進捗表示を正しくするため）
                 for (int i = 0; i < currentIndex; i++)
                 {
                     using var r = new AudioFileReader(playList[i]);
                     playedDuration += r.TotalTime;
                 }
-
-                // resumePosition がゼロでなければ、そのファイル内の途中位置から再生される。
-                // resumeIndex と resumePosition の組み合わせにより、「2つ目のファイルの途中から」や
-                // 「2つ目のファイルの先頭から」などの再開が可能になる。
             }
             else
             {
@@ -169,7 +172,7 @@ namespace test
                 playedDuration = TimeSpan.Zero;
             }
 
-            // 合計時間
+            // 合計時間（ファイルパスが有効か例外が出る可能性あり）
             totalDuration = TimeSpan.Zero;
             foreach (var f in playList)
             {
@@ -177,10 +180,15 @@ namespace test
                 totalDuration += r.TotalTime;
             }
 
-            progressBar1.Maximum = (int)totalDuration.TotalMilliseconds;
+            progressBar1.Maximum = Math.Max(1, (int)totalDuration.TotalMilliseconds);
 
-            // 再生処理を開始。resume==true の場合は resumeIndex/resumePosition に従って開始される。
-            PlayCurrent(resume);
+            // currentIndex が範囲内であることを再確認してから再生
+            if (currentIndex < 0 || currentIndex >= playList.Count)
+            {
+                currentIndex = 0;
+            }
+
+            PlayCurrent(useResume);
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 20;
@@ -354,10 +362,10 @@ namespace test
                     if (progressBar1 != null)
                         progressBar1.Value = 0;
                 }
-                if(cnt == 2)
-                {
-                    cnt = 0;
-                }
+            }
+            if (cnt == 2)
+            {
+                cnt = 0;
             }
         }
     }

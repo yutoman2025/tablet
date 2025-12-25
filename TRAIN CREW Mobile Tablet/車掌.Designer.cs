@@ -37,6 +37,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -135,12 +136,25 @@
             label3.Text = "種別";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Yellow;
+            label4.Font = new Font("Yu Gothic UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(13, 410);
+            label4.Name = "label4";
+            label4.Size = new Size(243, 30);
+            label4.TabIndex = 10;
+            label4.Text = "音読さんを使用しております";
+            // 
             // C
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 192, 192);
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -156,6 +170,7 @@
             Text = "車掌";
             FormClosing += C_FormClosing;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -169,5 +184,6 @@
         public Label label1;
         public Label label2;
         public Label label3;
+        private Label label4;
     }
 }
