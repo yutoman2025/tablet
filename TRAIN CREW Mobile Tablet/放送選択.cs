@@ -45,6 +45,7 @@ namespace tablet
         public static int denumber = 0;
         public static int stanumber2 = 0;
         public static string nametype = null;
+        public static string filetype = null;
         private void button13_Click(object sender, EventArgs e)
         {
             if (this.TopMost == false)
@@ -85,9 +86,9 @@ namespace tablet
                 nametype = domainUpDown6.Text;
                 switch (nametype)
                 {
-                    case "純正": nametype = "純正"; break;
-                    case "音声1": nametype = "音声1"; break;
-                    case "音声2": nametype = "音声2"; break;
+                    case "純正": nametype = "純正"; filetype = "純正"; break;
+                    case "音声1": nametype = "音声1"; filetype = "オリジナル"; break;
+                    case "音声2": nametype = "音声2"; filetype = "オリジナル"; break;
                 }
             }
             else

@@ -814,10 +814,10 @@
   <data name="18-156" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\18-20\18-156.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="18-205" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="18-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\18-20\18-405.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="18-209" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="18-29" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\18-20\18-409.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="18-31" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -1639,13 +1639,13 @@
   <data name="23-09" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\21-24\23-09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="23-151" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="23-131" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\21-24\23-151.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="23-152" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="23-132" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\21-24\23-152.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="23-153" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="23-133" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\21-24\23-153.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="23-551" type="System.Resources.ResXFileRef, System.Windows.Forms">
