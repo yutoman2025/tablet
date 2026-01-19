@@ -615,7 +615,7 @@
             label5.Name = "label5";
             label5.Size = new Size(193, 37);
             label5.TabIndex = 31;
-            label5.Text = "種別";
+            label5.Text = "メロディー";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -627,7 +627,7 @@
             label6.Name = "label6";
             label6.Size = new Size(193, 37);
             label6.TabIndex = 32;
-            label6.Text = "種別";
+            label6.Text = "音声";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // button13

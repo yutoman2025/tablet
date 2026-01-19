@@ -72,6 +72,7 @@ namespace tablet
                     case "特急チャイム": melody = "車内チャイム.wav"; break;
                     case "あつひか": melody = "あつくてひからびそう.wav"; break;
                 }
+                label5.Text = domainUpDown7.ToString();
             }
             else
             {
@@ -90,6 +91,7 @@ namespace tablet
                     case "音声1": nametype = "音声1"; filetype = "オリジナル"; break;
                     case "音声2": nametype = "音声2"; filetype = "オリジナル"; break;
                 }
+                label6.Text = domainUpDown6.ToString();
             }
             else
             {
