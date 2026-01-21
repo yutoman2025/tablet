@@ -74,6 +74,7 @@ namespace tablet
                 }
                 string lb = domainUpDown7.ToString();
                 label5.Text = lb;
+                MessageBox.Show(domainUpDown7.ToString());
             }
             else
             {
